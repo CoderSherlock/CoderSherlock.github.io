@@ -1,6 +1,6 @@
 {
-  "name": "Codersherlock.GitHub.io",
+  "name": "This is a title test",
   "tagline": "",
-  "body": "# This is a title test\r\n\r\n- vim \r\n- xv6\r\n```cpp\r\nfor(p = ptable.proc; p < &ptable.proc[NPROC]; p++){\r\n\tif(p->state == RUNNABLE)\r\n\t\thpflag = hpflag > p->priority ? hpflag : p->priority;\r\n}\r\n```\r\n- mobile\r\n- self-control\r\n",
+  "body": "# This is a title test\r\n\r\n- xv6\r\n```cpp\r\nfor(p = ptable.proc; p < &ptable.proc[NPROC]; p++){\r\n\tif(p->state == RUNNABLE)\r\n\t\thpflag = hpflag > p->priority ? hpflag : p->priority;\r\n}\r\n```\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
