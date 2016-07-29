@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My New Hugo Site</title>
-    <link>http://replace-this-with-your-hugo-site.com/</link>
-    <description>Recent content on My New Hugo Site</description>
+    <title>Mil años de solitario</title>
+    <link>https://CoderSherlock.github.io/</link>
+    <description>Recent content on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Jul 2016 17:28:27 -0400</lastBuildDate>
-    <atom:link href="http://replace-this-with-your-hugo-site.com/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://CoderSherlock.github.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>test</title>
-      <link>http://replace-this-with-your-hugo-site.com/post/test/</link>
+      <link>https://codersherlock.github.io/post/test/</link>
       <pubDate>Fri, 29 Jul 2016 17:28:27 -0400</pubDate>
       
-      <guid>http://replace-this-with-your-hugo-site.com/post/test/</guid>
+      <guid>https://codersherlock.github.io/post/test/</guid>
       <description>&lt;p&gt;This is a fucking test!&lt;/p&gt;
 
 &lt;p&gt;&lt;em&gt;fuck you&lt;/em&gt;&lt;/p&gt;
