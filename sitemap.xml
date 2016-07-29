@@ -2,7 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://codersherlock.github.io/</loc>
+    <loc>http://replace-this-with-your-hugo-site.com/</loc>
+    <lastmod>2016-07-29T17:28:27-04:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://replace-this-with-your-hugo-site.com/post/test/</loc>
+    <lastmod>2016-07-29T17:28:27-04:00</lastmod>
   </url>
   
 </urlset>
