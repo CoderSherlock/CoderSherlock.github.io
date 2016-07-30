@@ -6,26 +6,7 @@
     <description>Recent content on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 29 Jul 2016 17:28:27 -0400</lastBuildDate>
     <atom:link href="https://CoderSherlock.github.io/index.xml" rel="self" type="application/rss+xml" />
-    
-    <item>
-      <title>test</title>
-      <link>https://codersherlock.github.io/post/test/</link>
-      <pubDate>Fri, 29 Jul 2016 17:28:27 -0400</pubDate>
-      
-      <guid>https://codersherlock.github.io/post/test/</guid>
-      <description>&lt;p&gt;This is a fucking test!&lt;/p&gt;
-
-&lt;p&gt;&lt;em&gt;fuck you&lt;/em&gt;&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;and you&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;and &lt;a href=&#34;www.baidu.com&#34;&gt;you&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
     
   </channel>
 </rss>
