@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Mil años de solitario</title>
-    <link>CoderSherlock.github.io/</link>
-    <description>Recent content on Mil años de solitario</description>
+    <title>Github on Mil años de solitario</title>
+    <link>CoderSherlock.github.io/tags/github/</link>
+    <description>Recent content in Github on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Jul 2016 18:10:20 -0400</lastBuildDate>
-    <atom:link href="CoderSherlock.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="CoderSherlock.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Pokemon Go Hack</title>
@@ -35,24 +35,6 @@ Anyway, after coming back, I think I write too much on useless words, so let me 
 &lt;li&gt;[ ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)&lt;/li&gt;
 &lt;li&gt;[ ] Become a Pokemon Master&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Cross Compile Seafile 2 ARM</title>
-      <link>/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
-      <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
-      
-      <guid>/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
-      <description>
-
-&lt;h1 id=&#34;cross-compile-seafile-to-arm-platform&#34;&gt;Cross Compile Seafile to ARM platform&lt;/h1&gt;
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
-
-&lt;p&gt;This project is working for delta sync from mobile to server. Currently, there&amp;rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&amp;rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.&lt;/p&gt;
-
-&lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
 </description>
     </item>
     

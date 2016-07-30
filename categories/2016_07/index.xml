@@ -6,8 +6,37 @@
     <description>Recent content in 2016_07 on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 30 Jul 2016 14:02:34 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 30 Jul 2016 18:10:20 -0400</lastBuildDate>
     <atom:link href="CoderSherlock.github.io/categories/2016_07/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Pokemon Go Hack</title>
+      <link>/CoderSherlock.github.io/post/Pokemon-Go-Hack/</link>
+      <pubDate>Sat, 30 Jul 2016 18:10:20 -0400</pubDate>
+      
+      <guid>/CoderSherlock.github.io/post/Pokemon-Go-Hack/</guid>
+      <description>
+
+&lt;h1 id=&#34;catch-them-all-until-bored&#34;&gt;Catch them all until bored&lt;/h1&gt;
+
+&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
+
+&lt;p&gt;I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game. Due to some well known reasons, Ingress didn&amp;rsquo;t become popular at my country. But time flies, I break through the wall, and come to a free land which can play Niantic&amp;rsquo;s game. Unfortunately, this time, the only thing restrict me from playing LBS game is limitation of my spare time. Working in the Lab makes me exhausted &lt;strong&gt;EVERYDAY&lt;/strong&gt; and the place where I am now is so barren which even doesn&amp;rsquo;t have much insects and birds(I mean Weedle and Pidgey).
+&lt;em&gt;afk I have to battle a nearby gym now&lt;/em&gt;
+Anyway, after coming back, I think I write too much on useless words, so let me keep it straight forward. My imagination of this hacking project is very simple, which is making an auto bot helping me go through all experiences a Pokemon trainer will face. In first stage, my goal is making the bot smartly picking up a route to walk, catch all Pokemons and supply from PokeStops.&lt;/p&gt;
+
+&lt;h2 id=&#34;todo-list&#34;&gt;TODO List&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;[X] Test API&lt;/li&gt;
+&lt;li&gt;[ ] Finish Walk Algorithm&lt;/li&gt;
+&lt;li&gt;[ ] Finish other movement, etc. catch, hatch&lt;/li&gt;
+&lt;li&gt;[ ] Smart Walking route&lt;/li&gt;
+&lt;li&gt;[ ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)&lt;/li&gt;
+&lt;li&gt;[ ] Become a Pokemon Master&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>Cross Compile Seafile 2 ARM</title>
