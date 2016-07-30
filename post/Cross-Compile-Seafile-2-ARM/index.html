@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <link rel="stylesheet" href="http://codersherlock.github.io:1313/css/styles.css">
-    <link rel="stylesheet" href="http://codersherlock.github.io:1313/css/custom.css">
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="http://codersherlock.github.io:1313//index.xml">
+    <link rel="stylesheet" href="/CoderSherlock.github.io/css/styles.css">
+    <link rel="stylesheet" href="/CoderSherlock.github.io/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="/CoderSherlock.github.io//index.xml">
 
     
     <title>Cross Compile Seafile 2 ARM - Mil años de solitario</title>
@@ -19,7 +19,7 @@
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="http://codersherlock.github.io:1313/post/Cross-Compile-Seafile-2-ARM/">
+    <meta property="og:url" content="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
     
     
 
@@ -37,7 +37,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="http://codersherlock.github.io:1313/">Mil años de solitario</a>
+            <a class="navbar-brand" href="/CoderSherlock.github.io/">Mil años de solitario</a>
           </div>
 
           <div id="navbar" class="collapse navbar-collapse">
@@ -60,19 +60,19 @@
 
       <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
 
-        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="http://codersherlock.github.io:1313/"/>
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="/CoderSherlock.github.io/"/>
         <meta itemprop="dateModified" content="2016-07-30T14:02:34-04:00">
         <meta itemprop="headline" content="Cross Compile Seafile 2 ARM">
         <meta itemprop="description" content="Cross Compile Seafile to ARM platform Motivation This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.">
-        <meta itemprop="url" content="http://codersherlock.github.io:1313/post/Cross-Compile-Seafile-2-ARM/">
+        <meta itemprop="url" content="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-          <meta itemprop="url" content="http://codersherlock.github.io:1313/images/default.jpg" />
+          <meta itemprop="url" content="/CoderSherlock.github.io/images/default.jpg" />
           <meta itemprop="width" content="800">
           <meta itemprop="height" content="800">
         </div>
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
           <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <meta itemprop="url" content="http://codersherlock.github.io:1313/images/logo.jpg">
+            <meta itemprop="url" content="/CoderSherlock.github.io/images/logo.jpg">
             <meta itemprop="width" content="100">
             <meta itemprop="height" content="100">
           </div>
@@ -102,13 +102,13 @@
 
 
         <aside>
-          <div class="section"><a href="http://codersherlock.github.io:1313/tags/Android" class="tag">Android</a> <a href="http://codersherlock.github.io:1313/tags/ARM" class="tag">ARM</a> </div>
+          <div class="section"><a href="/CoderSherlock.github.io/tags/Android" class="tag">Android</a> <a href="/CoderSherlock.github.io/tags/ARM" class="tag">ARM</a> </div>
 
           <div class="section share">
-            <a href="http://www.facebook.com/sharer.php?src=bm&u=http%3a%2f%2fcodersherlock.github.io%3a1313%2fpost%2fCross-Compile-Seafile-2-ARM%2f&t=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
-            <a href="http://twitter.com/intent/tweet?url=http%3a%2f%2fcodersherlock.github.io%3a1313%2fpost%2fCross-Compile-Seafile-2-ARM%2f&text=Cross%20Compile%20Seafile%202%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
-            <a href="https://plus.google.com/share?url=http%3a%2f%2fcodersherlock.github.io%3a1313%2fpost%2fCross-Compile-Seafile-2-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
-            <a href="http://getpocket.com/edit?url=http%3a%2f%2fcodersherlock.github.io%3a1313%2fpost%2fCross-Compile-Seafile-2-ARM%2f&title=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&t=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&text=Cross%20Compile%20Seafile%202%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&title=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
           </div>
 
           
@@ -129,7 +129,7 @@
     </div>
     <div class="list-group">
       
-      <a href="http://codersherlock.github.io:1313/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile 2 ARM</a>
+      <a href="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile 2 ARM</a>
       
     </div>
   </div>
@@ -141,7 +141,7 @@
     </div>
     <div class="list-group">
       
-      <a href="http://codersherlock.github.io:1313/categories/2016_07" class="list-group-item">2016_07</a>
+      <a href="/CoderSherlock.github.io/categories/2016_07" class="list-group-item">2016_07</a>
       
     </div>
   </div>
@@ -152,9 +152,9 @@
     </div>
     <div class="list-group">
       
-      <a href="http://codersherlock.github.io:1313/tags/android" class="list-group-item">android</a>
+      <a href="/CoderSherlock.github.io/tags/android" class="list-group-item">android</a>
       
-      <a href="http://codersherlock.github.io:1313/tags/arm" class="list-group-item">arm</a>
+      <a href="/CoderSherlock.github.io/tags/arm" class="list-group-item">arm</a>
       
     </div>
   </div>
@@ -185,6 +185,6 @@
 
     
 
-  <script data-no-instant>document.write('<script src="/livereload.js?mindelay=10"></' + 'script>')</script></body>
+  </body>
 </html>
 
