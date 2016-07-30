@@ -2,11 +2,30 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Mil años de solitario</title>
-    <link>CoderSherlock.github.io/</link>
+    <link>http://CoderSherlock.github.io:1313/</link>
     <description>Recent content on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <atom:link href="CoderSherlock.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 30 Jul 2016 14:02:34 -0400</lastBuildDate>
+    <atom:link href="http://CoderSherlock.github.io:1313/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cross Compile Seafile 2 ARM</title>
+      <link>http://codersherlock.github.io:1313/post/Cross-Compile-Seafile-2-ARM/</link>
+      <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
+      
+      <guid>http://codersherlock.github.io:1313/post/Cross-Compile-Seafile-2-ARM/</guid>
+      <description>
+
+&lt;h1 id=&#34;cross-compile-seafile-to-arm-platform&#34;&gt;Cross Compile Seafile to ARM platform&lt;/h1&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;This project is working for delta sync from mobile to server. Currently, there&amp;rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&amp;rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.&lt;/p&gt;
+
+&lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
+</description>
+    </item>
     
   </channel>
 </rss>
