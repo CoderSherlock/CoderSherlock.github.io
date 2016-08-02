@@ -9,9 +9,9 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
-    <link rel="stylesheet" href="/CoderSherlock.github.io/css/styles.css">
-    <link rel="stylesheet" href="/CoderSherlock.github.io/css/custom.css">
-    <link rel="alternate" type="application/rss+xml" title="RSS" href="/CoderSherlock.github.io//index.xml">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://codersherlock.github.io//index.xml">
 
     
     <title>Cross Compile Seafile 2 ARM - Mil años de solitario</title>
@@ -19,7 +19,7 @@
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
+    <meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
     
     
 
@@ -37,7 +37,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/CoderSherlock.github.io/">Mil años de solitario</a>
+            <a class="navbar-brand" href="https://codersherlock.github.io/">Mil años de solitario</a>
           </div>
 
           <div id="navbar" class="collapse navbar-collapse">
@@ -60,19 +60,19 @@
 
       <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
 
-        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="/CoderSherlock.github.io/"/>
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="https://codersherlock.github.io/"/>
         <meta itemprop="dateModified" content="2016-07-30T14:02:34-04:00">
         <meta itemprop="headline" content="Cross Compile Seafile 2 ARM">
         <meta itemprop="description" content="Cross Compile Seafile to ARM platform Motivation This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.">
-        <meta itemprop="url" content="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
+        <meta itemprop="url" content="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
-          <meta itemprop="url" content="/CoderSherlock.github.io/images/default.jpg" />
+          <meta itemprop="url" content="https://codersherlock.github.io/images/default.jpg" />
           <meta itemprop="width" content="800">
           <meta itemprop="height" content="800">
         </div>
         <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
           <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
-            <meta itemprop="url" content="/CoderSherlock.github.io/images/logo.jpg">
+            <meta itemprop="url" content="https://codersherlock.github.io/images/logo.jpg">
             <meta itemprop="width" content="100">
             <meta itemprop="height" content="100">
           </div>
@@ -98,17 +98,88 @@
 
 <h2 id="pre-work">Pre-work</h2>
 
+<h3 id="original-system-environment-configuration">Original System Environment Configuration</h3>
+
+<pre><code>/# Android NDK sources and standalone toolchain is put here
+export DEV=${HOME}/dev
+
+/# All the built binaries, libs and their header will be installed here
+export PREFIX=/opt/android
+
+/# Don't mix up .pc files from your host and build target
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
+
+/# GCC for Android version to use
+/# 4.9 is the only available version since NDK r11!
+export GCC_VER=4.9
+
+/# The building system we are using (Linux x86_64)
+export BUILD_SYS=x86_64-linux-gnu
+
+/# Set Android target API level
+export ANDROID_API=19
+
+/# Set Android target arch
+export ANDROID_ARCH=arm
+
+/# Set Android target name, according to Table 2 in
+/# https://developer.android.com/ndk/guides/standalone_toolchain.html
+export ANDROID_TARGET=armv5te-none-linux-androideabi
+
+/# The cross-compile toolchain we use
+export TOOLCHAIN=arm-linux-androideabi
+
+/# This is a symlink pointing to the real Android NDK r10e
+export NDK=${DEV}/android-ndk
+
+/# The path of standalone NDK toolchain
+/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+export NDK_TOOLCHAIN=${DEV}/android-ndk-toolchain
+
+/# Set Android Sysroot according to API and arch
+export SYSROOT=${NDK_TOOLCHAIN}/sysroot
+/# this one is the absolute, prebuilt path
+/# export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
+
+/# Binutils path
+export CROSS_PREFIX=${NDK_TOOLCHAIN}/bin/${TOOLCHAIN}
+/# this one is the absolute, prebuilt path
+/# export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
+
+/# Non-exhaustive lists of compiler + binutils
+export AR=${CROSS_PREFIX}-ar
+export AS=${CROSS_PREFIX}-as
+export LD=${CROSS_PREFIX}-ld
+export NM=${CROSS_PREFIX}-nm
+export CC=${CROSS_PREFIX}-gcc
+export CXX=${CROSS_PREFIX}-g++
+export CPP=${CROSS_PREFIX}-cpp
+export CXXCPP=${CROSS_PREFIX}-cpp
+export STRIP=${CROSS_PREFIX}-strip
+export RANLIB=${CROSS_PREFIX}-ranlib
+export STRINGS=${CROSS_PREFIX}-strings
+
+/# Set build flags
+/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+export PATH=$PATH:${PREFIX}/bin:${PREFIX}/lib
+export CFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${PREFIX}/include -fPIE -DANDROID -Wno-multichar&quot;
+export CXXFLAGS=${CFLAGS}
+export CPPFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_TOOLCHAIN}/include/c++/ -DANDROID -DNO_XMALLOC -mandroid&quot;
+export LIBS=&quot;-lc&quot;
+export LDFLAGS=&quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&quot;
+</code></pre>
+
         </div>
 
 
         <aside>
-          <div class="section"><a href="/CoderSherlock.github.io/tags/Android" class="tag">Android</a> <a href="/CoderSherlock.github.io/tags/ARM" class="tag">ARM</a> </div>
+          <div class="section"><a href="https://codersherlock.github.io/tags/Android" class="tag">Android</a> <a href="https://codersherlock.github.io/tags/ARM" class="tag">ARM</a> </div>
 
           <div class="section share">
-            <a href="http://www.facebook.com/sharer.php?src=bm&u=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&t=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
-            <a href="http://twitter.com/intent/tweet?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&text=Cross%20Compile%20Seafile%202%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
-            <a href="https://plus.google.com/share?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
-            <a href="http://getpocket.com/edit?url=%2fCoderSherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&title=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&t=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&text=Cross%20Compile%20Seafile%202%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&title=Cross%20Compile%20Seafile%202%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
           </div>
 
           
@@ -129,9 +200,9 @@
     </div>
     <div class="list-group">
       
-      <a href="/CoderSherlock.github.io/post/Pokemon-Go-Hack/" class="list-group-item">Pokemon Go Hack</a>
+      <a href="https://codersherlock.github.io/post/Pokemon-Go-Hack/" class="list-group-item">Pokemon Go Hack</a>
       
-      <a href="/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile 2 ARM</a>
+      <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile 2 ARM</a>
       
     </div>
   </div>
@@ -143,7 +214,7 @@
     </div>
     <div class="list-group">
       
-      <a href="/CoderSherlock.github.io/categories/2016_07" class="list-group-item">2016_07</a>
+      <a href="https://codersherlock.github.io/categories/2016_07" class="list-group-item">2016_07</a>
       
     </div>
   </div>
@@ -154,13 +225,13 @@
     </div>
     <div class="list-group">
       
-      <a href="/CoderSherlock.github.io/tags/android" class="list-group-item">android</a>
+      <a href="https://codersherlock.github.io/tags/android" class="list-group-item">android</a>
       
-      <a href="/CoderSherlock.github.io/tags/arm" class="list-group-item">arm</a>
+      <a href="https://codersherlock.github.io/tags/arm" class="list-group-item">arm</a>
       
-      <a href="/CoderSherlock.github.io/tags/github" class="list-group-item">github</a>
+      <a href="https://codersherlock.github.io/tags/github" class="list-group-item">github</a>
       
-      <a href="/CoderSherlock.github.io/tags/hack" class="list-group-item">hack</a>
+      <a href="https://codersherlock.github.io/tags/hack" class="list-group-item">hack</a>
       
     </div>
   </div>

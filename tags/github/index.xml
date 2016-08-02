@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Github on Mil años de solitario</title>
-    <link>CoderSherlock.github.io/tags/github/</link>
+    <link>https://CoderSherlock.github.io/tags/github/</link>
     <description>Recent content in Github on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Jul 2016 18:10:20 -0400</lastBuildDate>
-    <atom:link href="CoderSherlock.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://CoderSherlock.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Pokemon Go Hack</title>
-      <link>/CoderSherlock.github.io/post/Pokemon-Go-Hack/</link>
+      <link>https://codersherlock.github.io/post/Pokemon-Go-Hack/</link>
       <pubDate>Sat, 30 Jul 2016 18:10:20 -0400</pubDate>
       
-      <guid>/CoderSherlock.github.io/post/Pokemon-Go-Hack/</guid>
+      <guid>https://codersherlock.github.io/post/Pokemon-Go-Hack/</guid>
       <description>
 
 &lt;h1 id=&#34;catch-them-all-until-bored&#34;&gt;Catch them all until bored&lt;/h1&gt;
@@ -27,14 +27,12 @@ Anyway, after coming back, I think I write too much on useless words, so let me 
 
 &lt;h2 id=&#34;todo-list&#34;&gt;TODO List&lt;/h2&gt;
 
-&lt;ul&gt;
-&lt;li&gt;[X] Test API&lt;/li&gt;
-&lt;li&gt;[ ] Finish Walk Algorithm&lt;/li&gt;
-&lt;li&gt;[ ] Finish other movement, etc. catch, hatch&lt;/li&gt;
-&lt;li&gt;[ ] Smart Walking route&lt;/li&gt;
-&lt;li&gt;[ ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)&lt;/li&gt;
-&lt;li&gt;[ ] Become a Pokemon Master&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;-[x] Test API
+-[ ] Finish Walk Algorithm
+-[ ] Finish other movement, etc. catch, hatch
+-[ ] Smart Walking route
+-[ ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)
+-[ ] Become a Pokemon Master&lt;/p&gt;
 </description>
     </item>
     

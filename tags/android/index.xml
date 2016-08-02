@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Android on Mil años de solitario</title>
-    <link>CoderSherlock.github.io/tags/android/</link>
+    <link>https://CoderSherlock.github.io/tags/android/</link>
     <description>Recent content in Android on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 30 Jul 2016 14:02:34 -0400</lastBuildDate>
-    <atom:link href="CoderSherlock.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://CoderSherlock.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cross Compile Seafile 2 ARM</title>
-      <link>/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
+      <link>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
       <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
       
-      <guid>/CoderSherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
+      <guid>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
       <description>
 
 &lt;h1 id=&#34;cross-compile-seafile-to-arm-platform&#34;&gt;Cross Compile Seafile to ARM platform&lt;/h1&gt;
@@ -24,6 +24,77 @@
 &lt;p&gt;This project is working for delta sync from mobile to server. Currently, there&amp;rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&amp;rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.&lt;/p&gt;
 
 &lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
+
+&lt;h3 id=&#34;original-system-environment-configuration&#34;&gt;Original System Environment Configuration&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;/# Android NDK sources and standalone toolchain is put here
+export DEV=${HOME}/dev
+
+/# All the built binaries, libs and their header will be installed here
+export PREFIX=/opt/android
+
+/# Don&#39;t mix up .pc files from your host and build target
+export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
+
+/# GCC for Android version to use
+/# 4.9 is the only available version since NDK r11!
+export GCC_VER=4.9
+
+/# The building system we are using (Linux x86_64)
+export BUILD_SYS=x86_64-linux-gnu
+
+/# Set Android target API level
+export ANDROID_API=19
+
+/# Set Android target arch
+export ANDROID_ARCH=arm
+
+/# Set Android target name, according to Table 2 in
+/# https://developer.android.com/ndk/guides/standalone_toolchain.html
+export ANDROID_TARGET=armv5te-none-linux-androideabi
+
+/# The cross-compile toolchain we use
+export TOOLCHAIN=arm-linux-androideabi
+
+/# This is a symlink pointing to the real Android NDK r10e
+export NDK=${DEV}/android-ndk
+
+/# The path of standalone NDK toolchain
+/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+export NDK_TOOLCHAIN=${DEV}/android-ndk-toolchain
+
+/# Set Android Sysroot according to API and arch
+export SYSROOT=${NDK_TOOLCHAIN}/sysroot
+/# this one is the absolute, prebuilt path
+/# export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
+
+/# Binutils path
+export CROSS_PREFIX=${NDK_TOOLCHAIN}/bin/${TOOLCHAIN}
+/# this one is the absolute, prebuilt path
+/# export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
+
+/# Non-exhaustive lists of compiler + binutils
+export AR=${CROSS_PREFIX}-ar
+export AS=${CROSS_PREFIX}-as
+export LD=${CROSS_PREFIX}-ld
+export NM=${CROSS_PREFIX}-nm
+export CC=${CROSS_PREFIX}-gcc
+export CXX=${CROSS_PREFIX}-g++
+export CPP=${CROSS_PREFIX}-cpp
+export CXXCPP=${CROSS_PREFIX}-cpp
+export STRIP=${CROSS_PREFIX}-strip
+export RANLIB=${CROSS_PREFIX}-ranlib
+export STRINGS=${CROSS_PREFIX}-strings
+
+/# Set build flags
+/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+export PATH=$PATH:${PREFIX}/bin:${PREFIX}/lib
+export CFLAGS=&amp;quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${PREFIX}/include -fPIE -DANDROID -Wno-multichar&amp;quot;
+export CXXFLAGS=${CFLAGS}
+export CPPFLAGS=&amp;quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_TOOLCHAIN}/include/c++/ -DANDROID -DNO_XMALLOC -mandroid&amp;quot;
+export LIBS=&amp;quot;-lc&amp;quot;
+export LDFLAGS=&amp;quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
