@@ -98,10 +98,14 @@
 
 <h2 id="pre-work">Pre-work</h2>
 
+<h3 id="tool-chain">Tool-Chain</h3>
+
+<p>Basically, I used the native android compilation tool-chains, <a href="https://developer.android.com/ndk/downloads/index.html">Android NDK</a>, as working tools. Due to my working situation, I use a <a href="https://shield.nvidia.com/tablet/k1">Nvidia Shield Tablet</a> as target device. As <em>Zengwen</em> said in his <a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">blog</a>, newest updated NDK might has some issue which can influence compilation progress. So you can find <a href="http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk">other version</a> of NDK once you have some problems. Based on what <em>Zengwen&rsquo;s</em> blog mentioned, we can write following useful system environment and export in terminal.</p>
+
 <h3 id="original-system-environment-configuration">Original System Environment Configuration</h3>
 
 <pre><code>/# Android NDK sources and standalone toolchain is put here
-export DEV=${HOME}/dev
+export DEV=~/Android/
 
 /# All the built binaries, libs and their header will be installed here
 export PREFIX=/opt/android
@@ -117,14 +121,14 @@ export GCC_VER=4.9
 export BUILD_SYS=x86_64-linux-gnu
 
 /# Set Android target API level
-export ANDROID_API=19
+export ANDROID_API=22
 
 /# Set Android target arch
 export ANDROID_ARCH=arm
 
 /# Set Android target name, according to Table 2 in
 /# https://developer.android.com/ndk/guides/standalone_toolchain.html
-export ANDROID_TARGET=armv5te-none-linux-androideabi
+export ANDROID_TARGET=armv7-none-linux-androideabi
 
 /# The cross-compile toolchain we use
 export TOOLCHAIN=arm-linux-androideabi
@@ -136,15 +140,11 @@ export NDK=${DEV}/android-ndk
 /# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
 export NDK_TOOLCHAIN=${DEV}/android-ndk-toolchain
 
-/# Set Android Sysroot according to API and arch
-export SYSROOT=${NDK_TOOLCHAIN}/sysroot
 /# this one is the absolute, prebuilt path
-/# export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
+export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
 
-/# Binutils path
-export CROSS_PREFIX=${NDK_TOOLCHAIN}/bin/${TOOLCHAIN}
 /# this one is the absolute, prebuilt path
-/# export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
+export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
 
 /# Non-exhaustive lists of compiler + binutils
 export AR=${CROSS_PREFIX}-ar
@@ -165,9 +165,15 @@ export PATH=$PATH:${PREFIX}/bin:${PREFIX}/lib
 export CFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${PREFIX}/include -fPIE -DANDROID -Wno-multichar&quot;
 export CXXFLAGS=${CFLAGS}
 export CPPFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_TOOLCHAIN}/include/c++/ -DANDROID -DNO_XMALLOC -mandroid&quot;
-export LIBS=&quot;-lc&quot;
+export LIBS=&quot;-lc -lstdc++ -ld&quot;
 export LDFLAGS=&quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&quot;
 </code></pre>
+
+<h2 id="preferences">Preferences</h2>
+
+<ul>
+<li><a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">zwyuan</a></li>
+</ul>
 
         </div>
 
