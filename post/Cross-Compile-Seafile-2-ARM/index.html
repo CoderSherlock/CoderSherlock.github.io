@@ -98,16 +98,33 @@
 
 <h2 id="pre-work">Pre-work</h2>
 
-<h3 id="tool-chain">Tool-Chain</h3>
-
 <p>Basically, I used the native android compilation tool-chains, <a href="https://developer.android.com/ndk/downloads/index.html">Android NDK</a>, as working tools. Due to my working situation, I use a <a href="https://shield.nvidia.com/tablet/k1">Nvidia Shield Tablet</a> as target device. As <em>Zengwen</em> said in his <a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">blog</a>, newest updated NDK might has some issue which can influence compilation progress. So you can find <a href="http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk">other version</a> of NDK once you have some problems. Based on what <em>Zengwen&rsquo;s</em> blog mentioned, we can write following useful system environment and export in terminal.</p>
+
+<h3 id="prerequisites">Prerequisites</h3>
+
+<pre><code>$ sudo apt-get install build-essential
+$ sudo apt-get install pkg-config automake autoconf libtool
+</code></pre>
+
+<h3 id="link-with-standalone-tool-chains">Link with standalone tool-chains</h3>
+
+<p>In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.
+    $ ${NDK}/build/tools/make-standalone-toolchain.sh <br />
+        &ndash;toolchain=arm-linux-androideabi-4.9 <br />
+        &ndash;stl=gnustl <br />
+        &ndash;arch=arm <br />
+        &ndash;ndk-dir=/home/moslab/Android/android-ndk-r12b <br />
+        &ndash;package-dir=/home/moslab/Android <br />
+        &ndash;install-dir=/home/moslab/Android/android-ndk-toolchain <br />
+        &ndash;platform=android-22</p>
 
 <h3 id="original-system-environment-configuration">Original System Environment Configuration</h3>
 
-<pre><code>/# Android NDK sources and standalone toolchain is put here
-export DEV=~/Android/
+<p>[TODO]-&gt; I will fix this part later.
+    /# Android NDK sources and standalone toolchain is put here
+    export DEV=~/Android/</p>
 
-/# All the built binaries, libs and their header will be installed here
+<pre><code>/# All the built binaries, libs and their header will be installed here
 export PREFIX=/opt/android
 
 /# Don't mix up .pc files from your host and build target
@@ -133,7 +150,7 @@ export ANDROID_TARGET=armv7-none-linux-androideabi
 /# The cross-compile toolchain we use
 export TOOLCHAIN=arm-linux-androideabi
 
-/# This is a symlink pointing to the real Android NDK r10e
+/# This is a symlink pointing to the real Android NDK r12b
 export NDK=${DEV}/android-ndk
 
 /# The path of standalone NDK toolchain
@@ -168,6 +185,28 @@ export CPPFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_TOOL
 export LIBS=&quot;-lc -lstdc++ -ld&quot;
 export LDFLAGS=&quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&quot;
 </code></pre>
+
+<h2 id="compile-process">Compile Process</h2>
+
+<p>To compile seafile, we should compile ccnet and libsearpc first. As for these two projects, they all have their own dependencies, so we must follow some order to run the compilation.</p>
+
+<h3 id="libsearpc">libsearpc</h3>
+
+<h4 id="glib">glib</h4>
+
+<h5 id="libiconv">libiconv</h5>
+
+<h5 id="libffi">libffi</h5>
+
+<h5 id="gettext">gettext</h5>
+
+<h4 id="libjasson">libjasson</h4>
+
+<h3 id="ccnet">ccnet</h3>
+
+<h4 id="libuuid">libuuid</h4>
+
+<h3 id="seafile">seafile</h3>
 
 <h2 id="preferences">Preferences</h2>
 

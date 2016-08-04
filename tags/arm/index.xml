@@ -25,16 +25,33 @@
 
 &lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
 
-&lt;h3 id=&#34;tool-chain&#34;&gt;Tool-Chain&lt;/h3&gt;
-
 &lt;p&gt;Basically, I used the native android compilation tool-chains, &lt;a href=&#34;https://developer.android.com/ndk/downloads/index.html&#34;&gt;Android NDK&lt;/a&gt;, as working tools. Due to my working situation, I use a &lt;a href=&#34;https://shield.nvidia.com/tablet/k1&#34;&gt;Nvidia Shield Tablet&lt;/a&gt; as target device. As &lt;em&gt;Zengwen&lt;/em&gt; said in his &lt;a href=&#34;http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/&#34;&gt;blog&lt;/a&gt;, newest updated NDK might has some issue which can influence compilation progress. So you can find &lt;a href=&#34;http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk&#34;&gt;other version&lt;/a&gt; of NDK once you have some problems. Based on what &lt;em&gt;Zengwen&amp;rsquo;s&lt;/em&gt; blog mentioned, we can write following useful system environment and export in terminal.&lt;/p&gt;
+
+&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install build-essential
+$ sudo apt-get install pkg-config automake autoconf libtool
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;link-with-standalone-tool-chains&#34;&gt;Link with standalone tool-chains&lt;/h3&gt;
+
+&lt;p&gt;In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.
+    $ ${NDK}/build/tools/make-standalone-toolchain.sh &lt;br /&gt;
+        &amp;ndash;toolchain=arm-linux-androideabi-4.9 &lt;br /&gt;
+        &amp;ndash;stl=gnustl &lt;br /&gt;
+        &amp;ndash;arch=arm &lt;br /&gt;
+        &amp;ndash;ndk-dir=/home/moslab/Android/android-ndk-r12b &lt;br /&gt;
+        &amp;ndash;package-dir=/home/moslab/Android &lt;br /&gt;
+        &amp;ndash;install-dir=/home/moslab/Android/android-ndk-toolchain &lt;br /&gt;
+        &amp;ndash;platform=android-22&lt;/p&gt;
 
 &lt;h3 id=&#34;original-system-environment-configuration&#34;&gt;Original System Environment Configuration&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;/# Android NDK sources and standalone toolchain is put here
-export DEV=~/Android/
+&lt;p&gt;[TODO]-&amp;gt; I will fix this part later.
+    /# Android NDK sources and standalone toolchain is put here
+    export DEV=~/Android/&lt;/p&gt;
 
-/# All the built binaries, libs and their header will be installed here
+&lt;pre&gt;&lt;code&gt;/# All the built binaries, libs and their header will be installed here
 export PREFIX=/opt/android
 
 /# Don&#39;t mix up .pc files from your host and build target
@@ -60,7 +77,7 @@ export ANDROID_TARGET=armv7-none-linux-androideabi
 /# The cross-compile toolchain we use
 export TOOLCHAIN=arm-linux-androideabi
 
-/# This is a symlink pointing to the real Android NDK r10e
+/# This is a symlink pointing to the real Android NDK r12b
 export NDK=${DEV}/android-ndk
 
 /# The path of standalone NDK toolchain
@@ -95,6 +112,28 @@ export CPPFLAGS=&amp;quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_
 export LIBS=&amp;quot;-lc -lstdc++ -ld&amp;quot;
 export LDFLAGS=&amp;quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;compile-process&#34;&gt;Compile Process&lt;/h2&gt;
+
+&lt;p&gt;To compile seafile, we should compile ccnet and libsearpc first. As for these two projects, they all have their own dependencies, so we must follow some order to run the compilation.&lt;/p&gt;
+
+&lt;h3 id=&#34;libsearpc&#34;&gt;libsearpc&lt;/h3&gt;
+
+&lt;h4 id=&#34;glib&#34;&gt;glib&lt;/h4&gt;
+
+&lt;h5 id=&#34;libiconv&#34;&gt;libiconv&lt;/h5&gt;
+
+&lt;h5 id=&#34;libffi&#34;&gt;libffi&lt;/h5&gt;
+
+&lt;h5 id=&#34;gettext&#34;&gt;gettext&lt;/h5&gt;
+
+&lt;h4 id=&#34;libjasson&#34;&gt;libjasson&lt;/h4&gt;
+
+&lt;h3 id=&#34;ccnet&#34;&gt;ccnet&lt;/h3&gt;
+
+&lt;h4 id=&#34;libuuid&#34;&gt;libuuid&lt;/h4&gt;
+
+&lt;h3 id=&#34;seafile&#34;&gt;seafile&lt;/h3&gt;
 
 &lt;h2 id=&#34;preferences&#34;&gt;Preferences&lt;/h2&gt;
 
