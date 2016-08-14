@@ -27,12 +27,12 @@ Anyway, after coming back, I think I write too much on useless words, so let me 
 
 &lt;h2 id=&#34;todo-list&#34;&gt;TODO List&lt;/h2&gt;
 
-&lt;p&gt;-[  ] Test API
--[  ] Finish Walk Algorithm
--[  ] Finish other movement, etc. catch, hatch
--[  ] Smart Walking route
--[  ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)
--[  ] Become a Pokemon Master&lt;/p&gt;
+&lt;p&gt;-[X] Test API
+-[ ] Finish Walk Algorithm
+-[ ] Finish other movement, etc. catch, hatch
+-[ ] Smart Walking route
+-[ ] Pokemon Predict (Thanks to Pokevision&amp;rsquo;s idea)
+-[ ] Become a Pokemon Master&lt;/p&gt;
 </description>
     </item>
     

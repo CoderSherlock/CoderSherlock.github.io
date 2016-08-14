@@ -35,23 +35,26 @@ $ sudo apt-get install pkg-config automake autoconf libtool
 
 &lt;h3 id=&#34;link-with-standalone-tool-chains&#34;&gt;Link with standalone tool-chains&lt;/h3&gt;
 
-&lt;p&gt;In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.
-    $ ${NDK}/build/tools/make-standalone-toolchain.sh &lt;br /&gt;
-        &amp;ndash;toolchain=arm-linux-androideabi-4.9 &lt;br /&gt;
-        &amp;ndash;stl=gnustl &lt;br /&gt;
-        &amp;ndash;arch=arm &lt;br /&gt;
-        &amp;ndash;ndk-dir=/home/moslab/Android/android-ndk-r12b &lt;br /&gt;
-        &amp;ndash;package-dir=/home/moslab/Android &lt;br /&gt;
-        &amp;ndash;install-dir=/home/moslab/Android/android-ndk-toolchain &lt;br /&gt;
-        &amp;ndash;platform=android-22&lt;/p&gt;
+&lt;p&gt;In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ${NDK}/build/tools/make-standalone-toolchain.sh \
+    --toolchain=arm-linux-androideabi-4.9 \
+    --stl=gnustl \
+    --arch=arm \
+    --ndk-dir=/home/moslab/Android/android-ndk-r12b \
+    --package-dir=/home/moslab/Android \
+    --install-dir=/home/moslab/Android/android-ndk-toolchain \
+    --platform=android-22
+&lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;original-system-environment-configuration&#34;&gt;Original System Environment Configuration&lt;/h3&gt;
 
-&lt;p&gt;[TODO]-&amp;gt; I will fix this part later.
-    /# Android NDK sources and standalone toolchain is put here
-    export DEV=~/Android/&lt;/p&gt;
+&lt;p&gt;[TODO]-&amp;gt; I will fix this part later.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/# All the built binaries, libs and their header will be installed here
+&lt;pre&gt;&lt;code&gt;/# Android NDK sources and standalone toolchain is put here
+export DEV=~/Android/
+
+/# All the built binaries, libs and their header will be installed here
 export PREFIX=/opt/android
 
 /# Don&#39;t mix up .pc files from your host and build target
