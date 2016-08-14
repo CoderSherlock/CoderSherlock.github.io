@@ -51,49 +51,49 @@ $ sudo apt-get install pkg-config automake autoconf libtool
 
 &lt;p&gt;[TODO]-&amp;gt; I will fix this part later.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/# Android NDK sources and standalone toolchain is put here
+&lt;pre&gt;&lt;code&gt;# Android NDK sources and standalone toolchain is put here
 export DEV=~/Android/
 
-/# All the built binaries, libs and their header will be installed here
+# All the built binaries, libs and their header will be installed here
 export PREFIX=/opt/android
 
-/# Don&#39;t mix up .pc files from your host and build target
+# Don&#39;t mix up .pc files from your host and build target
 export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
 
-/# GCC for Android version to use
-/# 4.9 is the only available version since NDK r11!
+# GCC for Android version to use
+# 4.9 is the only available version since NDK r11!
 export GCC_VER=4.9
 
-/# The building system we are using (Linux x86_64)
+# The building system we are using (Linux x86_64)
 export BUILD_SYS=x86_64-linux-gnu
 
-/# Set Android target API level
+# Set Android target API level
 export ANDROID_API=22
 
-/# Set Android target arch
+# Set Android target arch
 export ANDROID_ARCH=arm
 
-/# Set Android target name, according to Table 2 in
-/# https://developer.android.com/ndk/guides/standalone_toolchain.html
+# Set Android target name, according to Table 2 in
+# https://developer.android.com/ndk/guides/standalone_toolchain.html
 export ANDROID_TARGET=armv7-none-linux-androideabi
 
-/# The cross-compile toolchain we use
+# The cross-compile toolchain we use
 export TOOLCHAIN=arm-linux-androideabi
 
-/# This is a symlink pointing to the real Android NDK r12b
+# This is a symlink pointing to the real Android NDK r12b
 export NDK=${DEV}/android-ndk
 
-/# The path of standalone NDK toolchain
-/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+# The path of standalone NDK toolchain
+# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
 export NDK_TOOLCHAIN=${DEV}/android-ndk-toolchain
 
-/# this one is the absolute, prebuilt path
+# this one is the absolute, prebuilt path
 export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
 
-/# this one is the absolute, prebuilt path
+# this one is the absolute, prebuilt path
 export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
 
-/# Non-exhaustive lists of compiler + binutils
+# Non-exhaustive lists of compiler + binutils
 export AR=${CROSS_PREFIX}-ar
 export AS=${CROSS_PREFIX}-as
 export LD=${CROSS_PREFIX}-ld
@@ -106,8 +106,8 @@ export STRIP=${CROSS_PREFIX}-strip
 export RANLIB=${CROSS_PREFIX}-ranlib
 export STRINGS=${CROSS_PREFIX}-strings
 
-/# Set build flags
-/# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
+# Set build flags
+# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
 export PATH=$PATH:${PREFIX}/bin:${PREFIX}/lib
 export CFLAGS=&amp;quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${PREFIX}/include -fPIE -DANDROID -Wno-multichar&amp;quot;
 export CXXFLAGS=${CFLAGS}
