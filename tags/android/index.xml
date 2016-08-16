@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Android on Mil años de solitario</title>
+      <title>Android on Mil años de solitario </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>https://CoderSherlock.github.io/tags/android/</link>
-    <description>Recent content in Android on Mil años de solitario</description>
-    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>haopengzhan@gmail.com (CoderSherlock)</managingEditor>
-    <webMaster>haopengzhan@gmail.com (CoderSherlock)</webMaster>
-    <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
-    <atom:link href="https://CoderSherlock.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <author>CoderSherlock</author>
+    
+    <updated>Mon, 15 Aug 2016 15:44:05 EDT</updated>
     
     <item>
       <title>Cross Compile RSync ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</link>
-      <pubDate>Mon, 15 Aug 2016 15:44:05 -0400</pubDate>
-      <author>haopengzhan@gmail.com (CoderSherlock)</author>
+      <pubDate>Mon, 15 Aug 2016 15:44:05 EDT</pubDate>
+      <author>CoderSherlock</author>
       <guid>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</guid>
       <description>
 
@@ -67,8 +65,8 @@ $ mv ../../../local/tmp/rsync .
     <item>
       <title>Cross Compile Seafile 2 ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
-      <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
-      <author>haopengzhan@gmail.com (CoderSherlock)</author>
+      <pubDate>Sat, 30 Jul 2016 14:02:34 EDT</pubDate>
+      <author>CoderSherlock</author>
       <guid>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
       <description>
 

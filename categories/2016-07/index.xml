@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>2016 07 on Mil años de solitario</title>
+      <title>2016 07 on Mil años de solitario </title>
+      <generator uri="https://gohugo.io">Hugo</generator>
     <link>https://CoderSherlock.github.io/categories/2016-07/</link>
-    <description>Recent content in 2016 07 on Mil años de solitario</description>
-    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>haopengzhan@gmail.com (CoderSherlock)</managingEditor>
-    <webMaster>haopengzhan@gmail.com (CoderSherlock)</webMaster>
-    <lastBuildDate>Sat, 30 Jul 2016 18:10:20 -0400</lastBuildDate>
-    <atom:link href="https://CoderSherlock.github.io/categories/2016-07/index.xml" rel="self" type="application/rss+xml" />
+    <author>CoderSherlock</author>
+    
+    <updated>Sat, 30 Jul 2016 18:10:20 EDT</updated>
     
     <item>
       <title>Pokemon Go Hack</title>
       <link>https://codersherlock.github.io/post/Pokemon-Go-Hack/</link>
-      <pubDate>Sat, 30 Jul 2016 18:10:20 -0400</pubDate>
-      <author>haopengzhan@gmail.com (CoderSherlock)</author>
+      <pubDate>Sat, 30 Jul 2016 18:10:20 EDT</pubDate>
+      <author>CoderSherlock</author>
       <guid>https://codersherlock.github.io/post/Pokemon-Go-Hack/</guid>
       <description>
 
@@ -41,8 +39,8 @@ Anyway, after coming back, I think I write too much on useless words, so let me 
     <item>
       <title>Cross Compile Seafile 2 ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
-      <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
-      <author>haopengzhan@gmail.com (CoderSherlock)</author>
+      <pubDate>Sat, 30 Jul 2016 14:02:34 EDT</pubDate>
+      <author>CoderSherlock</author>
       <guid>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
       <description>
 
