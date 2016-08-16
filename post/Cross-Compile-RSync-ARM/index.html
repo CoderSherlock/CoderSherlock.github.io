@@ -1,97 +1,154 @@
-<!DOCTYPE HTML>
-
-<html lang="en-us">
-
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
 <head>
-	<meta charset="utf-8">
-	<title>Cross Compile RSync ARM - Mil años de solitario</title>
-	<meta name="author" content="map[name:CoderSherlock email:haopengzhan@gmail.com]">
+  <title>
+    Cross Compile RSync ARM // Mil años de solitario
+  </title>
 
-	
-	
-	<meta name="description" content="">
-	
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
 
-	
-	<meta name="HandheldFriendly" content="True">
-	<meta name="MobileOptimized" content="320">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-    
-	<link rel="canonical" href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">
-	<link href="https://codersherlock.github.io//favicon.png" rel="shortcut icon">
-	<link href="https://codersherlock.github.io//css/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
-	<link href="https://codersherlock.github.io//css/font-awesome.min.css" media="screen, projection" rel="stylesheet" type="text/css">
-	
-	<link href='http://fonts.googleapis.com/css?family=Nunito:400,300,700' rel='stylesheet' type='text/css'>
-	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-	
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="">
+<meta name="generator" content="Hugo 0.16" />
+
+  <meta property="og:title" content="Cross Compile RSync ARM" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
   
 
+  <link rel="stylesheet" href="https://codersherlock.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Mil años de solitario" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+    <link rel="stylesheet" type="text/css" href="/css/my-categories.css">
+  
+
+  
+
+  
 </head>
 
-
 <body>
-	<div class="container">
-		<div class="left-col">
-			<div class="intrude-less">
-			<header id="header" class="inner"><div class="profilepic">
 	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
 	
-	<script src="https://codersherlock.github.io//js/md5.js"></script>
-	<script type="text/javascript">
-		$(function(){
-			$('.profilepic').append("<img src='http://www.gravatar.com/avatar/" + MD5('haopengzhan@gmail.com') + "?s=160' alt='Profile Picture' style='width: 160px;' />");
-		});
-	</script>
+	  <img src="/img/photo.png" class="sidebarphoto">
 	
-	
+
+    <h1 class="brand-title">My Site</h1>
+    <h2 class="brand-tagline">Is super awesome</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://codersherlock.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/posts">Blog</a></li>
+        
+      </ul>
+    </nav>
+
+    
+
+  </div>
 </div>
 
-<nav id="main-nav"><ul class="main">
-    <li><a href="/">Blog</a></li>
-    <li><a href="http://about.me/shashankmehta">About</a></li>
-    <li><a href="/post/">Archives</a></li>
-</ul>
+	
+	
 
-<section class="aboutme">
-  <p>
-    A boy who can&#39;t step into academia
-  </p>
-</section>
-</nav>
-<nav id="sub-nav">
-	<div class="social">
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
 		
-			<a class="email" href='mailto:haopengzhan@gmail.com' title="Email">Email</a>
+
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-    	
-    	
-	</div>
-</nav>
-</header>
-			</div>
-		</div>
-		<div class="mid-col">
 			
-			<div class="mid-col-container">
-				<div id="content" class="inner">
-					<div itemscope itemtype="http://schema.org/Blog">
-					<article class="post" itemscope itemtype="http://schema.org/BlogPosting">
-    <h1 class="title" itemprop="name">Cross Compile RSync ARM</h1>
-	<div class="entry-content" itemprop="articleBody">
+		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
+				<small class="toc-label">Contents</small>
+		   	 	<nav id="TableOfContents">
+<ul>
+<li><a href="#cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</a>
+<ul>
+<li><a href="#motivation">Motivation</a></li>
+<li><a href="#pre-work">Pre-work</a></li>
+<li><a href="#cross-compile-rsync">Cross-Compile Rsync</a></li>
+<li><a href="#push-rsync-to-android">Push RSync to Android.</a></li>
+<li><a href="#run-rsync-with-argument">Run Rsync with argument</a></li>
+<li><a href="#references">References</a></li>
+</ul></li>
+</ul>
+</nav>
+		    </div>
+		    
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/post/Cross-Compile-RSync-ARM/">Cross Compile RSync ARM</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>15</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2016</span>
+            	</span>
+            	
+            
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-2016-08" href="https://codersherlock.github.io//categories/2016-08">2016-08</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            
 
 <h1 id="cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</h1>
 
@@ -135,48 +192,55 @@ $ mv ../../../local/tmp/rsync .
 <h2 id="references">References</h2>
 
 <p><a href="http://stackoverflow.com/questions/8130889/build-rsync-for-android">Build Rsync for Android</a></p>
-</div></article>
-					
-						<div class="share">
-	<div class="addthis_toolbox addthis_default_style ">
-	
-	<a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
-	
-	
-	<a class="addthis_button_tweet"></a>
-	
-	
-	<a class="addthis_button_google_plusone" g:plusone:size=''></a>
-	
-	
-	</div>
-	
-  	<script type="text/javascript" src='http://s7.addthis.com/js/250/addthis_widget.js#pubid='></script>
-  	
-</div>
 
-					
-					
-					
+	
+			
 
-
-				    </div>
+			
+				<div class="tags-list">
+					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
+					
+	                <a class="post-tag post-tag-android" href="https://codersherlock.github.io//tags/android">android</a>,
+	                
+	                <a class="post-tag post-tag-arm" href="https://codersherlock.github.io//tags/arm">arm</a>,
+	                
 				</div>
-			</div>
-			<footer id="footer" class="inner">Copyright &copy; 2016
+			
 
-    CoderSherlock
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
 
-Design credit: <a href="http://shashankmehta.in/archive/2012/greyshade.html">Shashank Mehta</a>
-<script src="https://codersherlock.github.io//js/slash.js"></script>
-<script src="https://codersherlock.github.io//js/jquery.fancybox.pack.js"></script>
-<script type="text/javascript">
-(function($){
-	$('.fancybox').fancybox();
-})(jQuery);
-</script></footer>
-		</div>
+					
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/post/Pokemon-Go-Hack/">Pokemon Go Hack</a>
+		            </div>
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
 	</div>
+
+	<p>&copy; 2016. All rights reserved.</p>
+</div>
+    </div>
+  </div>
 	
+
+	
+
+  
 </body>
 </html>

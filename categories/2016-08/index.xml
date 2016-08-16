@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-      <title>2016 08 on Mil años de solitario </title>
-      <generator uri="https://gohugo.io">Hugo</generator>
+    <title>2016 08 on Mil años de solitario</title>
     <link>https://CoderSherlock.github.io/categories/2016-08/</link>
+    <description>Recent content in 2016 08 on Mil años de solitario</description>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <author>CoderSherlock</author>
-    
-    <updated>Mon, 15 Aug 2016 15:44:05 EDT</updated>
+    <managingEditor>haopengzhan@gmail.com (CoderSherlock)</managingEditor>
+    <webMaster>haopengzhan@gmail.com (CoderSherlock)</webMaster>
+    <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
+    <atom:link href="https://CoderSherlock.github.io/categories/2016-08/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Cross Compile RSync ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</link>
-      <pubDate>Mon, 15 Aug 2016 15:44:05 EDT</pubDate>
-      <author>CoderSherlock</author>
+      <pubDate>Mon, 15 Aug 2016 15:44:05 -0400</pubDate>
+      <author>haopengzhan@gmail.com (CoderSherlock)</author>
       <guid>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</guid>
       <description>
 
