@@ -45,15 +45,15 @@ $ make
 &lt;pre&gt;&lt;code&gt;$ adb push rsync /data/local/tmp
 $ adb shell
 
-# cd /data/data/berserker.android.apps.sshdroid/dropbear
-# mv ../../../local/tmp/rsync . 
+$ cd /data/data/berserker.android.apps.sshdroid/dropbear
+$ mv ../../../local/tmp/rsync . 
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;run-rsync-with-argument&#34;&gt;Run Rsync with argument&lt;/h2&gt;
 
 &lt;p&gt;Now we can easily use rsync in android shell. Similar to what we use on PC.&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;# ./rsync -e &amp;quot;./ssh&amp;quot; {target-data} {target-location}:{target-directory}  
+&lt;pre&gt;&lt;code&gt;$ ./rsync -e &amp;quot;./ssh&amp;quot; {target-data} {target-location}:{target-directory}  
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
