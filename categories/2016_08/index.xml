@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>2016_08 on Mil años de solitario</title>
+    <link>https://CoderSherlock.github.io/categories/2016_08/</link>
+    <description>Recent content in 2016_08 on Mil años de solitario</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
+    <atom:link href="https://CoderSherlock.github.io/categories/2016_08/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Cross Compile RSync ARM</title>
+      <link>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</link>
+      <pubDate>Mon, 15 Aug 2016 15:44:05 -0400</pubDate>
+      
+      <guid>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</guid>
+      <description>
+
+&lt;h1 id=&#34;cross-compile-rsync-to-arm-platform&#34;&gt;Cross Compile Rsync to ARM platform&lt;/h1&gt;
+
+&lt;p&gt;As always, feel free to ask. // Sherlock&lt;/p&gt;
+
+&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+
+&lt;p&gt;I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. &lt;a href=&#34;https://rsync.samba.org/&#34;&gt;Rsync&lt;/a&gt; is one of the most mature synchronization solution. So I made the decision on planting rsync to android.&lt;/p&gt;
+
+&lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
+
+&lt;p&gt;Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in &lt;a href=&#34;https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/&#34;&gt;previews blog&lt;/a&gt;, Android NDK and environment export need to be done before compilation.
+To enable normally use of compiled program, we need to make android support SSH. My solution is just install &lt;a href=&#34;https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;amp;hl=en&#34;&gt;SSHDroid&lt;/a&gt; from Google Play Store.&lt;/p&gt;
+
+&lt;h2 id=&#34;cross-compile-rsync&#34;&gt;Cross-Compile Rsync&lt;/h2&gt;
+
+&lt;p&gt;Running following script to build rsync. It will generate a executable file named rsync in the root directory.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ./configure --build=${BUILD_SYS} --host=${TOOLCHAIN}
+$ make
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;push-rsync-to-android&#34;&gt;Push RSync to Android.&lt;/h2&gt;
+
+&lt;p&gt;After installing SSHDroid, we can now push our arm-version-rsync to target machine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ adb push rsync /data/local/tmp
+$ adb shell
+
+# cd /data/data/berserker.android.apps.sshdroid/dropbear
+# mv ../../../local/tmp/rsync . 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;run-rsync-with-argument&#34;&gt;Run Rsync with argument&lt;/h2&gt;
+
+&lt;p&gt;Now we can easily use rsync in android shell. Similar to what we use on PC.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;# ./rsync -e &amp;quot;./ssh&amp;quot; {target-data} {target-location}:{target-directory}  
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/8130889/build-rsync-for-android&#34;&gt;Build Rsync for Android&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

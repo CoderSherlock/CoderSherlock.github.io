@@ -14,12 +14,12 @@
     <link rel="alternate" type="application/rss+xml" title="RSS" href="https://codersherlock.github.io//index.xml">
 
     
-    <title>Pokemon Go Hack - Mil años de solitario</title>
-    <meta property='og:title' content="Pokemon Go Hack - Mil años de solitario">
+    <title>Cross Compile RSync ARM - Mil años de solitario</title>
+    <meta property='og:title' content="Cross Compile RSync ARM - Mil años de solitario">
     <meta property="og:type" content="article">
     
 
-    <meta property="og:url" content="https://codersherlock.github.io/post/Pokemon-Go-Hack/">
+    <meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">
     
     
 
@@ -61,10 +61,10 @@
       <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
 
         <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="https://codersherlock.github.io/"/>
-        <meta itemprop="dateModified" content="2016-07-30T18:10:20-04:00">
-        <meta itemprop="headline" content="Pokemon Go Hack">
-        <meta itemprop="description" content="Catch them all until bored Preface I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game.">
-        <meta itemprop="url" content="https://codersherlock.github.io/post/Pokemon-Go-Hack/">
+        <meta itemprop="dateModified" content="2016-08-15T15:44:05-04:00">
+        <meta itemprop="headline" content="Cross Compile RSync ARM">
+        <meta itemprop="description" content="Cross Compile Rsync to ARM platform As always, feel free to ask. // Sherlock Motivation I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. Rsync is one of the most mature synchronization solution. So I made the decision on planting rsync to android. Pre-work Rsync is a sync program with delta sync feature and based on SSH connection.">
+        <meta itemprop="url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">
         <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
           <meta itemprop="url" content="https://codersherlock.github.io/images/default.jpg" />
           <meta itemprop="width" content="800">
@@ -83,41 +83,67 @@
         </div>
 
         <header class="article-header">
-          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-07-30T18:10:20-04:00">Sat, Jul 30, 2016</time>
-          <h1 class="article-title">Pokemon Go Hack</h1>
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-08-15T15:44:05-04:00">Mon, Aug 15, 2016</time>
+          <h1 class="article-title">Cross Compile RSync ARM</h1>
         </header>
 
         <div class="article-body" itemprop="articleBody">
           
 
-<h1 id="catch-them-all-until-bored">Catch them all until bored</h1>
+<h1 id="cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</h1>
 
-<h2 id="preface">Preface</h2>
+<p>As always, feel free to ask. // Sherlock</p>
 
-<p>I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game. Due to some well known reasons, Ingress didn&rsquo;t become popular at my country. But time flies, I break through the wall, and come to a free land which can play Niantic&rsquo;s game. Unfortunately, this time, the only thing restrict me from playing LBS game is limitation of my spare time. Working in the Lab makes me exhausted <strong>EVERYDAY</strong> and the place where I am now is so barren which even doesn&rsquo;t have much insects and birds(I mean Weedle and Pidgey).
-<em>afk I have to battle a nearby gym now</em>
-Anyway, after coming back, I think I write too much on useless words, so let me keep it straight forward. My imagination of this hacking project is very simple, which is making an auto bot helping me go through all experiences a Pokemon trainer will face. In first stage, my goal is making the bot smartly picking up a route to walk, catch all Pokemons and supply from PokeStops.</p>
+<h2 id="motivation">Motivation</h2>
 
-<h2 id="todo-list">TODO List</h2>
+<p>I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. <a href="https://rsync.samba.org/">Rsync</a> is one of the most mature synchronization solution. So I made the decision on planting rsync to android.</p>
 
-<p>-[X] Test API
--[ ] Finish Walk Algorithm
--[ ] Finish other movement, etc. catch, hatch
--[ ] Smart Walking route
--[ ] Pokemon Predict (Thanks to Pokevision&rsquo;s idea)
--[ ] Become a Pokemon Master</p>
+<h2 id="pre-work">Pre-work</h2>
+
+<p>Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">previews blog</a>, Android NDK and environment export need to be done before compilation.
+To enable normally use of compiled program, we need to make android support SSH. My solution is just install <a href="https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;hl=en">SSHDroid</a> from Google Play Store.</p>
+
+<h2 id="cross-compile-rsync">Cross-Compile Rsync</h2>
+
+<p>Running following script to build rsync. It will generate a executable file named rsync in the root directory.</p>
+
+<pre><code>$ ./configure --build=${BUILD_SYS} --host=${TOOLCHAIN}
+$ make
+</code></pre>
+
+<h2 id="push-rsync-to-android">Push RSync to Android.</h2>
+
+<p>After installing SSHDroid, we can now push our arm-version-rsync to target machine.</p>
+
+<pre><code>$ adb push rsync /data/local/tmp
+$ adb shell
+
+# cd /data/data/berserker.android.apps.sshdroid/dropbear
+# mv ../../../local/tmp/rsync . 
+</code></pre>
+
+<h2 id="run-rsync-with-argument">Run Rsync with argument</h2>
+
+<p>Now we can easily use rsync in android shell. Similar to what we use on PC.</p>
+
+<pre><code># ./rsync -e &quot;./ssh&quot; {target-data} {target-location}:{target-directory}  
+</code></pre>
+
+<h2 id="references">References</h2>
+
+<p><a href="http://stackoverflow.com/questions/8130889/build-rsync-for-android">Build Rsync for Android</a></p>
 
         </div>
 
 
         <aside>
-          <div class="section"><a href="https://codersherlock.github.io/tags/hack" class="tag">hack</a> <a href="https://codersherlock.github.io/tags/github" class="tag">github</a> </div>
+          <div class="section"><a href="https://codersherlock.github.io/tags/Android" class="tag">Android</a> <a href="https://codersherlock.github.io/tags/ARM" class="tag">ARM</a> </div>
 
           <div class="section share">
-            <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fcodersherlock.github.io%2fpost%2fPokemon-Go-Hack%2f&t=Pokemon%20Go%20Hack" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
-            <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fPokemon-Go-Hack%2f&text=Pokemon%20Go%20Hack&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
-            <a href="https://plus.google.com/share?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fPokemon-Go-Hack%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
-            <a href="http://getpocket.com/edit?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fPokemon-Go-Hack%2f&title=Pokemon%20Go%20Hack" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&t=Cross%20Compile%20RSync%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&text=Cross%20Compile%20RSync%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&title=Cross%20Compile%20RSync%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
           </div>
 
           
