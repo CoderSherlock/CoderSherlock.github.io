@@ -6,6 +6,7 @@
     <description>Recent content in Arm on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Copyright (c) 2016 - 2016, Pengzhan Hao; all rights reserved.</copyright>
     <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
     <atom:link href="https://CoderSherlock.github.io/tags/arm/index.xml" rel="self" type="application/rss+xml" />
     
@@ -17,20 +18,18 @@
       <guid>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</guid>
       <description>
 
-&lt;h1 id=&#34;cross-compile-rsync-to-arm-platform&#34;&gt;Cross Compile Rsync to ARM platform&lt;/h1&gt;
-
 &lt;p&gt;As always, feel free to ask. // Sherlock&lt;/p&gt;
 
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
 
 &lt;p&gt;I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. &lt;a href=&#34;https://rsync.samba.org/&#34;&gt;Rsync&lt;/a&gt; is one of the most mature synchronization solution. So I made the decision on planting rsync to android.&lt;/p&gt;
 
-&lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
+&lt;h1 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h1&gt;
 
 &lt;p&gt;Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in &lt;a href=&#34;https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/&#34;&gt;previews blog&lt;/a&gt;, Android NDK and environment export need to be done before compilation.
 To enable normally use of compiled program, we need to make android support SSH. My solution is just install &lt;a href=&#34;https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;amp;hl=en&#34;&gt;SSHDroid&lt;/a&gt; from Google Play Store.&lt;/p&gt;
 
-&lt;h2 id=&#34;cross-compile-rsync&#34;&gt;Cross-Compile Rsync&lt;/h2&gt;
+&lt;h1 id=&#34;cross-compile-rsync&#34;&gt;Cross-Compile Rsync&lt;/h1&gt;
 
 &lt;p&gt;Running following script to build rsync. It will generate a executable file named rsync in the root directory.&lt;/p&gt;
 
@@ -38,7 +37,7 @@ To enable normally use of compiled program, we need to make android support SSH.
 $ make
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;push-rsync-to-android&#34;&gt;Push RSync to Android.&lt;/h2&gt;
+&lt;h1 id=&#34;push-rsync-to-android&#34;&gt;Push RSync to Android.&lt;/h1&gt;
 
 &lt;p&gt;After installing SSHDroid, we can now push our arm-version-rsync to target machine.&lt;/p&gt;
 
@@ -49,44 +48,42 @@ $ cd /data/data/berserker.android.apps.sshdroid/dropbear
 $ mv ../../../local/tmp/rsync . 
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;run-rsync-with-argument&#34;&gt;Run Rsync with argument&lt;/h2&gt;
+&lt;h1 id=&#34;run-rsync-with-argument&#34;&gt;Run Rsync with argument&lt;/h1&gt;
 
 &lt;p&gt;Now we can easily use rsync in android shell. Similar to what we use on PC.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;$ ./rsync -e &amp;quot;./ssh&amp;quot; {target-data} {target-location}:{target-directory}  
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;references&#34;&gt;References&lt;/h2&gt;
+&lt;h1 id=&#34;references&#34;&gt;References&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://stackoverflow.com/questions/8130889/build-rsync-for-android&#34;&gt;Build Rsync for Android&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
-      <title>Cross Compile Seafile 2 ARM</title>
+      <title>Cross Compile Seafile to ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</link>
       <pubDate>Sat, 30 Jul 2016 14:02:34 -0400</pubDate>
       
       <guid>https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/</guid>
       <description>
 
-&lt;h1 id=&#34;cross-compile-seafile-to-arm-platform&#34;&gt;Cross Compile Seafile to ARM platform&lt;/h1&gt;
-
-&lt;h2 id=&#34;motivation&#34;&gt;Motivation&lt;/h2&gt;
+&lt;h1 id=&#34;motivation&#34;&gt;Motivation&lt;/h1&gt;
 
 &lt;p&gt;This project is working for delta sync from mobile to server. Currently, there&amp;rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&amp;rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.&lt;/p&gt;
 
-&lt;h2 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h2&gt;
+&lt;h1 id=&#34;pre-work&#34;&gt;Pre-work&lt;/h1&gt;
 
 &lt;p&gt;Basically, I used the native android compilation tool-chains, &lt;a href=&#34;https://developer.android.com/ndk/downloads/index.html&#34;&gt;Android NDK&lt;/a&gt;, as working tools. Due to my working situation, I use a &lt;a href=&#34;https://shield.nvidia.com/tablet/k1&#34;&gt;Nvidia Shield Tablet&lt;/a&gt; as target device. As &lt;em&gt;Zengwen&lt;/em&gt; said in his &lt;a href=&#34;http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/&#34;&gt;blog&lt;/a&gt;, newest updated NDK might has some issue which can influence compilation progress. So you can find &lt;a href=&#34;http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk&#34;&gt;other version&lt;/a&gt; of NDK once you have some problems. Based on what &lt;em&gt;Zengwen&amp;rsquo;s&lt;/em&gt; blog mentioned, we can write following useful system environment and export in terminal.&lt;/p&gt;
 
-&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;
+&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;
 
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install build-essential
 $ sudo apt-get install pkg-config automake autoconf libtool
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;link-with-standalone-tool-chains&#34;&gt;Link with standalone tool-chains&lt;/h3&gt;
+&lt;h2 id=&#34;link-with-standalone-tool-chains&#34;&gt;Link with standalone tool-chains&lt;/h2&gt;
 
 &lt;p&gt;In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.&lt;/p&gt;
 
@@ -100,7 +97,7 @@ $ sudo apt-get install pkg-config automake autoconf libtool
     --platform=android-22
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;original-system-environment-configuration&#34;&gt;Original System Environment Configuration&lt;/h3&gt;
+&lt;h2 id=&#34;original-system-environment-configuration&#34;&gt;Original System Environment Configuration&lt;/h2&gt;
 
 &lt;p&gt;[TODO]-&amp;gt; I will fix this part later.&lt;/p&gt;
 
@@ -169,29 +166,29 @@ export LIBS=&amp;quot;-lc -lstdc++ -ld&amp;quot;
 export LDFLAGS=&amp;quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h2 id=&#34;compile-process&#34;&gt;Compile Process&lt;/h2&gt;
+&lt;h1 id=&#34;compile-process&#34;&gt;Compile Process&lt;/h1&gt;
 
 &lt;p&gt;To compile seafile, we should compile ccnet and libsearpc first. As for these two projects, they all have their own dependencies, so we must follow some order to run the compilation.&lt;/p&gt;
 
-&lt;h3 id=&#34;libsearpc&#34;&gt;libsearpc&lt;/h3&gt;
+&lt;h2 id=&#34;libsearpc&#34;&gt;libsearpc&lt;/h2&gt;
 
-&lt;h4 id=&#34;glib&#34;&gt;glib&lt;/h4&gt;
+&lt;h3 id=&#34;glib&#34;&gt;glib&lt;/h3&gt;
 
-&lt;h5 id=&#34;libiconv&#34;&gt;libiconv&lt;/h5&gt;
+&lt;h4 id=&#34;libiconv&#34;&gt;libiconv&lt;/h4&gt;
 
-&lt;h5 id=&#34;libffi&#34;&gt;libffi&lt;/h5&gt;
+&lt;h4 id=&#34;libffi&#34;&gt;libffi&lt;/h4&gt;
 
-&lt;h5 id=&#34;gettext&#34;&gt;gettext&lt;/h5&gt;
+&lt;h4 id=&#34;gettext&#34;&gt;gettext&lt;/h4&gt;
 
-&lt;h4 id=&#34;libjasson&#34;&gt;libjasson&lt;/h4&gt;
+&lt;h3 id=&#34;libjasson&#34;&gt;libjasson&lt;/h3&gt;
 
-&lt;h3 id=&#34;ccnet&#34;&gt;ccnet&lt;/h3&gt;
+&lt;h2 id=&#34;ccnet&#34;&gt;ccnet&lt;/h2&gt;
 
-&lt;h4 id=&#34;libuuid&#34;&gt;libuuid&lt;/h4&gt;
+&lt;h3 id=&#34;libuuid&#34;&gt;libuuid&lt;/h3&gt;
 
-&lt;h3 id=&#34;seafile&#34;&gt;seafile&lt;/h3&gt;
+&lt;h2 id=&#34;seafile&#34;&gt;seafile&lt;/h2&gt;
 
-&lt;h2 id=&#34;preferences&#34;&gt;Preferences&lt;/h2&gt;
+&lt;h1 id=&#34;preferences&#34;&gt;Preferences&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/&#34;&gt;zwyuan&lt;/a&gt;&lt;/li&gt;

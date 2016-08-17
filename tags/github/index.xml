@@ -6,6 +6,7 @@
     <description>Recent content in Github on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <copyright>Copyright (c) 2016 - 2016, Pengzhan Hao; all rights reserved.</copyright>
     <lastBuildDate>Sat, 30 Jul 2016 18:10:20 -0400</lastBuildDate>
     <atom:link href="https://CoderSherlock.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
@@ -19,13 +20,13 @@
 
 &lt;h1 id=&#34;catch-them-all-until-bored&#34;&gt;Catch them all until bored&lt;/h1&gt;
 
-&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;
+&lt;h1 id=&#34;preface&#34;&gt;Preface&lt;/h1&gt;
 
 &lt;p&gt;I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game. Due to some well known reasons, Ingress didn&amp;rsquo;t become popular at my country. But time flies, I break through the wall, and come to a free land which can play Niantic&amp;rsquo;s game. Unfortunately, this time, the only thing restrict me from playing LBS game is limitation of my spare time. Working in the Lab makes me exhausted &lt;strong&gt;EVERYDAY&lt;/strong&gt; and the place where I am now is so barren which even doesn&amp;rsquo;t have much insects and birds(I mean Weedle and Pidgey).
 &lt;em&gt;afk I have to battle a nearby gym now&lt;/em&gt;
 Anyway, after coming back, I think I write too much on useless words, so let me keep it straight forward. My imagination of this hacking project is very simple, which is making an auto bot helping me go through all experiences a Pokemon trainer will face. In first stage, my goal is making the bot smartly picking up a route to walk, catch all Pokemons and supply from PokeStops.&lt;/p&gt;
 
-&lt;h2 id=&#34;todo-list&#34;&gt;TODO List&lt;/h2&gt;
+&lt;h1 id=&#34;todo-list&#34;&gt;TODO List&lt;/h1&gt;
 
 &lt;p&gt;-[X] Test API
 -[ ] Finish Walk Algorithm

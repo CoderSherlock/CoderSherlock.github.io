@@ -1,205 +1,118 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <title>
-    Cross Compile Seafile 2 ARM // Mil años de solitario
-  </title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.16" />
 
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="generator" content="Hugo 0.16" />
-
-  <meta property="og:title" content="Cross Compile Seafile 2 ARM" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" />
-
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
-
-  <link rel="stylesheet" href="https://codersherlock.github.io//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Mil años de solitario" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans|Marcellus+SC'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://codersherlock.github.io//index.xml">
 
     
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  
-
-  
-
-  
-
-  
-</head>
-
-<body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
+    <title>Cross Compile Seafile to ARM - Mil años de solitario</title>
+    <meta property='og:title' content="Cross Compile Seafile to ARM - Mil años de solitario">
+    <meta property="og:type" content="article">
     
 
-	
-	  <img src="/images/photo.png" class="sidebarphoto">
-	
-
-    <h1 class="brand-title">Mil años de solitario</h1>
-    <h2 class="brand-tagline">A boy who can&#39;t step into academia</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://codersherlock.github.io/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/bio">Biography</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/post">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">about me</a></li>
-        
-      </ul>
-    </nav>
-
+    <meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
     
-    <div class="social-buttons">
-      
-        
-        <a href="http://github.com/CoderSherlcok" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-      
-    </div>
     
 
-  </div>
-</div>
+  </head>
 
-	
-	
+  <body>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
+    <header class="site">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://codersherlock.github.io/">Mil años de solitario</a>
+          </div>
 
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents">
-<ul>
-<li><a href="#cross-compile-seafile-to-arm-platform">Cross Compile Seafile to ARM platform</a>
-<ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#pre-work">Pre-work</a>
-<ul>
-<li><a href="#prerequisites">Prerequisites</a></li>
-<li><a href="#link-with-standalone-tool-chains">Link with standalone tool-chains</a></li>
-<li><a href="#original-system-environment-configuration">Original System Environment Configuration</a></li>
-</ul></li>
-<li><a href="#compile-process">Compile Process</a>
-<ul>
-<li><a href="#libsearpc">libsearpc</a>
-<ul>
-<li><a href="#glib">glib</a>
-<ul>
-<li><a href="#libiconv">libiconv</a></li>
-<li><a href="#libffi">libffi</a></li>
-<li><a href="#gettext">gettext</a></li>
-</ul></li>
-<li><a href="#libjasson">libjasson</a></li>
-</ul></li>
-<li><a href="#ccnet">ccnet</a>
-<ul>
-<li><a href="#libuuid">libuuid</a></li>
-</ul></li>
-<li><a href="#seafile">seafile</a></li>
-</ul></li>
-<li><a href="#preferences">Preferences</a></li>
-</ul></li>
-</ul>
-</nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/post/Cross-Compile-Seafile-2-ARM/">Cross Compile Seafile 2 ARM</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
+          <div id="navbar" class="collapse navbar-collapse">
             
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>30</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2016</span>
-            	</span>
-            	
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://CoderSherlock.github.io/about/">about me</a></li>
+              
+              
+            </ul>
             
-            	
-            
+          </div>
 
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-2016-07" href="https://codersherlock.github.io//categories/2016-07">2016-07</a>
-				
-				</div>
-			
+        </div>
+      </nav>
+    </header>
 
-			
+    <div class="site">
+      <div class="container">
 
-			
 
-            
 
-<h1 id="cross-compile-seafile-to-arm-platform">Cross Compile Seafile to ARM platform</h1>
+<div class="single">
 
-<h2 id="motivation">Motivation</h2>
+  <div class="row">
+    <div class="col-md-8">
+
+      <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="https://codersherlock.github.io/"/>
+        <meta itemprop="dateModified" content="2016-07-30T14:02:34-04:00">
+        <meta itemprop="headline" content="Cross Compile Seafile to ARM">
+        <meta itemprop="description" content="Motivation This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.">
+        <meta itemprop="url" content="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <meta itemprop="url" content="https://codersherlock.github.io/images/default.jpg" />
+          <meta itemprop="width" content="800">
+          <meta itemprop="height" content="800">
+        </div>
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://codersherlock.github.io/images/logo.jpg">
+            <meta itemprop="width" content="100">
+            <meta itemprop="height" content="100">
+          </div>
+          <meta itemprop="name" content="Mil años de solitario">
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" content="">
+        </div>
+
+        <header class="article-header">
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-07-30T14:02:34-04:00">Sat, Jul 30, 2016</time>
+          <h1 class="article-title">Cross Compile Seafile to ARM</h1>
+        </header>
+
+        <div class="article-body" itemprop="articleBody">
+          
+
+<h1 id="motivation">Motivation</h1>
 
 <p>This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.</p>
 
-<h2 id="pre-work">Pre-work</h2>
+<h1 id="pre-work">Pre-work</h1>
 
 <p>Basically, I used the native android compilation tool-chains, <a href="https://developer.android.com/ndk/downloads/index.html">Android NDK</a>, as working tools. Due to my working situation, I use a <a href="https://shield.nvidia.com/tablet/k1">Nvidia Shield Tablet</a> as target device. As <em>Zengwen</em> said in his <a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">blog</a>, newest updated NDK might has some issue which can influence compilation progress. So you can find <a href="http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk">other version</a> of NDK once you have some problems. Based on what <em>Zengwen&rsquo;s</em> blog mentioned, we can write following useful system environment and export in terminal.</p>
 
-<h3 id="prerequisites">Prerequisites</h3>
+<h2 id="prerequisites">Prerequisites</h2>
 
 <pre><code>$ sudo apt-get install build-essential
 $ sudo apt-get install pkg-config automake autoconf libtool
 </code></pre>
 
-<h3 id="link-with-standalone-tool-chains">Link with standalone tool-chains</h3>
+<h2 id="link-with-standalone-tool-chains">Link with standalone tool-chains</h2>
 
 <p>In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.</p>
 
@@ -213,7 +126,7 @@ $ sudo apt-get install pkg-config automake autoconf libtool
     --platform=android-22
 </code></pre>
 
-<h3 id="original-system-environment-configuration">Original System Environment Configuration</h3>
+<h2 id="original-system-environment-configuration">Original System Environment Configuration</h2>
 
 <p>[TODO]-&gt; I will fix this part later.</p>
 
@@ -282,96 +195,153 @@ export LIBS=&quot;-lc -lstdc++ -ld&quot;
 export LDFLAGS=&quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&quot;
 </code></pre>
 
-<h2 id="compile-process">Compile Process</h2>
+<h1 id="compile-process">Compile Process</h1>
 
 <p>To compile seafile, we should compile ccnet and libsearpc first. As for these two projects, they all have their own dependencies, so we must follow some order to run the compilation.</p>
 
-<h3 id="libsearpc">libsearpc</h3>
+<h2 id="libsearpc">libsearpc</h2>
 
-<h4 id="glib">glib</h4>
+<h3 id="glib">glib</h3>
 
-<h5 id="libiconv">libiconv</h5>
+<h4 id="libiconv">libiconv</h4>
 
-<h5 id="libffi">libffi</h5>
+<h4 id="libffi">libffi</h4>
 
-<h5 id="gettext">gettext</h5>
+<h4 id="gettext">gettext</h4>
 
-<h4 id="libjasson">libjasson</h4>
+<h3 id="libjasson">libjasson</h3>
 
-<h3 id="ccnet">ccnet</h3>
+<h2 id="ccnet">ccnet</h2>
 
-<h4 id="libuuid">libuuid</h4>
+<h3 id="libuuid">libuuid</h3>
 
-<h3 id="seafile">seafile</h3>
+<h2 id="seafile">seafile</h2>
 
-<h2 id="preferences">Preferences</h2>
+<h1 id="preferences">Preferences</h1>
 
 <ul>
 <li><a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">zwyuan</a></li>
 </ul>
 
-	
-			
+        </div>
 
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-android" href="https://codersherlock.github.io//tags/android">android</a>,
-	                
-	                <a class="post-tag post-tag-arm" href="https://codersherlock.github.io//tags/arm">arm</a>,
-	                
-				</div>
-			
 
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/post/Pokemon-Go-Hack/">Pokemon Go Hack</a>
-		            </div>
-		            
+        <aside>
+          <div class="section"><a href="https://codersherlock.github.io/tags/android" class="tag">android</a> <a href="https://codersherlock.github.io/tags/arm" class="tag">arm</a> <a href="https://codersherlock.github.io/tags/research" class="tag">research</a> </div>
 
-					
-	            </div>
-            
-          </section>
+          <div class="section share">
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&t=Cross%20Compile%20Seafile%20to%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&text=Cross%20Compile%20Seafile%20to%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-Seafile-2-ARM%2f&title=Cross%20Compile%20Seafile%20to%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+          </div>
+
           
-          	<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'codersherlockblog';
-    var disqus_identifier = 'https:\/\/codersherlock.github.io\/post\/Cross-Compile-Seafile-2-ARM\/';
-    var disqus_title = 'Cross Compile Seafile 2 ARM';
-    var disqus_url = 'https:\/\/codersherlock.github.io\/post\/Cross-Compile-Seafile-2-ARM\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
           
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-		</ul>
-	</div>
+          <div class="section">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'codersherlockblog';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+          
+        </aside>
 
-	<p>&copy; 2016. All rights reserved.</p>
-</div>
+      </article>
+
+    </div>
+    <div class="col-md-4">
+      
+<aside class="site">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">LatestPosts</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" class="list-group-item">Cross Compile RSync ARM</a>
+      
+      <a href="https://codersherlock.github.io/post/Pokemon-Go-Hack/" class="list-group-item">Pokemon Go Hack</a>
+      
+      <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile to ARM</a>
+      
+      <a href="https://codersherlock.github.io/about/" class="list-group-item">about me</a>
+      
     </div>
   </div>
-	
-
-	
 
   
-</body>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">category</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/categories/cross-compile" class="list-group-item">cross-compile</a>
+      
+      <a href="https://codersherlock.github.io/categories/game" class="list-group-item">game</a>
+      
+      <a href="https://codersherlock.github.io/categories/hack" class="list-group-item">hack</a>
+      
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">tag</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/tags/android" class="list-group-item">android</a>
+      
+      <a href="https://codersherlock.github.io/tags/arm" class="list-group-item">arm</a>
+      
+      <a href="https://codersherlock.github.io/tags/research" class="list-group-item">research</a>
+      
+      <a href="https://codersherlock.github.io/tags/game" class="list-group-item">game</a>
+      
+      <a href="https://codersherlock.github.io/tags/github" class="list-group-item">github</a>
+      
+      <a href="https://codersherlock.github.io/tags/hack" class="list-group-item">hack</a>
+      
+    </div>
+  </div>
+  
+
+</aside>
+
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site">
+      <div class="container">
+        <p>Copyright (c) 2016 - 2016, Pengzhan Hao; all rights reserved.</p>
+        <p>Powered by <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a>, Theme <a href="https://github.com/dim0627/hugo_theme_beg" target="_blank" rel="nofollow">beg</a> designed by <a href="http://yet.unresolved.xyz" target="_blank" rel="nofollow">Daisuke Tsuji</a></p>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+  </body>
 </html>
+

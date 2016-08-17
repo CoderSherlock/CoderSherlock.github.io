@@ -1,182 +1,115 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
-<head>
-  <title>
-    Cross Compile RSync ARM // Mil años de solitario
-  </title>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Hugo 0.16" />
 
-  <link href="http://gmpg.org/xfn/11" rel="profile">
-<meta http-equiv="content-type" content="text/html; charset=utf-8">
-
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
-
-<meta name="description" content="">
-<meta name="keywords" content="">
-<meta name="author" content="">
-<meta name="generator" content="Hugo 0.16" />
-
-  <meta property="og:title" content="Cross Compile RSync ARM" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:locale" content="en_US" />
-<meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" />
-
-
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
-  
-  
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
-  
-  
-
-  <link rel="stylesheet" href="https://codersherlock.github.io//css/redlounge.css">
-  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
-  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
-
-  
-  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
-  <link rel="shortcut icon" href="/favicon.png">
-
-  
-  <link href="" rel="alternate" type="application/rss+xml" title="Mil años de solitario" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+    <link rel='stylesheet' href='//fonts.googleapis.com/css?family=Open+Sans|Marcellus+SC'>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/styles/solarized_dark.min.css">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/styles.css">
+    <link rel="stylesheet" href="https://codersherlock.github.io/css/custom.css">
+    <link rel="alternate" type="application/rss+xml" title="RSS" href="https://codersherlock.github.io//index.xml">
 
     
-  
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
-  
-  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-
-
-  
-
-  
-
-  
-
-  
-</head>
-
-<body>
-	
-
-	<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-  <div class="header">
+    <title>Cross Compile RSync ARM - Mil años de solitario</title>
+    <meta property='og:title' content="Cross Compile RSync ARM - Mil años de solitario">
+    <meta property="og:type" content="article">
     
 
-	
-	  <img src="/images/photo.png" class="sidebarphoto">
-	
-
-    <h1 class="brand-title">Mil años de solitario</h1>
-    <h2 class="brand-tagline">A boy who can&#39;t step into academia</h2>
-
-    <nav class="nav">
-      <ul class="nav-list">
-        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://codersherlock.github.io/">Home</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/bio">Biography</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/post">Blog</a></li>
-        
-          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about/">about me</a></li>
-        
-      </ul>
-    </nav>
-
+    <meta property="og:url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">
     
-    <div class="social-buttons">
-      
-        
-        <a href="http://github.com/CoderSherlcok" target="_blank"><i class='fa fa-github'></i></a>
-        
-      
-      
-    </div>
     
 
-  </div>
-</div>
+  </head>
 
-	
-	
+  <body>
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-		<a name="top"></a>
-		
+    <header class="site">
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="https://codersherlock.github.io/">Mil años de solitario</a>
+          </div>
 
-		
-			
-		    <div id="toc" class="pure-u-1 pure-u-md-1-4">
-				<small class="toc-label">Contents</small>
-		   	 	<nav id="TableOfContents">
-<ul>
-<li><a href="#cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</a>
-<ul>
-<li><a href="#motivation">Motivation</a></li>
-<li><a href="#pre-work">Pre-work</a></li>
-<li><a href="#cross-compile-rsync">Cross-Compile Rsync</a></li>
-<li><a href="#push-rsync-to-android">Push RSync to Android.</a></li>
-<li><a href="#run-rsync-with-argument">Run Rsync with argument</a></li>
-<li><a href="#references">References</a></li>
-</ul></li>
-</ul>
-</nav>
-		    </div>
-		    
-	    
-  		<section class="post">
-            <h1 class="post-title">
-              <a href="/post/Cross-Compile-RSync-ARM/">Cross Compile RSync ARM</a>
-            </h1>
-            <h3 class="post-subtitle">
-            	
-            </h3>
+          <div id="navbar" class="collapse navbar-collapse">
             
-            	<span class="post-date">
-                	<span class="post-date-day"><sup>15</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2016</span>
-            	</span>
-            	
+            <ul class="nav navbar-nav navbar-right">
+              
+              
+              <li><a href="https://CoderSherlock.github.io/about/">about me</a></li>
+              
+              
+            </ul>
             
-            	
-            
+          </div>
 
-			
-			
-				<div class="post-categories">
-				
-					<a class="post-category post-category-2016-08" href="https://codersherlock.github.io//categories/2016-08">2016-08</a>
-				
-				</div>
-			
+        </div>
+      </nav>
+    </header>
 
-			
+    <div class="site">
+      <div class="container">
 
-			
 
-            
 
-<h1 id="cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</h1>
+<div class="single">
+
+  <div class="row">
+    <div class="col-md-8">
+
+      <article class="single" itemscope="itemscope" itemtype="http://schema.org/Article">
+
+        <meta itemprop="mainEntityOfPage"  itemType="https://schema.org/WebPage" content="https://codersherlock.github.io/"/>
+        <meta itemprop="dateModified" content="2016-08-15T15:44:05-04:00">
+        <meta itemprop="headline" content="Cross Compile RSync ARM">
+        <meta itemprop="description" content="As always, feel free to ask. // Sherlock Motivation I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. Rsync is one of the most mature synchronization solution. So I made the decision on planting rsync to android. Pre-work Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain.">
+        <meta itemprop="url" content="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">
+        <div itemprop="image" itemscope itemtype="https://schema.org/ImageObject">
+          <meta itemprop="url" content="https://codersherlock.github.io/images/default.jpg" />
+          <meta itemprop="width" content="800">
+          <meta itemprop="height" content="800">
+        </div>
+        <div itemprop="publisher" itemscope itemtype="https://schema.org/Organization">
+          <div itemprop="logo" itemscope itemtype="https://schema.org/ImageObject">
+            <meta itemprop="url" content="https://codersherlock.github.io/images/logo.jpg">
+            <meta itemprop="width" content="100">
+            <meta itemprop="height" content="100">
+          </div>
+          <meta itemprop="name" content="Mil años de solitario">
+        </div>
+        <div itemprop="author" itemscope itemtype="https://schema.org/Person">
+          <meta itemprop="name" content="">
+        </div>
+
+        <header class="article-header">
+          <time itemprop="datePublished" pubdate="pubdate" datetime="2016-08-15T15:44:05-04:00">Mon, Aug 15, 2016</time>
+          <h1 class="article-title">Cross Compile RSync ARM</h1>
+        </header>
+
+        <div class="article-body" itemprop="articleBody">
+          
 
 <p>As always, feel free to ask. // Sherlock</p>
 
-<h2 id="motivation">Motivation</h2>
+<h1 id="motivation">Motivation</h1>
 
 <p>I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. <a href="https://rsync.samba.org/">Rsync</a> is one of the most mature synchronization solution. So I made the decision on planting rsync to android.</p>
 
-<h2 id="pre-work">Pre-work</h2>
+<h1 id="pre-work">Pre-work</h1>
 
 <p>Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">previews blog</a>, Android NDK and environment export need to be done before compilation.
 To enable normally use of compiled program, we need to make android support SSH. My solution is just install <a href="https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;hl=en">SSHDroid</a> from Google Play Store.</p>
 
-<h2 id="cross-compile-rsync">Cross-Compile Rsync</h2>
+<h1 id="cross-compile-rsync">Cross-Compile Rsync</h1>
 
 <p>Running following script to build rsync. It will generate a executable file named rsync in the root directory.</p>
 
@@ -184,7 +117,7 @@ To enable normally use of compiled program, we need to make android support SSH.
 $ make
 </code></pre>
 
-<h2 id="push-rsync-to-android">Push RSync to Android.</h2>
+<h1 id="push-rsync-to-android">Push RSync to Android.</h1>
 
 <p>After installing SSHDroid, we can now push our arm-version-rsync to target machine.</p>
 
@@ -195,84 +128,136 @@ $ cd /data/data/berserker.android.apps.sshdroid/dropbear
 $ mv ../../../local/tmp/rsync . 
 </code></pre>
 
-<h2 id="run-rsync-with-argument">Run Rsync with argument</h2>
+<h1 id="run-rsync-with-argument">Run Rsync with argument</h1>
 
 <p>Now we can easily use rsync in android shell. Similar to what we use on PC.</p>
 
 <pre><code>$ ./rsync -e &quot;./ssh&quot; {target-data} {target-location}:{target-directory}  
 </code></pre>
 
-<h2 id="references">References</h2>
+<h1 id="references">References</h1>
 
 <p><a href="http://stackoverflow.com/questions/8130889/build-rsync-for-android">Build Rsync for Android</a></p>
 
-	
-			
+        </div>
 
-			
-				<div class="tags-list">
-					<span class="dark-red">Tags</span><span class="decorative-marker">//</span>
-					
-	                <a class="post-tag post-tag-android" href="https://codersherlock.github.io//tags/android">android</a>,
-	                
-	                <a class="post-tag post-tag-arm" href="https://codersherlock.github.io//tags/arm">arm</a>,
-	                
-				</div>
-			
 
-			
-				<div class="paging">
-					<span class="paging-label">More Reading</span>
-					
-					<div class="paging-newer">
-						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
-						<a class="paging-link" href="/about/">about me</a>
-		            </div>
-		            
+        <aside>
+          <div class="section"><a href="https://codersherlock.github.io/tags/android" class="tag">android</a> <a href="https://codersherlock.github.io/tags/arm" class="tag">arm</a> <a href="https://codersherlock.github.io/tags/research" class="tag">research</a> </div>
 
-					
-					<div class="paging-older">
-						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
-			            <a class="paging-link" href="/post/Pokemon-Go-Hack/">Pokemon Go Hack</a>
-		            </div>
-		            
-	            </div>
-            
-          </section>
+          <div class="section share">
+            <a href="http://www.facebook.com/sharer.php?src=bm&u=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&t=Cross%20Compile%20RSync%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-facebook"></i></a>
+            <a href="http://twitter.com/intent/tweet?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&text=Cross%20Compile%20RSync%20ARM&tw_p=tweetbutton" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-twitter"></i></a>
+            <a href="https://plus.google.com/share?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-google-plus"></i></a>
+            <a href="http://getpocket.com/edit?url=https%3a%2f%2fcodersherlock.github.io%2fpost%2fCross-Compile-RSync-ARM%2f&title=Cross%20Compile%20RSync%20ARM" onclick="window.open(this.href, 'PCwindow', 'width=550, height=350, menubar=no, toolbar=no, scrollbars=yes'); return false;"><i class="fa fa-get-pocket"></i></a>
+          </div>
+
           
-          	<div id="disqus_thread"></div>
-<script type="text/javascript">
-    var disqus_shortname = 'codersherlockblog';
-    var disqus_identifier = 'https:\/\/codersherlock.github.io\/post\/Cross-Compile-RSync-ARM\/';
-    var disqus_title = 'Cross Compile RSync ARM';
-    var disqus_url = 'https:\/\/codersherlock.github.io\/post\/Cross-Compile-RSync-ARM\/';
-
-    (function() {
-        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-    })();
-</script>
-<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-<a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
           
-        
-      <div class="footer">
-	<hr class="thin" />
-	<div class="pure-menu pure-menu-horizontal pure-menu-open">
-		<ul class="footer-menu">
-		
-		</ul>
-	</div>
+          <div class="section">
+            <div id="disqus_thread"></div>
+            <script type="text/javascript">
+(function() {
+  var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+  var disqus_shortname = 'codersherlockblog';
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+})();
+            </script>
+            <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            <a href="http://disqus.com/" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+          </div>
+          
+          
+        </aside>
 
-	<p>&copy; 2016. All rights reserved.</p>
-</div>
+      </article>
+
+    </div>
+    <div class="col-md-4">
+      
+<aside class="site">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">LatestPosts</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" class="list-group-item">Cross Compile RSync ARM</a>
+      
+      <a href="https://codersherlock.github.io/post/Pokemon-Go-Hack/" class="list-group-item">Pokemon Go Hack</a>
+      
+      <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="list-group-item">Cross Compile Seafile to ARM</a>
+      
+      <a href="https://codersherlock.github.io/about/" class="list-group-item">about me</a>
+      
     </div>
   </div>
-	
-
-	
 
   
-</body>
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">category</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/categories/cross-compile" class="list-group-item">cross-compile</a>
+      
+      <a href="https://codersherlock.github.io/categories/game" class="list-group-item">game</a>
+      
+      <a href="https://codersherlock.github.io/categories/hack" class="list-group-item">hack</a>
+      
+    </div>
+  </div>
+  
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h2 class="panel-title">tag</h2>
+    </div>
+    <div class="list-group">
+      
+      <a href="https://codersherlock.github.io/tags/android" class="list-group-item">android</a>
+      
+      <a href="https://codersherlock.github.io/tags/arm" class="list-group-item">arm</a>
+      
+      <a href="https://codersherlock.github.io/tags/research" class="list-group-item">research</a>
+      
+      <a href="https://codersherlock.github.io/tags/game" class="list-group-item">game</a>
+      
+      <a href="https://codersherlock.github.io/tags/github" class="list-group-item">github</a>
+      
+      <a href="https://codersherlock.github.io/tags/hack" class="list-group-item">hack</a>
+      
+    </div>
+  </div>
+  
+
+</aside>
+
+
+    </div>
+  </div>
+
+</div>
+
+      </div>
+    </div>
+
+    <footer class="site">
+      <div class="container">
+        <p>Copyright (c) 2016 - 2016, Pengzhan Hao; all rights reserved.</p>
+        <p>Powered by <a href="http://gohugo.io" target="_blank" rel="nofollow">Hugo</a>, Theme <a href="https://github.com/dim0627/hugo_theme_beg" target="_blank" rel="nofollow">beg</a> designed by <a href="http://yet.unresolved.xyz" target="_blank" rel="nofollow">Daisuke Tsuji</a></p>
+      </div>
+    </footer>
+
+    <script src="//code.jquery.com/jquery-2.2.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.4/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
+    
+
+  </body>
 </html>
+
