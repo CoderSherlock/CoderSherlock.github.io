@@ -1,366 +1,257 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mil años de solitario &middot; Mil años de solitario</title>
-
-    <meta name="description" content="A boy who can&#39;t step into academia">
-
-    <meta name="generator" content="Hugo 0.16" />
-    <meta name="twitter:card" content="summary">
+	<meta name="generator" content="Hugo 0.16" />
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>Mil años de solitario</title>
+  <script src="https://codersherlock.github.io//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="https://codersherlock.github.io//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
     
-    <meta name="twitter:title" content="Mil años de solitario &middot; Mil años de solitario">
-    <meta name="twitter:description" content="A boy who can&#39;t step into academia">
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(https://codersherlock.github.io//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(https://codersherlock.github.io//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="Mil años de solitario &middot; Mil años de solitario">
-    <meta property="og:description" content="A boy who can&#39;t step into academia">
-
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-
-    <link rel="stylesheet" href="https://codersherlock.github.io//css/all.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="alternate" type="application/rss+xml" title="Mil años de solitario" href="https://codersherlock.github.io//index.xml" />
 </head>
 <body>
-
-
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <hgroup>
-            <h1 class="brand-title"><a href="https://codersherlock.github.io/">Mil años de solitario</a></h1>
-            <h2 class="brand-tagline"> A boy who can&#39;t step into academia </h2>
-        </hgroup>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://github.com/CoderSherlock "><i class="fa fa-github-alt"></i> github</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://codersherlock.github.io//index.xml"><i class="fa fa-rss"></i> rss</a>
-                </li>
-            </ul>
-        </nav>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="https://codersherlock.github.io//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="https://codersherlock.github.io//images/photo.png"></iron-image>
+        
+          <div class="author">Jon Hao</div>
+      </iron-image>
+      <paper-menu>
+        <a href="https://codersherlock.github.io/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="https://codersherlock.github.io//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="https://codersherlock.github.io//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
     </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Mil años de solitario</div>
+        <div class="flex"></div>
+        
+        
+        
+          <a href="https://google.com/+Pengzhan%20Hao"><paper-icon-button src="https://codersherlock.github.io//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+        
+          <a href="https://github.com/CoderSherlock"><paper-icon-button src="https://codersherlock.github.io//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="https://codersherlock.github.io//index.xml"><paper-icon-button src="https://codersherlock.github.io//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+
+  <div class="article">
+    <div class="title"><a href="https://codersherlock.github.io/about/">about me</a></div>
+     
+    <div class="description">2012 - Coder Sherlock 2013 - Sherlock Hao 2015 - Jon Hao Email me</div>
+    <div class="tags">
+      16 Aug 2016
+       
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="title"><a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">Cross Compile RSync ARM</a></div>
+    
+      <div class="categories">
+        
+          <a href="https://codersherlock.github.io//categories/2016-08/">2016-08</a>
+        
+      </div>
+     
+    <div class="description">Cross Compile Rsync to ARM platform As always, feel free to ask. // Sherlock Motivation I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. Rsync is one of the most mature synchronization solution. So I made the decision on planting rsync to android. Pre-work Rsync is a sync program with delta sync feature and based on SSH connection.</div>
+    <div class="tags">
+      15 Aug 2016
+      
+        
+          <a href="https://codersherlock.github.io//tags/android/">#android</a>
+        
+          <a href="https://codersherlock.github.io//tags/arm/">#arm</a>
+        
+       
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="title"><a href="https://codersherlock.github.io/post/Pokemon-Go-Hack/">Pokemon Go Hack</a></div>
+    
+      <div class="categories">
+        
+          <a href="https://codersherlock.github.io//categories/2016-07/">2016-07</a>
+        
+      </div>
+     
+    <div class="description">Catch them all until bored Preface I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game.</div>
+    <div class="tags">
+      30 Jul 2016
+      
+        
+          <a href="https://codersherlock.github.io//tags/hack/">#hack</a>
+        
+          <a href="https://codersherlock.github.io//tags/github/">#github</a>
+        
+       
+    </div>
+  </div>
+
+  <div class="article">
+    <div class="title"><a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">Cross Compile Seafile 2 ARM</a></div>
+    
+      <div class="categories">
+        
+          <a href="https://codersherlock.github.io//categories/2016-07/">2016-07</a>
+        
+      </div>
+     
+    <div class="description">Cross Compile Seafile to ARM platform Motivation This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.</div>
+    <div class="tags">
+      30 Jul 2016
+      
+        
+          <a href="https://codersherlock.github.io//tags/android/">#android</a>
+        
+          <a href="https://codersherlock.github.io//tags/arm/">#arm</a>
+        
+       
+    </div>
+  </div>
+
+
 </div>
 
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            
-            <div class="posts">
-                
-                <h1 class="content-subhead">16 Aug 2016, 15:04</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://codersherlock.github.io/about/" class="post-title">about me</a>
-
-                        <p class="post-meta">
-                            
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        <p>2012 - Coder Sherlock
-2013 - Sherlock Hao
-2015 - Jon Hao</p>
-
-<p><a href="mailto:haopengzhan@gmail.com">Email me</a></p>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">15 Aug 2016, 15:44</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" class="post-title">Cross Compile RSync ARM</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-2016-08" href="https://codersherlock.github.io//categories/2016-08">2016-08</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<h1 id="cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</h1>
-
-<p>As always, feel free to ask. // Sherlock</p>
-
-<h2 id="motivation">Motivation</h2>
-
-<p>I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. <a href="https://rsync.samba.org/">Rsync</a> is one of the most mature synchronization solution. So I made the decision on planting rsync to android.</p>
-
-<h2 id="pre-work">Pre-work</h2>
-
-<p>Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">previews blog</a>, Android NDK and environment export need to be done before compilation.
-To enable normally use of compiled program, we need to make android support SSH. My solution is just install <a href="https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;hl=en">SSHDroid</a> from Google Play Store.</p>
-
-<h2 id="cross-compile-rsync">Cross-Compile Rsync</h2>
-
-<p>Running following script to build rsync. It will generate a executable file named rsync in the root directory.</p>
-
-<pre><code>$ ./configure --build=${BUILD_SYS} --host=${TOOLCHAIN}
-$ make
-</code></pre>
-
-<h2 id="push-rsync-to-android">Push RSync to Android.</h2>
-
-<p>After installing SSHDroid, we can now push our arm-version-rsync to target machine.</p>
-
-<pre><code>$ adb push rsync /data/local/tmp
-$ adb shell
-
-$ cd /data/data/berserker.android.apps.sshdroid/dropbear
-$ mv ../../../local/tmp/rsync . 
-</code></pre>
-
-<h2 id="run-rsync-with-argument">Run Rsync with argument</h2>
-
-<p>Now we can easily use rsync in android shell. Similar to what we use on PC.</p>
-
-<pre><code>$ ./rsync -e &quot;./ssh&quot; {target-data} {target-location}:{target-directory}  
-</code></pre>
-
-<h2 id="references">References</h2>
-
-<p><a href="http://stackoverflow.com/questions/8130889/build-rsync-for-android">Build Rsync for Android</a></p>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">30 Jul 2016, 18:10</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://codersherlock.github.io/post/Pokemon-Go-Hack/" class="post-title">Pokemon Go Hack</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-2016-07" href="https://codersherlock.github.io//categories/2016-07">2016-07</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<h1 id="catch-them-all-until-bored">Catch them all until bored</h1>
-
-<h2 id="preface">Preface</h2>
-
-<p>I never imagined that I will truly write something for hacking a game. Though I have to admit that Pokemon Go is a huge heat and different from other games, it still hard to believe that I took movement to make it better(or worse?). I was a big fun of ingress, and thanks to one of my best friends, Kevin, who was also a huge fan to ingress, recommended me this game. Due to some well known reasons, Ingress didn&rsquo;t become popular at my country. But time flies, I break through the wall, and come to a free land which can play Niantic&rsquo;s game. Unfortunately, this time, the only thing restrict me from playing LBS game is limitation of my spare time. Working in the Lab makes me exhausted <strong>EVERYDAY</strong> and the place where I am now is so barren which even doesn&rsquo;t have much insects and birds(I mean Weedle and Pidgey).
-<em>afk I have to battle a nearby gym now</em>
-Anyway, after coming back, I think I write too much on useless words, so let me keep it straight forward. My imagination of this hacking project is very simple, which is making an auto bot helping me go through all experiences a Pokemon trainer will face. In first stage, my goal is making the bot smartly picking up a route to walk, catch all Pokemons and supply from PokeStops.</p>
-
-<h2 id="todo-list">TODO List</h2>
-
-<p>-[X] Test API
--[ ] Finish Walk Algorithm
--[ ] Finish other movement, etc. catch, hatch
--[ ] Smart Walking route
--[ ] Pokemon Predict (Thanks to Pokevision&rsquo;s idea)
--[ ] Become a Pokemon Master</p>
-
-                    </div>
-                </section>
-                
-                <h1 class="content-subhead">30 Jul 2016, 14:02</h1>
-                <section class="post">
-                    <header class="post-header">
-
-                        <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/" class="post-title">Cross Compile Seafile 2 ARM</a>
-
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-2016-07" href="https://codersherlock.github.io//categories/2016-07">2016-07</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<h1 id="cross-compile-seafile-to-arm-platform">Cross Compile Seafile to ARM platform</h1>
-
-<h2 id="motivation">Motivation</h2>
-
-<p>This project is working for delta sync from mobile to server. Currently, there&rsquo;s no mobile program/solution has supporting to delta sync(Include Dropbox/ Goggle Drive). But the truth is that almost every pc version sync program can work as delta sync properly or not. So in this article, I&rsquo;ll provide a workbench for cross compilation and evaluation. And finally come up with a reason of how to port better incremental synchronize solution on mobile platform.</p>
-
-<h2 id="pre-work">Pre-work</h2>
-
-<p>Basically, I used the native android compilation tool-chains, <a href="https://developer.android.com/ndk/downloads/index.html">Android NDK</a>, as working tools. Due to my working situation, I use a <a href="https://shield.nvidia.com/tablet/k1">Nvidia Shield Tablet</a> as target device. As <em>Zengwen</em> said in his <a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">blog</a>, newest updated NDK might has some issue which can influence compilation progress. So you can find <a href="http://stackoverflow.com/questions/6849981/where-do-i-find-old-versions-of-android-ndk">other version</a> of NDK once you have some problems. Based on what <em>Zengwen&rsquo;s</em> blog mentioned, we can write following useful system environment and export in terminal.</p>
-
-<h3 id="prerequisites">Prerequisites</h3>
-
-<pre><code>$ sudo apt-get install build-essential
-$ sudo apt-get install pkg-config automake autoconf libtool
-</code></pre>
-
-<h3 id="link-with-standalone-tool-chains">Link with standalone tool-chains</h3>
-
-<p>In order to build standalone tool-chains, we need first to export following system environment. After doing that, we can use following command to build a standalone tool-chains from downloaded NDK.</p>
-
-<pre><code>$ ${NDK}/build/tools/make-standalone-toolchain.sh \
-    --toolchain=arm-linux-androideabi-4.9 \
-    --stl=gnustl \
-    --arch=arm \
-    --ndk-dir=/home/moslab/Android/android-ndk-r12b \
-    --package-dir=/home/moslab/Android \
-    --install-dir=/home/moslab/Android/android-ndk-toolchain \
-    --platform=android-22
-</code></pre>
-
-<h3 id="original-system-environment-configuration">Original System Environment Configuration</h3>
-
-<p>[TODO]-&gt; I will fix this part later.</p>
-
-<pre><code># Android NDK sources and standalone toolchain is put here
-export DEV=~/Android/
-
-# All the built binaries, libs and their header will be installed here
-export PREFIX=/opt/android
-
-# Don't mix up .pc files from your host and build target
-export PKG_CONFIG_PATH=${PREFIX}/lib/pkgconfig
-
-# GCC for Android version to use
-# 4.9 is the only available version since NDK r11!
-export GCC_VER=4.9
-
-# The building system we are using (Linux x86_64)
-export BUILD_SYS=x86_64-linux-gnu
-
-# Set Android target API level
-export ANDROID_API=22
-
-# Set Android target arch
-export ANDROID_ARCH=arm
-
-# Set Android target name, according to Table 2 in
-# https://developer.android.com/ndk/guides/standalone_toolchain.html
-export ANDROID_TARGET=armv7-none-linux-androideabi
-
-# The cross-compile toolchain we use
-export TOOLCHAIN=arm-linux-androideabi
-
-# This is a symlink pointing to the real Android NDK r12b
-export NDK=${DEV}/android-ndk
-
-# The path of standalone NDK toolchain
-# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
-export NDK_TOOLCHAIN=${DEV}/android-ndk-toolchain
-
-# this one is the absolute, prebuilt path
-export SYSROOT=${NDK}/platforms/android-${ANDROID_API}/arch-${ANDROID_ARCH}
-
-# this one is the absolute, prebuilt path
-export CROSS_PREFIX=${NDK}/toolchains/${TOOLCHAIN}-${GCC_VER}/prebuilt/linux-x86_64/bin/${TOOLCHAIN}
-
-# Non-exhaustive lists of compiler + binutils
-export AR=${CROSS_PREFIX}-ar
-export AS=${CROSS_PREFIX}-as
-export LD=${CROSS_PREFIX}-ld
-export NM=${CROSS_PREFIX}-nm
-export CC=${CROSS_PREFIX}-gcc
-export CXX=${CROSS_PREFIX}-g++
-export CPP=${CROSS_PREFIX}-cpp
-export CXXCPP=${CROSS_PREFIX}-cpp
-export STRIP=${CROSS_PREFIX}-strip
-export RANLIB=${CROSS_PREFIX}-ranlib
-export STRINGS=${CROSS_PREFIX}-strings
-
-# Set build flags
-# Refer to https://developer.android.com/ndk/guides/standalone_toolchain.html
-export PATH=$PATH:${PREFIX}/bin:${PREFIX}/lib
-export CFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${PREFIX}/include -fPIE -DANDROID -Wno-multichar&quot;
-export CXXFLAGS=${CFLAGS}
-export CPPFLAGS=&quot;--sysroot=${SYSROOT} -I${SYSROOT}/usr/include -I${NDK_TOOLCHAIN}/include/c++/ -DANDROID -DNO_XMALLOC -mandroid&quot;
-export LIBS=&quot;-lc -lstdc++ -ld&quot;
-export LDFLAGS=&quot;-Wl,-rpath-link=-I${SYSROOT}/usr/lib -L${SYSROOT}/usr/lib -L${PREFIX}/lib -L${NDK_TOOLCHAIN}/lib&quot;
-</code></pre>
-
-<h2 id="compile-process">Compile Process</h2>
-
-<p>To compile seafile, we should compile ccnet and libsearpc first. As for these two projects, they all have their own dependencies, so we must follow some order to run the compilation.</p>
-
-<h3 id="libsearpc">libsearpc</h3>
-
-<h4 id="glib">glib</h4>
-
-<h5 id="libiconv">libiconv</h5>
-
-<h5 id="libffi">libffi</h5>
-
-<h5 id="gettext">gettext</h5>
-
-<h4 id="libjasson">libjasson</h4>
-
-<h3 id="ccnet">ccnet</h3>
-
-<h4 id="libuuid">libuuid</h4>
-
-<h3 id="seafile">seafile</h3>
-
-<h2 id="preferences">Preferences</h2>
-
-<ul>
-<li><a href="http://zwyuan.github.io/2016/07/17/cross-compile-glib-for-android/">zwyuan</a></li>
-</ul>
-
-                    </div>
-                </section>
-                
-            </div>
-            
-
-            <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-        <ul>
-            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
-        </ul>
-    </div>
-</div>
-<script src="https://codersherlock.github.io//js/all.min.js"></script>
-
-        </div>
-    </div>
-</div>
-
-
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', '', 'auto');
-ga('send', 'pageview');
-
-</script>
-
+<paper-item>
+  
+    <paper-fab disabled icon="chevron-left"></paper-fab>
+  
+    <div class="flex"></div>
+  
+    <paper-fab disabled icon="chevron-right"></paper-fab>
+  
+</paper-item>
+
+
+      <paper-item>
+        <div class="copyright"></div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-82637164-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
 </body>
 </html>

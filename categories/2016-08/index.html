@@ -1,155 +1,202 @@
+
 <!doctype html>
-<html lang="en">
+<html lang="en-us">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2016 08 &middot; Mil años de solitario</title>
-
-    <meta name="description" content="A boy who can&#39;t step into academia">
-
-    <meta name="generator" content="Hugo 0.16" />
-    <meta name="twitter:card" content="summary">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1, user-scalable=yes">
+  <title>2016 08</title>
+  <script src="https://codersherlock.github.io//bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+  <link rel="import" href="https://codersherlock.github.io//bower_components/iron-icons/iron-icons.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-drawer-panel/paper-drawer-panel.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-icon-button/paper-icon-button.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-toolbar/paper-toolbar.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-scroll-header-panel/paper-scroll-header-panel.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-fab/paper-fab.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-item/paper-item.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/paper-menu/paper-menu.html">
+  <link rel="import" href="https://codersherlock.github.io//bower_components/iron-image/iron-image.html">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style is="custom-style">
+    body {
+      font-family: 'Roboto', sans-serif;
+    }
+    .nav {
+      border-right: 1px solid #ccc;
+    }
     
-    <meta name="twitter:title" content="2016 08 &middot; Mil años de solitario">
-    <meta name="twitter:description" content="A boy who can&#39;t step into academia">
+    paper-scroll-header-panel {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background-color: var(--paper-grey-200, #eee);
+       
+      --paper-scroll-header-panel-full-header: {
+        background-image: url(https://codersherlock.github.io//images/cover.png);
+      };
+       
+      --paper-scroll-header-panel-condensed-header: {
+        background-image: url(https://codersherlock.github.io//images/cover.png);
+      };
+    }
+    
+    paper-toolbar {
+       
+      height: 256px;
+      background-color: transparent;
+    }
+    .profile{
+      width: 100%;
+      padding-bottom: 20px;
+    }
+    .photo{
+      margin: 20px;
+      display: inline-block;
+      height: 64px; width: 64px;
+      border-radius: 50%;
+    }
+    .article{
+      border: 1px solid #bebebe;
+      padding: 16px;
+      margin: 16px;
+      border-radius: 5px;
+      background-color: #fff;
+    }
+    .title{
+      font-size: 22px;
+      padding: 8px 0 16px;
+    }
+    .description{
+      font-size: 16px;
+      padding-bottom: 8px;
+    }
+    .author{
+      font-size: 16px;
+      padding-left: 20px;
+      color: white;
+    }
+    .design{
+      font-size: 14px;
+    }
+    .copyright{
+      font-size: 16px;
+    }
+    paper-menu a {
+      text-decoration: none;
+      color: #212121;
+    }
+  </style>
 
-    <meta property="og:type" content="article">
-    <meta property="og:title" content="2016 08 &middot; Mil años de solitario">
-    <meta property="og:description" content="A boy who can&#39;t step into academia">
-
-    <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Oxygen:400,700' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/pure-min.css">
-    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.6.0/grids-responsive-min.css">
-
-    <link rel="stylesheet" href="https://codersherlock.github.io//css/all.min.css">
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
-
-    <link rel="alternate" type="application/rss+xml" title="Mil años de solitario" href="https://codersherlock.github.io//index.xml" />
 </head>
 <body>
-
-
-<div id="layout" class="pure-g">
-    <div class="sidebar pure-u-1 pure-u-md-1-4">
-    <div class="header">
-        <hgroup>
-            <h1 class="brand-title"><a href="https://codersherlock.github.io/">Mil años de solitario</a></h1>
-            <h2 class="brand-tagline"> A boy who can&#39;t step into academia </h2>
-        </hgroup>
-
-        <nav class="nav">
-            <ul class="nav-list">
-                
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://github.com/CoderSherlock "><i class="fa fa-github-alt"></i> github</a>
-                </li>
-                
-                <li class="nav-item">
-                    <a class="pure-button" href="https://codersherlock.github.io//index.xml"><i class="fa fa-rss"></i> rss</a>
-                </li>
-            </ul>
-        </nav>
+  <paper-drawer-panel id="drawerPanel" responsive-width="1280px">
+    <div class="nav scroll" drawer>
+    
+      <iron-image class="profile" sizing="cover" src="https://codersherlock.github.io//images/profile.png">
+    
+        
+          <iron-image class="photo" sizing="cover" src="https://codersherlock.github.io//images/photo.png"></iron-image>
+        
+          <div class="author">Jon Hao</div>
+      </iron-image>
+      <paper-menu>
+        <a href="https://codersherlock.github.io/"><paper-item>
+          <iron-icon icon="home"></iron-icon>　<div class="flex">Home</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="https://codersherlock.github.io//categories/"><paper-item>
+          <iron-icon icon="drafts"></iron-icon>　<div class="flex">Categories</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+        <a href="https://codersherlock.github.io//tags/"><paper-item>
+          <iron-icon icon="loyalty"></iron-icon>　<div class="flex">Tags</div>
+          <iron-icon icon="chevron-right"></iron-icon>
+        </paper-item></a>
+      </paper-menu>
     </div>
+
+    <paper-scroll-header-panel main condenses header-height="256" condensed-header-height="64">
+
+      <paper-toolbar>
+
+        <paper-icon-button icon="menu" paper-drawer-toggle></paper-icon-button>
+        <div class="bottom title">Mil años de solitario</div>
+        <div class="flex"></div>
+        
+        
+        
+          <a href="https://google.com/+Pengzhan%20Hao"><paper-icon-button src="https://codersherlock.github.io//images/google+-dreamstale37.png"></paper-icon-button></a>
+        
+        
+        
+          <a href="https://github.com/CoderSherlock"><paper-icon-button src="https://codersherlock.github.io//images/github2-dreamstale35.png"></paper-icon-button></a>
+        
+          <a href="https://codersherlock.github.io//index.xml"><paper-icon-button src="https://codersherlock.github.io//images/feed-dreamstale27.png"></paper-icon-button></a>
+      
+      </paper-toolbar>
+
+
+
+<div class="content">
+
+
+  <div class="article">
+    <div class="title"><a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/">Cross Compile RSync ARM</a></div>
+    
+      <div class="categories">
+        
+          <a href="https://codersherlock.github.io//categories/2016-08/">2016-08</a>
+        
+      </div>
+     
+    <div class="description">Cross Compile Rsync to ARM platform As always, feel free to ask. // Sherlock Motivation I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. Rsync is one of the most mature synchronization solution. So I made the decision on planting rsync to android. Pre-work Rsync is a sync program with delta sync feature and based on SSH connection.</div>
+    <div class="tags">
+      15 Aug 2016
+      
+        
+          <a href="https://codersherlock.github.io//tags/android/">#android</a>
+        
+          <a href="https://codersherlock.github.io//tags/arm/">#arm</a>
+        
+       
+    </div>
+  </div>
+
+
 </div>
 
 
-    <div class="content pure-u-1 pure-u-md-3-4">
-        <div>
-            
-            <div class="posts">
-                
-                <h1 class="content-subhead">15 Aug 2016, 15:44</h1>
-                <section class="post">
-                    <header class="post-header">
+<paper-item>
+  
+    <paper-fab disabled icon="chevron-left"></paper-fab>
+  
+    <div class="flex"></div>
+  
+    <paper-fab disabled icon="chevron-right"></paper-fab>
+  
+</paper-item>
 
-                        <a href="https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/" class="post-title">Cross Compile RSync ARM</a>
 
-                        <p class="post-meta">
-                            
-                            
-                                under 
-                                
-                                <a class="post-category post-category-2016-08" href="https://codersherlock.github.io//categories/2016-08">2016-08</a>
-                            
-                        </p>
-                    </header>
-
-                    <div class="post-description">
-                        
-
-<h1 id="cross-compile-rsync-to-arm-platform">Cross Compile Rsync to ARM platform</h1>
-
-<p>As always, feel free to ask. // Sherlock</p>
-
-<h2 id="motivation">Motivation</h2>
-
-<p>I got some issues about compile seafile to android, so instead of doing so, I start to figure out some other synchronize workflow. <a href="https://rsync.samba.org/">Rsync</a> is one of the most mature synchronization solution. So I made the decision on planting rsync to android.</p>
-
-<h2 id="pre-work">Pre-work</h2>
-
-<p>Rsync is a sync program with delta sync feature and based on SSH connection. So all we need to do is SSH support and cross compile tool-chain. Similar to what I mentioned in <a href="https://codersherlock.github.io/post/Cross-Compile-Seafile-2-ARM/">previews blog</a>, Android NDK and environment export need to be done before compilation.
-To enable normally use of compiled program, we need to make android support SSH. My solution is just install <a href="https://play.google.com/store/apps/details?id=berserker.android.apps.sshdroid&amp;hl=en">SSHDroid</a> from Google Play Store.</p>
-
-<h2 id="cross-compile-rsync">Cross-Compile Rsync</h2>
-
-<p>Running following script to build rsync. It will generate a executable file named rsync in the root directory.</p>
-
-<pre><code>$ ./configure --build=${BUILD_SYS} --host=${TOOLCHAIN}
-$ make
-</code></pre>
-
-<h2 id="push-rsync-to-android">Push RSync to Android.</h2>
-
-<p>After installing SSHDroid, we can now push our arm-version-rsync to target machine.</p>
-
-<pre><code>$ adb push rsync /data/local/tmp
-$ adb shell
-
-$ cd /data/data/berserker.android.apps.sshdroid/dropbear
-$ mv ../../../local/tmp/rsync . 
-</code></pre>
-
-<h2 id="run-rsync-with-argument">Run Rsync with argument</h2>
-
-<p>Now we can easily use rsync in android shell. Similar to what we use on PC.</p>
-
-<pre><code>$ ./rsync -e &quot;./ssh&quot; {target-data} {target-location}:{target-directory}  
-</code></pre>
-
-<h2 id="references">References</h2>
-
-<p><a href="http://stackoverflow.com/questions/8130889/build-rsync-for-android">Build Rsync for Android</a></p>
-
-                    </div>
-                </section>
-                
-            </div>
-            
-
-            <div class="footer">
-    <div class="pure-menu pure-menu-horizontal pure-menu-open">
-        <ul>
-            <li>Powered by <a class="hugo" href="https://gohugo.io/" target="_blank">hugo</a></li>
-        </ul>
-    </div>
-</div>
-<script src="https://codersherlock.github.io//js/all.min.js"></script>
-
-        </div>
-    </div>
-</div>
-
-<script>
-(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-ga('create', '', 'auto');
-ga('send', 'pageview');
-
-</script>
-
+      <paper-item>
+        <div class="copyright"></div>
+        <div class="flex"></div>
+        <div class="design">Design <a href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </paper-item>
+    </paper-scroll-header-panel>
+  </paper-drawer-panel>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    ga('create', 'UA-82637164-1', 'auto');
+    ga('send', 'pageview');
+  </script>
+  
 </body>
 </html>

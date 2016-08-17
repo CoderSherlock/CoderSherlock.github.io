@@ -6,8 +6,6 @@
     <description>Recent content in 2016 08 on Mil años de solitario</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <managingEditor>haopengzhan@gmail.com (CoderSherlock)</managingEditor>
-    <webMaster>haopengzhan@gmail.com (CoderSherlock)</webMaster>
     <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
     <atom:link href="https://CoderSherlock.github.io/categories/2016-08/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +13,7 @@
       <title>Cross Compile RSync ARM</title>
       <link>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</link>
       <pubDate>Mon, 15 Aug 2016 15:44:05 -0400</pubDate>
-      <author>haopengzhan@gmail.com (CoderSherlock)</author>
+      
       <guid>https://codersherlock.github.io/post/Cross-Compile-RSync-ARM/</guid>
       <description>
 
