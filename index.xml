@@ -7,8 +7,20 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>Copyright (c) 2016 - 2016, Pengzhan Hao; all rights reserved.</copyright>
-    <lastBuildDate>Mon, 15 Aug 2016 15:44:05 -0400</lastBuildDate>
+    <lastBuildDate>Sat, 20 Aug 2016 01:44:59 -0400</lastBuildDate>
     <atom:link href="https://CoderSherlock.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Rsync Experiment Towards X86 VS ARM</title>
+      <link>https://codersherlock.github.io/post/Rsync_Experiment_Towards_X86_VS_ARM/</link>
+      <pubDate>Sat, 20 Aug 2016 01:44:59 -0400</pubDate>
+      
+      <guid>https://codersherlock.github.io/post/Rsync_Experiment_Towards_X86_VS_ARM/</guid>
+      <description>&lt;p&gt;Partial content of this post won&amp;rsquo;t be showed public on this blog. I will generally talking about how I organized my experiment and how I did such a work. As for data and observation, I will create a google docs for it. However, I will also give precise conclusion of my experiments.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://docs.google.com/a/binghamton.edu/document/d/1sCjsC1pXcfgECp3do2oySsG9kW7UZ3BTEXvDlau1vIE/edit?usp=sharing&#34;&gt;Google Docs&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Cross Compile RSync ARM</title>
