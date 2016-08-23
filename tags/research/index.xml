@@ -16,9 +16,30 @@
       <pubDate>Sat, 20 Aug 2016 01:44:59 -0400</pubDate>
       
       <guid>https://codersherlock.github.io/post/Rsync_Experiment_Towards_X86_VS_ARM/</guid>
-      <description>&lt;p&gt;Partial content of this post won&amp;rsquo;t be showed public on this blog. I will generally talking about how I organized my experiment and how I did such a work. As for data and observation, I will create a google docs for it. However, I will also give precise conclusion of my experiments.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;Partial content of this post won&amp;rsquo;t be showed public on this blog. I will generally talking about how I organized my experiment and how I did such a work. As for data and observation, I will create a google docs for it. However, I will also give precise conclusion of my experiments.&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://docs.google.com/a/binghamton.edu/document/d/1sCjsC1pXcfgECp3do2oySsG9kW7UZ3BTEXvDlau1vIE/edit?usp=sharing&#34;&gt;Google Docs&lt;/a&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;used-command&#34;&gt;Used Command&lt;/h4&gt;
+
+&lt;h5 id=&#34;solve-android-read-only-issue&#34;&gt;Solve Android Read_Only Issue&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;mount -o rw,remount /system
+mount -o ro,remount /system
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h5 id=&#34;using-tc-to-limit-bandwidth-on-host-server&#34;&gt;Using tc to limit bandwidth on host server&lt;/h5&gt;
+
+&lt;pre&gt;&lt;code&gt;# Apply speed limits
+sudo tc qdisc add dev {DEV_NAME} handle 1: root htb default 11
+sudo tc class add dev {DEV_NAME} parent 1: classid 1:1 htb rate 1kbit
+sudo tc class add dev {DEV_NAME} parent 1:1 classid 1:11 htb rate 1kbit
+
+# Delete limitation profile
+sudo tc qdisc del dev {DEV_NAME} root
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
