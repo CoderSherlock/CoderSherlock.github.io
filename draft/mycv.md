@@ -1,7 +1,7 @@
 #### Pengzhan Hao
-#### Master Student of Binghamton University, SUNY
-#### Working on OS/Cloud
-#### Interested in ML/Geo Computing
+Master Student of Binghamton University, SUNY
+Working on OS/Cloud
+Interested in ML/Geo Computing
 
 #### Experience
 2013~2014
