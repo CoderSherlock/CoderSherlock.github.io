@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Stop Talking, Start Doing - 停止空想，开始行动</title>
+    <description>My personal blog, with some boring research staff and some tricks I was fancy to. I&#39;ll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
+</description>
+    <link>https://codersherlock.github.com//</link>
+    <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 27 Oct 2016 01:09:32 -0400</pubDate>
+    <lastBuildDate>Thu, 27 Oct 2016 01:09:32 -0400</lastBuildDate>
+    <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Stop Talking is the worst title of one blog</title>
+        <description>
+</description>
+        <pubDate>Wed, 26 Oct 2016 22:50:33 -0400</pubDate>
+        <link>https://codersherlock.github.com//archivers/hello</link>
+        <guid isPermaLink="true">https://codersherlock.github.com//archivers/hello</guid>
+        
+        
+        <category>Nonsense</category>
+        
+      </item>
+    
+  </channel>
+</rss>
