@@ -6,7 +6,15 @@ public: true
 ---
 
 Pengzhan Hao
-============
-Email:haopengzhan@gmail.com  
-Address:Binghamton University  
-Phone: (607)-II-III-II-83-VII-II  
+------------
+- Research Assistant in MOSLab
+- Master Student of SUNY at Binghamton
+
+------------
+- Email: phao3 at binghamton dot edu
+
+- MOSLab, H-6 Engineering Building, Binghamton University
+4400 Vestal Parkway East
+Binghamton, NY 13902
+
+-----------

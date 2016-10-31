@@ -6,9 +6,64 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 27 Oct 2016 01:09:32 -0400</pubDate>
-    <lastBuildDate>Thu, 27 Oct 2016 01:09:32 -0400</lastBuildDate>
+    <pubDate>Mon, 31 Oct 2016 17:08:36 -0400</pubDate>
+    <lastBuildDate>Mon, 31 Oct 2016 17:08:36 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Some of my previews experiment works</title>
+        <description>&lt;h1 id=&quot;time-series&quot;&gt;Time series&lt;/h1&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;2016-10&lt;/h2&gt;
+
+&lt;h3 id=&quot;time-experiment-of-rsync&quot;&gt;Time Experiment of rsync&lt;/h3&gt;
+
+&lt;p&gt;Patch is based on rsync with version 3.1.2. [&lt;a href=&quot;https://download.samba.org/pub/rsync/rsync-3.1.2.tar.gz&quot;&gt;Rsync&lt;/a&gt;|&lt;a href=&quot;/static/2016-10/rsync/rsync-3.1.2-time.patch&quot;&gt;Patch&lt;/a&gt;]&lt;/p&gt;
+
+&lt;h4 id=&quot;how-to-collect-data&quot;&gt;How to collect data&lt;/h4&gt;
+
+&lt;p&gt;Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.&lt;br /&gt;
+But we also need some bash script to collect data through different size of random size and with different modification through them.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Start from 8K to 64M, modify at beginning, [&lt;a href=&quot;/static/2016-10/rsync/small2Big_change_at_begin.sh&quot;&gt;Bash script&lt;/a&gt;]&lt;/li&gt;
+  &lt;li&gt;Start from 8K to 64M, modify at last, [&lt;a href=&quot;/static/2016-10/rsync/small2Big_change_at_last.sh&quot;&gt;Bash script&lt;/a&gt;]&lt;/li&gt;
+  &lt;li&gt;Start from 8K to 64M, modify at random place with a (slow) python script, [&lt;a href=&quot;/static/2016-10/rsync/small2Big_change_at_anyplace.sh&quot;&gt;Bash script&lt;/a&gt;|&lt;a href=&quot;/static/2016-10/rsync/addbyte.py&quot;&gt;Python program&lt;/a&gt;]&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;time-experiment-of-seafile&quot;&gt;Time Experiment of seafile&lt;/h3&gt;
+
+</description>
+        <pubDate>Fri, 28 Oct 2016 12:27:33 -0400</pubDate>
+        <link>https://codersherlock.github.com//archivers/some-of-my-previews-exper-work</link>
+        <guid isPermaLink="true">https://codersherlock.github.com//archivers/some-of-my-previews-exper-work</guid>
+        
+        
+        <category>Research</category>
+        
+      </item>
+    
+      <item>
+        <title>Using charles proxy to monitor mobile SSL traffics</title>
+        <description>&lt;p&gt;In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn’t provide us a method to modify their own certs. For these situation, I still didn’t find a good solutions for it. But I’ll keep updating this if I get one.  &lt;br /&gt;
+My current solution is using AP to forward all SSL traffic to a proxy, &lt;a href=&quot;https://www.charlesproxy.com/&quot;&gt;charles proxy&lt;/a&gt; is my first choice (Prof asked). It’s a non-free software which still update new versions now. So mainly, I’ll talk about how to charles SSL proxy.&lt;/p&gt;
+
+&lt;h3 id=&quot;preparations&quot;&gt;Preparations&lt;/h3&gt;
+&lt;ul&gt;
+  &lt;li&gt;Monitor device situation: Linux Machine with wireless adapter&lt;/li&gt;
+  &lt;li&gt;Download the newest version(4.0.1) of charles&lt;/li&gt;
+  &lt;li&gt;Target android devices with root privilege&lt;/li&gt;
+&lt;/ul&gt;
+
+</description>
+        <pubDate>Thu, 27 Oct 2016 22:50:33 -0400</pubDate>
+        <link>https://codersherlock.github.com//archivers/charles-is-not-a-good-tool</link>
+        <guid isPermaLink="true">https://codersherlock.github.com//archivers/charles-is-not-a-good-tool</guid>
+        
+        
+        <category>Network</category>
+        
+      </item>
     
       <item>
         <title>Stop Talking is the worst title of one blog</title>
