@@ -6,8 +6,8 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Mon, 31 Oct 2016 17:08:36 -0400</pubDate>
-    <lastBuildDate>Mon, 31 Oct 2016 17:08:36 -0400</lastBuildDate>
+    <pubDate>Thu, 03 Nov 2016 00:20:36 -0400</pubDate>
+    <lastBuildDate>Thu, 03 Nov 2016 00:20:36 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -32,6 +32,48 @@ But we also need some bash script to collect data through different size of rand
 &lt;/ul&gt;
 
 &lt;h3 id=&quot;time-experiment-of-seafile&quot;&gt;Time Experiment of seafile&lt;/h3&gt;
+
+&lt;p&gt;Patch is based on seafile 5.1.4. You can find the release from &lt;a href=&quot;https://github.com/haiwen/seafile/releases&quot;&gt;seafile official repo&lt;/a&gt;. You may follow official compile instructions from &lt;a href=&quot;https://manual.seafile.com/build_seafile/linux.html&quot;&gt;here&lt;/a&gt;. [&lt;a href=&quot;&quot;&gt;Patch&lt;/a&gt;]&lt;/p&gt;
+
+&lt;h4 id=&quot;how-to-collect-data-1&quot;&gt;How to collect data&lt;/h4&gt;
+
+&lt;p&gt;We also need everything be done using scripting. But this time I only design added some distance between two increasing files’ sizes.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Start from 8K to 16M, 4 times increasing, modify at beginning/ at 1024 different places with python script. [&lt;a href=&quot;/static/2016-11/seafile/trans.sh&quot;&gt;Bash Script&lt;/a&gt;|&lt;a href=&quot;/static/2016-11/seafile/addbyte.py&quot;&gt;Python program&lt;/a&gt;]&lt;/li&gt;
+  &lt;li&gt;After using this auto testing script, everything of output will be marked in log files of seafile, which located in &lt;strong&gt;~/.ccnet/log/seafile.log&lt;/strong&gt;&lt;/li&gt;
+  &lt;li&gt;We need to use this simple awk code and vim operation to extract data.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CDC: content defined chucks&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# HUT: Http upload traffic&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# ALL: overall time of one commit &amp;amp; upload&lt;/span&gt;
+awk &lt;span class=&quot;s1&quot;&gt;&#39;/CDC|HUT|ALL/ {print $4,$5}&#39;&lt;/span&gt; ~/.ccnet/log/seafile.log &amp;gt; results.stat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&quot;install-seafile-on-odroid-xu&quot;&gt;Install Seafile on odroid xu&lt;/h4&gt;
+
+&lt;p&gt;Due to failure of my cross-compile to seafile on android. I used develop board as a replacement experiment platform for ARM-seafile testing. I used a &lt;a href=&quot;http://www.hardkernel.com/main/products/prdt_info.php?g_code=G137510300620&quot;&gt;odroid xu&lt;/a&gt; as hardware standard. Because all I need is an ARM platform, only an ARM-Ubuntu is enough for me. But develop prototype on a board is much fun than coding, I won’t address much this time. But I’ll start a blog telling some really cool stuff I made for a strange aim.&lt;/p&gt;
+
+&lt;p&gt;To install a ubuntu with GUI is my all preparation work. I found to way to do this.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://www.armhf.com/boards/odroid-xu/&quot;&gt;armhf&lt;/a&gt; is a website for arm-based ubuntu. It has a detailed instruction to follow at &lt;a href=&quot;http://www.armhf.com/boards/odroid-xu/odroid-sd-install/&quot;&gt;here&lt;/a&gt;. They also provide ubuntu 12.04/ 14.04 and debian 7.5 to choose. But unfortunately odroid xu’s hdmi output doesn’t supported by ubuntu native firmware. So install ubuntu-desktop might can’t be boot up for video output.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Burn images is much easy to install a pre-complied ubuntu system. I found this on odroid xu’s forum, which contains xubuntu image [&lt;a href=&quot;http://odroid.in/ubuntu_14.04lts/ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz&quot;&gt;download&lt;/a&gt;] for odroid xu. With this image, you just need to use dd command to write whole system mirror into sdcard.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If .img end with xz, use this command to uncompress first&lt;/span&gt;
+unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
+&lt;span class=&quot;c&quot;&gt;# Burn image into SD-card&lt;/span&gt;
+sudo dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1M &lt;span class=&quot;nv&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fsync
+sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 
 </description>
         <pubDate>Fri, 28 Oct 2016 12:27:33 -0400</pubDate>

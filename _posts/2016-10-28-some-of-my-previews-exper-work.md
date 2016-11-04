@@ -24,4 +24,39 @@ But we also need some bash script to collect data through different size of rand
 
 ### Time Experiment of seafile
 
+Patch is based on seafile 5.1.4. You can find the release from [seafile official repo](https://github.com/haiwen/seafile/releases). You may follow official compile instructions from [here](https://manual.seafile.com/build_seafile/linux.html). \[[Patch]()\]  
+
+#### How to collect data
+
+We also need everything be done using scripting. But this time I only design added some distance between two increasing files' sizes. 
+
+- Start from 8K to 16M, 4 times increasing, modify at beginning/ at 1024 different places with python script. \[[Bash Script](/static/2016-11/seafile/trans.sh)\|[Python program](/static/2016-11/seafile/addbyte.py)\]
+- After using this auto testing script, everything of output will be marked in log files of seafile, which located in **~/.ccnet/log/seafile.log**  
+- We need to use this simple awk code and vim operation to extract data.
+
+~~~~bash
+# CDC: content defined chucks
+# HUT: Http upload traffic
+# ALL: overall time of one commit & upload
+awk '/CDC|HUT|ALL/ {print $4,$5}' ~/.ccnet/log/seafile.log > results.stat
+~~~~
+
+
+#### Install Seafile on odroid xu
+
+Due to failure of my cross-compile to seafile on android. I used develop board as a replacement experiment platform for ARM-seafile testing. I used a [odroid xu](http://www.hardkernel.com/main/products/prdt_info.php?g_code=G137510300620) as hardware standard. Because all I need is an ARM platform, only an ARM-Ubuntu is enough for me. But develop prototype on a board is much fun than coding, I won't address much this time. But I'll start a blog telling some really cool stuff I made for a strange aim.   
+  
+To install a ubuntu with GUI is my all preparation work. I found to way to do this.  
+  
+- [armhf](http://www.armhf.com/boards/odroid-xu/) is a website for arm-based ubuntu. It has a detailed instruction to follow at [here](http://www.armhf.com/boards/odroid-xu/odroid-sd-install/). They also provide ubuntu 12.04/ 14.04 and debian 7.5 to choose. But unfortunately odroid xu's hdmi output doesn't supported by ubuntu native firmware. So install ubuntu-desktop might can't be boot up for video output. 
+  
+- Burn images is much easy to install a pre-complied ubuntu system. I found this on odroid xu's forum, which contains xubuntu image \[[download](http://odroid.in/ubuntu_14.04lts/ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz)\] for odroid xu. With this image, you just need to use dd command to write whole system mirror into sdcard.
+
+~~~~bash
+# If .img end with xz, use this command to uncompress first
+unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
+# Burn image into SD-card
+sudo dd if=ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img of=/dev/sdb bs=1M conv=fsync
+sync
+~~~~
 
