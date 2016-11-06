@@ -6,8 +6,8 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 03 Nov 2016 00:20:36 -0400</pubDate>
-    <lastBuildDate>Thu, 03 Nov 2016 00:20:36 -0400</lastBuildDate>
+    <pubDate>Sun, 06 Nov 2016 01:44:59 -0400</pubDate>
+    <lastBuildDate>Sun, 06 Nov 2016 01:44:59 -0400</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -97,6 +97,26 @@ My current solution is using AP to forward all SSL traffic to a proxy, &lt;a hre
   &lt;li&gt;Target android devices with root privilege&lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h3 id=&quot;install-charles-and-configuration&quot;&gt;Install Charles and Configuration&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;You have to install charles first. After downloading the charles proxy, you have to unzip it and configure some basic settings.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# open charles first&lt;/span&gt;
+./bin/charles  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+&lt;ul&gt;
+  &lt;li&gt;Save charles’ private key and public key&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;In Help -&amp;gt; SSL Proxying -&amp;gt; Export Charles Root Certificate and Private Key, enter a password and save the public and private key in *.p12 format.  &lt;br /&gt;
+You also need to save charles Root Certificate, it also contains in the same menu. For convience, save it as *.pem format.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Set Proxy and SSL Proxy&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         <pubDate>Thu, 27 Oct 2016 22:50:33 -0400</pubDate>
         <link>https://codersherlock.github.com//archivers/charles-is-not-a-good-tool</link>

@@ -13,8 +13,10 @@ Pengzhan Hao
 ------------
 - Email: phao3 at binghamton dot edu
 
-- MOSLab, H-6 Engineering Building, Binghamton University
-4400 Vestal Parkway East
-Binghamton, NY 13902
+- MOSLab, H-6 Engineering Building  
+Binghamton University  
+4400 Vestal Parkway East  
+Binghamton, NY 13902  
 
 -----------
+

@@ -13,4 +13,17 @@ My current solution is using AP to forward all SSL traffic to a proxy, [charles 
 - Download the newest version(4.0.1) of charles
 - Target android devices with root privilege
 
+### Install Charles and Configuration
 
+- You have to install charles first. After downloading the charles proxy, you have to unzip it and configure some basic settings.
+
+~~~~bash
+# open charles first
+./bin/charles  
+~~~~
+- Save charles' private key and public key
+
+In Help -> SSL Proxying -> Export Charles Root Certificate and Private Key, enter a password and save the public and private key in \*.p12 format.  
+You also need to save charles Root Certificate, it also contains in the same menu. For convience, save it as \*.pem format.
+
+- Set Proxy and SSL Proxy
