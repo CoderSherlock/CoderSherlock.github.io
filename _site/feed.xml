@@ -6,9 +6,22 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 06 Nov 2016 01:44:59 -0400</pubDate>
-    <lastBuildDate>Sun, 06 Nov 2016 01:44:59 -0400</lastBuildDate>
+    <pubDate>Thu, 24 Nov 2016 00:06:21 -0500</pubDate>
+    <lastBuildDate>Thu, 24 Nov 2016 00:06:21 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
+    
+      <item>
+        <title>Freshman from china ~ 人生修复者</title>
+        <description>
+</description>
+        <pubDate>Wed, 23 Nov 2016 22:58:00 -0500</pubDate>
+        <link>https://codersherlock.github.com//archivers/freshman-from-china</link>
+        <guid isPermaLink="true">https://codersherlock.github.com//archivers/freshman-from-china</guid>
+        
+        
+        <category>Nonsense</category>
+        
+      </item>
     
       <item>
         <title>Some of my previews experiment works</title>
@@ -33,7 +46,7 @@ But we also need some bash script to collect data through different size of rand
 
 &lt;h3 id=&quot;time-experiment-of-seafile&quot;&gt;Time Experiment of seafile&lt;/h3&gt;
 
-&lt;p&gt;Patch is based on seafile 5.1.4. You can find the release from &lt;a href=&quot;https://github.com/haiwen/seafile/releases&quot;&gt;seafile official repo&lt;/a&gt;. You may follow official compile instructions from &lt;a href=&quot;https://manual.seafile.com/build_seafile/linux.html&quot;&gt;here&lt;/a&gt;. [&lt;a href=&quot;&quot;&gt;Patch&lt;/a&gt;]&lt;/p&gt;
+&lt;p&gt;Patch is based on seafile 5.1.4. You can find the release from &lt;a href=&quot;https://github.com/haiwen/seafile/releases&quot;&gt;seafile official repo&lt;/a&gt;. You may follow official compile instructions from &lt;a href=&quot;https://manual.seafile.com/build_seafile/linux.html&quot;&gt;here&lt;/a&gt;. [&lt;a href=&quot;&quot;&gt;Patch &lt;strong&gt;no longer avaiable, new version at following sections&lt;/strong&gt;&lt;/a&gt;]&lt;/p&gt;
 
 &lt;h4 id=&quot;how-to-collect-data-1&quot;&gt;How to collect data&lt;/h4&gt;
 
@@ -74,6 +87,25 @@ sudo dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&qu
 sync
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
+
+&lt;h2 id=&quot;section-1&quot;&gt;2016-11&lt;/h2&gt;
+
+&lt;h3 id=&quot;android-kernel&quot;&gt;Android Kernel&lt;/h3&gt;
+
+&lt;h4 id=&quot;how-to-build-an-android-kernel&quot;&gt;How to build an Android Kernel?&lt;/h4&gt;
+
+&lt;p&gt;Generally, I won’t tell anything in this parts, just mark some related links, and point out some mistakes or error solutions.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build&quot;&gt;Google Official Guide&lt;/a&gt;&lt;br /&gt;
+– If you don’t have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.&lt;br /&gt;
+— &lt;a href=&quot;https://android.googlesource.com/?format=HTML&quot;&gt;ASOP git root&lt;/a&gt;, under sub class “/platform/prebuilts/gcc”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://softwarebakery.com/building-the-android-kernel-on-linux&quot;&gt;Packing and Flashing a Boot.img&lt;/a&gt; &lt;strong&gt;[highly recommend]&lt;/strong&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
 
 </description>
         <pubDate>Fri, 28 Oct 2016 12:27:33 -0400</pubDate>

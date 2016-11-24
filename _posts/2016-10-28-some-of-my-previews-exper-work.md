@@ -24,7 +24,7 @@ But we also need some bash script to collect data through different size of rand
 
 ### Time Experiment of seafile
 
-Patch is based on seafile 5.1.4. You can find the release from [seafile official repo](https://github.com/haiwen/seafile/releases). You may follow official compile instructions from [here](https://manual.seafile.com/build_seafile/linux.html). \[[Patch]()\]  
+Patch is based on seafile 5.1.4. You can find the release from [seafile official repo](https://github.com/haiwen/seafile/releases). You may follow official compile instructions from [here](https://manual.seafile.com/build_seafile/linux.html). \[[Patch **no longer avaiable, new version at following sections**]()\]  
 
 #### How to collect data
 
@@ -59,4 +59,19 @@ unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz
 sudo dd if=ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img of=/dev/sdb bs=1M conv=fsync
 sync
 ~~~~
+
+## 2016-11
+
+### Android Kernel 
+
+#### How to build an Android Kernel?
+
+Generally, I won't tell anything in this parts, just mark some related links, and point out some mistakes or error solutions.
+
+- [Google Official Guide](http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build)
+-- If you don't have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.
+--- [ASOP git root](https://android.googlesource.com/?format=HTML), under sub class "/platform/prebuilts/gcc"
+
+- [Packing and Flashing a Boot.img](https://softwarebakery.com/building-the-android-kernel-on-linux) **[highly recommend]**
+
 
