@@ -6,8 +6,8 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 27 Dec 2016 15:14:22 -0500</pubDate>
-    <lastBuildDate>Tue, 27 Dec 2016 15:14:22 -0500</lastBuildDate>
+    <pubDate>Thu, 29 Dec 2016 11:06:02 -0500</pubDate>
+    <lastBuildDate>Thu, 29 Dec 2016 11:06:02 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -60,16 +60,16 @@
       </item>
     
       <item>
-        <title>Some of my previews experiment works</title>
-        <description>&lt;h1 id=&quot;time-series&quot;&gt;Time series&lt;/h1&gt;
+        <title>Some of my previews experiment works: 2016</title>
+        <description>&lt;p&gt;This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.&lt;/p&gt;
 
-&lt;h2 id=&quot;section&quot;&gt;2016-10&lt;/h2&gt;
+&lt;h1 id=&quot;section&quot;&gt;2016-10&lt;/h1&gt;
 
-&lt;h3 id=&quot;time-experiment-of-rsync&quot;&gt;Time Experiment of rsync&lt;/h3&gt;
+&lt;h2 id=&quot;time-experiment-of-rsync&quot;&gt;Time Experiment of rsync&lt;/h2&gt;
 
 &lt;p&gt;Patch is based on rsync with version 3.1.2. [&lt;a href=&quot;https://download.samba.org/pub/rsync/rsync-3.1.2.tar.gz&quot;&gt;Rsync&lt;/a&gt;|&lt;a href=&quot;/static/2016-10/rsync/rsync-3.1.2-time.patch&quot;&gt;Patch&lt;/a&gt;]&lt;/p&gt;
 
-&lt;h4 id=&quot;how-to-collect-data&quot;&gt;How to collect data&lt;/h4&gt;
+&lt;h3 id=&quot;how-to-collect-data&quot;&gt;How to collect data&lt;/h3&gt;
 
 &lt;p&gt;Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.&lt;br /&gt;
 But we also need some bash script to collect data through different size of random size and with different modification through them.&lt;/p&gt;
@@ -80,11 +80,11 @@ But we also need some bash script to collect data through different size of rand
   &lt;li&gt;Start from 8K to 64M, modify at random place with a (slow) python script, [&lt;a href=&quot;/static/2016-10/rsync/small2Big_change_at_anyplace.sh&quot;&gt;Bash script&lt;/a&gt;|&lt;a href=&quot;/static/2016-10/rsync/addbyte.py&quot;&gt;Python program&lt;/a&gt;]&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&quot;time-experiment-of-seafile&quot;&gt;Time Experiment of seafile&lt;/h3&gt;
+&lt;h2 id=&quot;time-experiment-of-seafile&quot;&gt;Time Experiment of seafile&lt;/h2&gt;
 
 &lt;p&gt;Patch is based on seafile 5.1.4. You can find the release from &lt;a href=&quot;https://github.com/haiwen/seafile/releases&quot;&gt;seafile official repo&lt;/a&gt;. You may follow official compile instructions from &lt;a href=&quot;https://manual.seafile.com/build_seafile/linux.html&quot;&gt;here&lt;/a&gt;. [&lt;a href=&quot;&quot;&gt;Patch &lt;strong&gt;no longer avaiable, new version at following sections&lt;/strong&gt;&lt;/a&gt;]&lt;/p&gt;
 
-&lt;h4 id=&quot;how-to-collect-data-1&quot;&gt;How to collect data&lt;/h4&gt;
+&lt;h3 id=&quot;how-to-collect-data-1&quot;&gt;How to collect data&lt;/h3&gt;
 
 &lt;p&gt;We also need everything be done using scripting. But this time I only design added some distance between two increasing files’ sizes.&lt;/p&gt;
 
@@ -101,7 +101,7 @@ awk &lt;span class=&quot;s1&quot;&gt;&#39;/CDC|HUT|ALL/ {print $4,$5}&#39;&lt;/s
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h4 id=&quot;install-seafile-on-odroid-xu&quot;&gt;Install Seafile on odroid xu&lt;/h4&gt;
+&lt;h3 id=&quot;install-seafile-on-odroid-xu&quot;&gt;Install Seafile on odroid xu&lt;/h3&gt;
 
 &lt;p&gt;Due to failure of my cross-compile to seafile on android. I used develop board as a replacement experiment platform for ARM-seafile testing. I used a &lt;a href=&quot;http://www.hardkernel.com/main/products/prdt_info.php?g_code=G137510300620&quot;&gt;odroid xu&lt;/a&gt; as hardware standard. Because all I need is an ARM platform, only an ARM-Ubuntu is enough for me. But develop prototype on a board is much fun than coding, I won’t address much this time. But I’ll start a blog telling some really cool stuff I made for a strange aim.&lt;/p&gt;
 
@@ -124,11 +124,11 @@ sync
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h2 id=&quot;section-1&quot;&gt;2016-11&lt;/h2&gt;
+&lt;h1 id=&quot;section-1&quot;&gt;2016-11&lt;/h1&gt;
 
-&lt;h3 id=&quot;android-kernel&quot;&gt;Android Kernel&lt;/h3&gt;
+&lt;h2 id=&quot;android-kernel&quot;&gt;Android Kernel&lt;/h2&gt;
 
-&lt;h4 id=&quot;how-to-build-an-android-kernel&quot;&gt;How to build an Android Kernel?&lt;/h4&gt;
+&lt;h3 id=&quot;how-to-build-an-android-kernel&quot;&gt;How to build an Android Kernel?&lt;/h3&gt;
 
 &lt;p&gt;Generally, I won’t tell anything in this parts, just mark some related links, and point out some mistakes or error solutions.&lt;/p&gt;
 
@@ -143,6 +143,38 @@ sync
   &lt;/li&gt;
 &lt;/ul&gt;
 
+&lt;h1 id=&quot;section-2&quot;&gt;2016-12&lt;/h1&gt;
+
+&lt;h2 id=&quot;android-kernel-1&quot;&gt;Android Kernel&lt;/h2&gt;
+
+&lt;h3 id=&quot;how-to-compile-with-ftrace&quot;&gt;How to compile with ftrace?&lt;/h3&gt;
+
+&lt;p&gt;If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in &lt;strong&gt;arch/arm64/kernel/configs&lt;/strong&gt;. We need to add few lines under that.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CONFIG_STRICT_MEMORY_RWX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_GRAPH_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_DYNAMIC_FTRACE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_PERSISTENT_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_IRQSOFF_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_PREEMPT_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_SCHED_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;span class=&quot;nv&quot;&gt;CONFIG_STACK_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;how-to-extract-android-images-dump-an-image&quot;&gt;How to extract android images: Dump an image&lt;/h3&gt;
+
+&lt;p&gt;If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, &lt;a href=&quot;http://getpocket.com/redirect?url=http%3A%2F%2Fforum.xda-developers.com%2Fshowthread.php%3Ft%3D2450045&quot;&gt;this article&lt;/a&gt; provide three ways to dump an image, I picked one for easy using.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
+ls -al /dev/block/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;PLATFORM/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE/by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
+
+&lt;span class=&quot;c&quot;&gt;# dump file&lt;/span&gt;
+su
+dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/block/mmcblk0p37 &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/sdcard/boot.img
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
 </description>
         <pubDate>Fri, 28 Oct 2016 12:27:33 -0400</pubDate>
         <link>https://codersherlock.github.com//archivers/some-of-my-previews-exper-work</link>

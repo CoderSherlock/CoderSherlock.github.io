@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Some of my previews experiment works « Stop Talking, Start Doing - 停止空想，开始行动</title>
-  <meta name="description" content="Time series">
+  <title>Some of my previews experiment works: 2016 « Stop Talking, Start Doing - 停止空想，开始行动</title>
+  <meta name="description" content="This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="canonical" href="https://codersherlock.github.com//archivers/some-of-my-previews-exper-work">
@@ -58,20 +58,20 @@
           <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Some of my previews experiment works</h1>
+    <h1 class="post-title">Some of my previews experiment works: 2016</h1>
     <p class="post-meta">Oct 28, 2016</p>
   </header>
 
   <article class="post-content">
-    <h1 id="time-series">Time series</h1>
+    <p>This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.</p>
 
-<h2 id="section">2016-10</h2>
+<h1 id="section">2016-10</h1>
 
-<h3 id="time-experiment-of-rsync">Time Experiment of rsync</h3>
+<h2 id="time-experiment-of-rsync">Time Experiment of rsync</h2>
 
 <p>Patch is based on rsync with version 3.1.2. [<a href="https://download.samba.org/pub/rsync/rsync-3.1.2.tar.gz">Rsync</a>|<a href="/static/2016-10/rsync/rsync-3.1.2-time.patch">Patch</a>]</p>
 
-<h4 id="how-to-collect-data">How to collect data</h4>
+<h3 id="how-to-collect-data">How to collect data</h3>
 
 <p>Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.<br />
 But we also need some bash script to collect data through different size of random size and with different modification through them.</p>
@@ -82,11 +82,11 @@ But we also need some bash script to collect data through different size of rand
   <li>Start from 8K to 64M, modify at random place with a (slow) python script, [<a href="/static/2016-10/rsync/small2Big_change_at_anyplace.sh">Bash script</a>|<a href="/static/2016-10/rsync/addbyte.py">Python program</a>]</li>
 </ul>
 
-<h3 id="time-experiment-of-seafile">Time Experiment of seafile</h3>
+<h2 id="time-experiment-of-seafile">Time Experiment of seafile</h2>
 
 <p>Patch is based on seafile 5.1.4. You can find the release from <a href="https://github.com/haiwen/seafile/releases">seafile official repo</a>. You may follow official compile instructions from <a href="https://manual.seafile.com/build_seafile/linux.html">here</a>. [<a href="">Patch <strong>no longer avaiable, new version at following sections</strong></a>]</p>
 
-<h4 id="how-to-collect-data-1">How to collect data</h4>
+<h3 id="how-to-collect-data-1">How to collect data</h3>
 
 <p>We also need everything be done using scripting. But this time I only design added some distance between two increasing files’ sizes.</p>
 
@@ -103,7 +103,7 @@ awk <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.l
 </code></pre>
 </div>
 
-<h4 id="install-seafile-on-odroid-xu">Install Seafile on odroid xu</h4>
+<h3 id="install-seafile-on-odroid-xu">Install Seafile on odroid xu</h3>
 
 <p>Due to failure of my cross-compile to seafile on android. I used develop board as a replacement experiment platform for ARM-seafile testing. I used a <a href="http://www.hardkernel.com/main/products/prdt_info.php?g_code=G137510300620">odroid xu</a> as hardware standard. Because all I need is an ARM platform, only an ARM-Ubuntu is enough for me. But develop prototype on a board is much fun than coding, I won’t address much this time. But I’ll start a blog telling some really cool stuff I made for a strange aim.</p>
 
@@ -126,11 +126,11 @@ sync
 </code></pre>
 </div>
 
-<h2 id="section-1">2016-11</h2>
+<h1 id="section-1">2016-11</h1>
 
-<h3 id="android-kernel">Android Kernel</h3>
+<h2 id="android-kernel">Android Kernel</h2>
 
-<h4 id="how-to-build-an-android-kernel">How to build an Android Kernel?</h4>
+<h3 id="how-to-build-an-android-kernel">How to build an Android Kernel?</h3>
 
 <p>Generally, I won’t tell anything in this parts, just mark some related links, and point out some mistakes or error solutions.</p>
 
@@ -145,6 +145,38 @@ sync
   </li>
 </ul>
 
+<h1 id="section-2">2016-12</h1>
+
+<h2 id="android-kernel-1">Android Kernel</h2>
+
+<h3 id="how-to-compile-with-ftrace">How to compile with ftrace?</h3>
+
+<p>If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in <strong>arch/arm64/kernel/configs</strong>. We need to add few lines under that.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">CONFIG_STRICT_MEMORY_RWX</span><span class="o">=</span>y
+<span class="nv">CONFIG_FUNCTION_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_FUNCTION_GRAPH_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_DYNAMIC_FTRACE</span><span class="o">=</span>y
+<span class="nv">CONFIG_PERSISTENT_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_IRQSOFF_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_PREEMPT_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_SCHED_TRACER</span><span class="o">=</span>y
+<span class="nv">CONFIG_STACK_TRACER</span><span class="o">=</span>y
+</code></pre>
+</div>
+
+<h3 id="how-to-extract-android-images-dump-an-image">How to extract android images: Dump an image</h3>
+
+<p>If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, <a href="http://getpocket.com/redirect?url=http%3A%2F%2Fforum.xda-developers.com%2Fshowthread.php%3Ft%3D2450045">this article</a> provide three ways to dump an image, I picked one for easy using.</p>
+
+<div class="highlighter-rouge"><pre class="highlight"><code>adb shell
+ls -al /dev/block/<span class="nv">$SOME</span><span class="se">\_</span>PLATFORM/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE/by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
+
+<span class="c"># dump file</span>
+su
+dd <span class="k">if</span><span class="o">=</span>/dev/block/mmcblk0p37 <span class="nv">of</span><span class="o">=</span>/sdcard/boot.img
+</code></pre>
+</div>
 
   </article>
   
@@ -182,7 +214,7 @@ sync
     
       <li><a class="post-link" href="/archivers/freshman-from-china">Freshman from china ~ 人生修复者</a></li>
     
-      <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works</a></li>
+      <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
     
       <li><a class="post-link" href="/archivers/charles-is-not-a-good-tool">Using charles proxy to monitor mobile SSL traffics</a></li>
     
