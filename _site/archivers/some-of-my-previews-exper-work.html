@@ -22,6 +22,13 @@
     ga('send', 'pageview');
 
   </script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+          google_ad_client: "ca-pub-6651321038908478",
+              enable_page_level_ads: true
+                    });
+  </script>
 </head>
 
 
@@ -167,10 +174,10 @@ sync
 
 <h3 id="how-to-extract-android-images-dump-an-image">How to extract android images: Dump an image</h3>
 
-<p>If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, <a href="http://getpocket.com/redirect?url=http%3A%2F%2Fforum.xda-developers.com%2Fshowthread.php%3Ft%3D2450045">this article</a> provide three ways to dump an image, I picked one for easy using.</p>
+<p>If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, <a href="http://forum.xda-developers.com/showthread.php?t=2450045">this article</a> provide three ways to dump an image, I picked one for easy using.</p>
 
 <div class="highlighter-rouge"><pre class="highlight"><code>adb shell
-ls -al /dev/block/<span class="nv">$SOME</span><span class="se">\_</span>PLATFORM/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE/by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
+ls -al /dev/block/platform/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE../../by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
 
 <span class="c"># dump file</span>
 su

@@ -95,11 +95,11 @@ CONFIG_STACK_TRACER=y
 
 ### How to extract android images: Dump an image
 
-If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, [this article](http://getpocket.com/redirect?url=http%3A%2F%2Fforum.xda-developers.com%2Fshowthread.php%3Ft%3D2450045) provide three ways to dump an image, I picked one for easy using.
+If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, [this article](http://forum.xda-developers.com/showthread.php?t=2450045) provide three ways to dump an image, I picked one for easy using.
 
 ~~~~bash
 adb shell
-ls -al /dev/block/$SOME\_PLATFORM/$SOME\_DEVICE/by-name # {Partitions} -> {Device Block}
+ls -al /dev/block/platform/$SOME\_DEVICE../../by-name # {Partitions} -> {Device Block}
 
 # dump file
 su

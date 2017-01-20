@@ -6,8 +6,8 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 29 Dec 2016 11:06:02 -0500</pubDate>
-    <lastBuildDate>Thu, 29 Dec 2016 11:06:02 -0500</lastBuildDate>
+    <pubDate>Fri, 20 Jan 2017 14:17:35 -0500</pubDate>
+    <lastBuildDate>Fri, 20 Jan 2017 14:17:35 -0500</lastBuildDate>
     <generator>Jekyll v3.0.1</generator>
     
       <item>
@@ -165,10 +165,10 @@ sync
 
 &lt;h3 id=&quot;how-to-extract-android-images-dump-an-image&quot;&gt;How to extract android images: Dump an image&lt;/h3&gt;
 
-&lt;p&gt;If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, &lt;a href=&quot;http://getpocket.com/redirect?url=http%3A%2F%2Fforum.xda-developers.com%2Fshowthread.php%3Ft%3D2450045&quot;&gt;this article&lt;/a&gt; provide three ways to dump an image, I picked one for easy using.&lt;/p&gt;
+&lt;p&gt;If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, &lt;a href=&quot;http://forum.xda-developers.com/showthread.php?t=2450045&quot;&gt;this article&lt;/a&gt; provide three ways to dump an image, I picked one for easy using.&lt;/p&gt;
 
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
-ls -al /dev/block/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;PLATFORM/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE/by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
+ls -al /dev/block/platform/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE../../by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# dump file&lt;/span&gt;
 su
