@@ -72,7 +72,7 @@
   <article class="post-content">
     <p>This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.</p>
 
-<h1 id="section">2016-10</h1>
+<h1 id="2016-10">2016-10</h1>
 
 <h2 id="time-experiment-of-rsync">Time Experiment of rsync</h2>
 
@@ -80,7 +80,7 @@
 
 <h3 id="how-to-collect-data">How to collect data</h3>
 
-<p>Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.<br />
+<p>Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.
 But we also need some bash script to collect data through different size of random size and with different modification through them.</p>
 
 <ul>
@@ -103,7 +103,7 @@ But we also need some bash script to collect data through different size of rand
   <li>We need to use this simple awk code and vim operation to extract data.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># CDC: content defined chucks</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># CDC: content defined chucks</span>
 <span class="c"># HUT: Http upload traffic</span>
 <span class="c"># ALL: overall time of one commit &amp; upload</span>
 awk <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.log &gt; results.stat
@@ -125,7 +125,7 @@ awk <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.l
   </li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># If .img end with xz, use this command to uncompress first</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># If .img end with xz, use this command to uncompress first</span>
 unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
 <span class="c"># Burn image into SD-card</span>
 sudo dd <span class="k">if</span><span class="o">=</span>ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">conv</span><span class="o">=</span>fsync
@@ -133,7 +133,7 @@ sync
 </code></pre>
 </div>
 
-<h1 id="section-1">2016-11</h1>
+<h1 id="2016-11">2016-11</h1>
 
 <h2 id="android-kernel">Android Kernel</h2>
 
@@ -143,8 +143,8 @@ sync
 
 <ul>
   <li>
-    <p><a href="http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build">Google Official Guide</a><br />
-– If you don’t have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.<br />
+    <p><a href="http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build">Google Official Guide</a>
+– If you don’t have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.
 — <a href="https://android.googlesource.com/?format=HTML">ASOP git root</a>, under sub class “/platform/prebuilts/gcc”</p>
   </li>
   <li>
@@ -152,7 +152,7 @@ sync
   </li>
 </ul>
 
-<h1 id="section-2">2016-12</h1>
+<h1 id="2016-12">2016-12</h1>
 
 <h2 id="android-kernel-1">Android Kernel</h2>
 
@@ -160,7 +160,7 @@ sync
 
 <p>If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in <strong>arch/arm64/kernel/configs</strong>. We need to add few lines under that.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="nv">CONFIG_STRICT_MEMORY_RWX</span><span class="o">=</span>y
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">CONFIG_STRICT_MEMORY_RWX</span><span class="o">=</span>y
 <span class="nv">CONFIG_FUNCTION_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_FUNCTION_GRAPH_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_DYNAMIC_FTRACE</span><span class="o">=</span>y
@@ -176,7 +176,7 @@ sync
 
 <p>If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, <a href="http://forum.xda-developers.com/showthread.php?t=2450045">this article</a> provide three ways to dump an image, I picked one for easy using.</p>
 
-<div class="highlighter-rouge"><pre class="highlight"><code>adb shell
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb shell
 ls -al /dev/block/platform/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE../../by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
 
 <span class="c"># dump file</span>
@@ -216,10 +216,6 @@ dd <span class="k">if</span><span class="o">=</span>/dev/block/mmcblk0p37 <span 
 <div class="col-box">
   <div class="col-box-title">Newest Posts</div>
   <ul class="post-list">
-    
-      <li><a class="post-link" href="/archivers/design-a-board-game">How to design a board game, step by step</a></li>
-    
-      <li><a class="post-link" href="/archivers/freshman-from-china">Freshman from china ~ 人生修复者</a></li>
     
       <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
     

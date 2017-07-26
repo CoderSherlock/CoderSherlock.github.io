@@ -70,7 +70,7 @@
   </header>
 
   <article class="post-content">
-    <p>In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn’t provide us a method to modify their own certs. For these situation, I still didn’t find a good solutions for it. But I’ll keep updating this if I get one.  <br />
+    <p>In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn’t provide us a method to modify their own certs. For these situation, I still didn’t find a good solutions for it. But I’ll keep updating this if I get one.<br />
 My current solution is using AP to forward all SSL traffic to a proxy, <a href="https://www.charlesproxy.com/">charles proxy</a> is my first choice (Prof asked). It’s a non-free software which still update new versions now. So mainly, I’ll talk about how to charles SSL proxy.</p>
 
 <h3 id="preparations">Preparations</h3>
@@ -86,7 +86,7 @@ My current solution is using AP to forward all SSL traffic to a proxy, <a href="
   <li>You have to install charles first. After downloading the charles proxy, you have to unzip it and configure some basic settings.</li>
 </ul>
 
-<div class="highlighter-rouge"><pre class="highlight"><code><span class="c"># open charles first</span>
+<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># open charles first</span>
 ./bin/charles  
 </code></pre>
 </div>
@@ -94,7 +94,7 @@ My current solution is using AP to forward all SSL traffic to a proxy, <a href="
   <li>Save charles’ private key and public key</li>
 </ul>
 
-<p>In Help -&gt; SSL Proxying -&gt; Export Charles Root Certificate and Private Key, enter a password and save the public and private key in *.p12 format.  <br />
+<p>In Help -&gt; SSL Proxying -&gt; Export Charles Root Certificate and Private Key, enter a password and save the public and private key in *.p12 format.<br />
 You also need to save charles Root Certificate, it also contains in the same menu. For convience, save it as *.pem format.</p>
 
 <ul>
@@ -132,10 +132,6 @@ You also need to save charles Root Certificate, it also contains in the same men
 <div class="col-box">
   <div class="col-box-title">Newest Posts</div>
   <ul class="post-list">
-    
-      <li><a class="post-link" href="/archivers/design-a-board-game">How to design a board game, step by step</a></li>
-    
-      <li><a class="post-link" href="/archivers/freshman-from-china">Freshman from china ~ 人生修复者</a></li>
     
       <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
     

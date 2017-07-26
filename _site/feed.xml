@@ -2,68 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Stop Talking, Start Doing - 停止空想，开始行动</title>
-    <description>My personal blog, with some boring research staff and some tricks I was fancy to. I&#39;ll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
+    <description>My personal blog, with some boring research staff and some tricks I was fancy to. I'll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 20 Jan 2017 14:17:35 -0500</pubDate>
-    <lastBuildDate>Fri, 20 Jan 2017 14:17:35 -0500</lastBuildDate>
-    <generator>Jekyll v3.0.1</generator>
-    
-      <item>
-        <title>How to design a board game, step by step</title>
-        <description>&lt;h1 id=&quot;history&quot;&gt;History&lt;/h1&gt;
-&lt;p&gt;I always want to design a board game, but unfortunately, I have higher expectation on this design so that I can even finish one during these years. My dreaming work must be suit for both entertainment and competition, which both amateurs or pros can enjoy this game.&lt;/p&gt;
-
-&lt;p&gt;My first designed board game is &lt;em&gt;“SimCity ~ Board version”&lt;/em&gt;. It was a great fun when I was in forth grade of elementary. Compare to a board game, it’s more like a paper-version web game. I offer everything include game design, a “database” (notebook) to record all players status. At beginning, it wasn’t that popular, but my classmates love it. With several weeks running, 30 players joined this silly game and students from other classes came for me to join my game. During three month testing, I released more than &lt;strong&gt;120&lt;/strong&gt; new buildings, &lt;strong&gt;15&lt;/strong&gt; new activities and even made this game payable. It sounds stupid, but lots of them rather pay 50 cents for accelerating their construction. I also faced competitors, but no one wants to play their bad designed game. At least for myself, I won’t spent players’ 20 hours for just a nuclear plant, offer them a lottery that every players whose level is up to 20 can get chance to win their own plants (Trust me, my lottery only have 0.01 chance that you win nothing, and anyone can get free tickets everyday and only pay 10 cents for a spare lottery ticket). Of course, my board game didn’t last for long. Before final weeks, I made a statement that game will closed. At the evening after statement, I wrote wealthy rank for all players to let all of them know who wins or lose.&lt;/p&gt;
-
-&lt;p&gt;This history always encourage me to design a new board game, but this time I am not facing to young boys and girls who don’t have too much to play at school. I admit this is a serious challenge to me but I’ll try my best to make this game fun to play.&lt;/p&gt;
-
-&lt;h1 id=&quot;my-dream&quot;&gt;My dream&lt;/h1&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Better for two players&lt;/li&gt;
-  &lt;li&gt;Competitive&lt;/li&gt;
-  &lt;li&gt;Do have fortune features, but good strategy can guarantee winning&lt;/li&gt;
-  &lt;li&gt;Simple, better to be PnP (Print and Play)&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&quot;preparation&quot;&gt;Preparation&lt;/h1&gt;
-
-&lt;h2 id=&quot;warm-up&quot;&gt;Warm-up&lt;/h2&gt;
-&lt;p&gt;&lt;a href=&quot;https://docs.google.com/document/d/1V_czXDnFuQfNyzLM7R5FUrX0vYD9QR17R3FQQ25pjZY/edit?usp=sharing&quot;&gt;Island-Combat&lt;/a&gt; is my first idea. I designed it in Chinese, but you may free to guess what these figures mean.&lt;/p&gt;
-
-&lt;h1 id=&quot;game-concepts&quot;&gt;Game Concepts&lt;/h1&gt;
-
-&lt;h1 id=&quot;develop-process&quot;&gt;Develop Process&lt;/h1&gt;
-</description>
-        <pubDate>Tue, 27 Dec 2016 13:39:25 -0500</pubDate>
-        <link>https://codersherlock.github.com//archivers/design-a-board-game</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/design-a-board-game</guid>
-        
-        
-        <category>Fun</category>
-        
-      </item>
-    
-      <item>
-        <title>Freshman from china ~ 人生修复者</title>
-        <description>&lt;p&gt;在题目上，我就厚着脸皮装了一次嫩。虽然这一年多的时间，每逢与人交谈，我总会以 Graduate Freshmen 自称。但是总感觉自己在一天一天的变得消沉和无趣。不知道成熟是何物的我试图一直保持自己乐观到单纯的性格，但随着保持时间的变长，我已然不知自己究竟是真的傻还是装的蠢了。一直与人无争的我终还是变得扭曲搬的“孤傲”了起来。&lt;/p&gt;
-</description>
-        <pubDate>Wed, 23 Nov 2016 22:58:00 -0500</pubDate>
-        <link>https://codersherlock.github.com//archivers/freshman-from-china</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/freshman-from-china</guid>
-        
-        
-        <category>Nonsense</category>
-        
-      </item>
+    <pubDate>Wed, 26 Jul 2017 12:22:04 -0400</pubDate>
+    <lastBuildDate>Wed, 26 Jul 2017 12:22:04 -0400</lastBuildDate>
+    <generator>Jekyll v3.5.1</generator>
     
       <item>
         <title>Some of my previews experiment works: 2016</title>
         <description>&lt;p&gt;This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.&lt;/p&gt;
 
-&lt;h1 id=&quot;section&quot;&gt;2016-10&lt;/h1&gt;
+&lt;h1 id=&quot;2016-10&quot;&gt;2016-10&lt;/h1&gt;
 
 &lt;h2 id=&quot;time-experiment-of-rsync&quot;&gt;Time Experiment of rsync&lt;/h2&gt;
 
@@ -71,7 +22,7 @@
 
 &lt;h3 id=&quot;how-to-collect-data&quot;&gt;How to collect data&lt;/h3&gt;
 
-&lt;p&gt;Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.&lt;br /&gt;
+&lt;p&gt;Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.
 But we also need some bash script to collect data through different size of random size and with different modification through them.&lt;/p&gt;
 
 &lt;ul&gt;
@@ -94,10 +45,10 @@ But we also need some bash script to collect data through different size of rand
   &lt;li&gt;We need to use this simple awk code and vim operation to extract data.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CDC: content defined chucks&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CDC: content defined chucks&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# HUT: Http upload traffic&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# ALL: overall time of one commit &amp;amp; upload&lt;/span&gt;
-awk &lt;span class=&quot;s1&quot;&gt;&#39;/CDC|HUT|ALL/ {print $4,$5}&#39;&lt;/span&gt; ~/.ccnet/log/seafile.log &amp;gt; results.stat
+awk &lt;span class=&quot;s1&quot;&gt;'/CDC|HUT|ALL/ {print $4,$5}'&lt;/span&gt; ~/.ccnet/log/seafile.log &amp;gt; results.stat
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -116,7 +67,7 @@ awk &lt;span class=&quot;s1&quot;&gt;&#39;/CDC|HUT|ALL/ {print $4,$5}&#39;&lt;/s
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If .img end with xz, use this command to uncompress first&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If .img end with xz, use this command to uncompress first&lt;/span&gt;
 unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
 &lt;span class=&quot;c&quot;&gt;# Burn image into SD-card&lt;/span&gt;
 sudo dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1M &lt;span class=&quot;nv&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fsync
@@ -124,7 +75,7 @@ sync
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
-&lt;h1 id=&quot;section-1&quot;&gt;2016-11&lt;/h1&gt;
+&lt;h1 id=&quot;2016-11&quot;&gt;2016-11&lt;/h1&gt;
 
 &lt;h2 id=&quot;android-kernel&quot;&gt;Android Kernel&lt;/h2&gt;
 
@@ -134,8 +85,8 @@ sync
 
 &lt;ul&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;a href=&quot;http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build&quot;&gt;Google Official Guide&lt;/a&gt;&lt;br /&gt;
-– If you don’t have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.&lt;br /&gt;
+    &lt;p&gt;&lt;a href=&quot;http://source.android.com/source/building-kernels.html#figuring-out-which-kernel-to-build&quot;&gt;Google Official Guide&lt;/a&gt;
+– If you don’t have AOSP sources, you have to download prebuilt toolchains which recommended in this guide might not be correct. Use following links to choose your fitting tools.
 — &lt;a href=&quot;https://android.googlesource.com/?format=HTML&quot;&gt;ASOP git root&lt;/a&gt;, under sub class “/platform/prebuilts/gcc”&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
@@ -143,7 +94,7 @@ sync
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&quot;section-2&quot;&gt;2016-12&lt;/h1&gt;
+&lt;h1 id=&quot;2016-12&quot;&gt;2016-12&lt;/h1&gt;
 
 &lt;h2 id=&quot;android-kernel-1&quot;&gt;Android Kernel&lt;/h2&gt;
 
@@ -151,7 +102,7 @@ sync
 
 &lt;p&gt;If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in &lt;strong&gt;arch/arm64/kernel/configs&lt;/strong&gt;. We need to add few lines under that.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CONFIG_STRICT_MEMORY_RWX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CONFIG_STRICT_MEMORY_RWX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_GRAPH_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_DYNAMIC_FTRACE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
@@ -167,7 +118,7 @@ sync
 
 &lt;p&gt;If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, &lt;a href=&quot;http://forum.xda-developers.com/showthread.php?t=2450045&quot;&gt;this article&lt;/a&gt; provide three ways to dump an image, I picked one for easy using.&lt;/p&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
 ls -al /dev/block/platform/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE../../by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# dump file&lt;/span&gt;
@@ -187,7 +138,7 @@ dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&g
     
       <item>
         <title>Using charles proxy to monitor mobile SSL traffics</title>
-        <description>&lt;p&gt;In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn’t provide us a method to modify their own certs. For these situation, I still didn’t find a good solutions for it. But I’ll keep updating this if I get one.  &lt;br /&gt;
+        <description>&lt;p&gt;In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn’t provide us a method to modify their own certs. For these situation, I still didn’t find a good solutions for it. But I’ll keep updating this if I get one.&lt;br /&gt;
 My current solution is using AP to forward all SSL traffic to a proxy, &lt;a href=&quot;https://www.charlesproxy.com/&quot;&gt;charles proxy&lt;/a&gt; is my first choice (Prof asked). It’s a non-free software which still update new versions now. So mainly, I’ll talk about how to charles SSL proxy.&lt;/p&gt;
 
 &lt;h3 id=&quot;preparations&quot;&gt;Preparations&lt;/h3&gt;
@@ -203,7 +154,7 @@ My current solution is using AP to forward all SSL traffic to a proxy, &lt;a hre
   &lt;li&gt;You have to install charles first. After downloading the charles proxy, you have to unzip it and configure some basic settings.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# open charles first&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# open charles first&lt;/span&gt;
 ./bin/charles  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
@@ -211,7 +162,7 @@ My current solution is using AP to forward all SSL traffic to a proxy, &lt;a hre
   &lt;li&gt;Save charles’ private key and public key&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;In Help -&amp;gt; SSL Proxying -&amp;gt; Export Charles Root Certificate and Private Key, enter a password and save the public and private key in *.p12 format.  &lt;br /&gt;
+&lt;p&gt;In Help -&amp;gt; SSL Proxying -&amp;gt; Export Charles Root Certificate and Private Key, enter a password and save the public and private key in *.p12 format.&lt;br /&gt;
 You also need to save charles Root Certificate, it also contains in the same menu. For convience, save it as *.pem format.&lt;/p&gt;
 
 &lt;ul&gt;
