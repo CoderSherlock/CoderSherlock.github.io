@@ -6,11 +6,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Short talk about Unikernels « Stop Talking, Start Doing - 停止空想，开始行动</title>
-  <meta name="description" content="What is Unikernel?Unikernels are specialised, single-address-space images contructed by using library operating systems.">
+  <title>Xv6 introduction « Stop Talking, Start Doing - 停止空想，开始行动</title>
+  <meta name="description" content="I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://codersherlock.github.com//archivers/term-comp">
+  <link rel="canonical" href="https://codersherlock.github.com//archivers/intro-xv6">
   <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="https://codersherlock.github.com//feed.xml" />
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -65,29 +65,35 @@
           <div class="post">
 
   <header class="post-header">
-    <h1 class="post-title">Short talk about Unikernels</h1>
-    <p class="post-meta">Jul 26, 2017</p>
+    <h1 class="post-title">Xv6 introduction</h1>
+    <p class="post-meta">Jul 28, 2017</p>
   </header>
 
   <article class="post-content">
-    <h2 id="what-is-unikernel">What is Unikernel?</h2>
-<p>Unikernels are specialised, single-address-space images contructed by using library operating systems.</p>
+    <p>I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.</p>
 
-<h2 id="unikernels">Unikernels</h2>
+<hr />
 
-<h2 id="challenges">Challenges</h2>
+<h2 id="xv6-systemcall">Xv6 Systemcall</h2>
+<p>To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file <em>user.h</em>.</p>
 
-<h2 id="user-level-vitualization">User-level vitualization</h2>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="kt">void</span> <span class="n">function</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+</code></pre>
+</div>
 
-<h2 id="related-works">Related works</h2>
+<p>This interface-like function will then pass the function name, in this case function, to <em>usys.S</em>. When using user mode function in programs, <em>usys.S</em> will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from <em>syscall.c</em> and determining whether this system call is available. We must define same name system function and add it into <em>syscall.h</em> and <em>syscall.c</em>.</p>
 
-<h1 id="chinese-version">Chinese version</h1>
+<div class="language-c highlighter-rouge"><pre class="highlight"><code><span class="cp">#define SYS_function ##		// ## is the system call number
+</span>
+<span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span>	<span class="c1">// real system function name
+</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="n">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>	<span class="c1">// real system function declaration
+</span></code></pre>
+</div>
 
-<h2 id="u">U</h2>
-<h2 id="c">C</h2>
-<h2 id="d">D</h2>
-<h2 id="r">R</h2>
+<p>After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.</p>
 
+<p>Sometimes, we need to pass variables among system calls. In this case, variables’ values are not necessary and even can’t be pass directly into system_function. When invoke a system call function, all variables of this system call will be pushed into current process’ stack. In file <em>syscall.c</em>, multiple functions are provided to get these variables from the process. I won’t waste time on explaining how to use these functions especially when elegant and detailed comments were written in source codes. However, I will explain concepts and how process organized and works in xv6 in future articles.</p>
 
   </article>
   
@@ -121,7 +127,9 @@
   <div class="col-box-title">Newest Posts</div>
   <ul class="post-list">
     
-      <li><a class="post-link" href="/archivers/term-comp">Short talk about Unikernels</a></li>
+      <li><a class="post-link" href="/archivers/intro-xv6">Xv6 introduction</a></li>
+    
+      <li><a class="post-link" href="/archivers/intro-unikernel">Short talk about Unikernels</a></li>
     
       <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
     
