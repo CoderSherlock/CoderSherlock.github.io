@@ -46,14 +46,21 @@ Binghamton, NY 13902
 	
 
 ## Publications
-- **[EdgeCourier: An Edge-hosted Personal Service for Low-bandwidth Document Synchronization in Mobile Cloud Storage Services]()** **[[slide]()]**  
+- **[A Case for Web Service Bandwidth Reduction on Mobile Devices with Edge-hosted Personal Services ]()**   
+Yongshu Bai, **Pengzhan Hao**, and Yifan Zhang   
+The 37th IEEE International Conference on Computer Communications (**IEEE INFOCOM**)  
+Honolulu, HI, USA, 2018.  
+  
+- **[EdgeCourier: An Edge-hosted Personal Service for Low-bandwidth Document Synchronization in Mobile Cloud Storage Services](/static/2018-02/a7-hao.pdf)** **[[slide]()]**  
 **Pengzhan Hao**, Yongshu Bai, Xin Zhang, and Yifan Zhang  
 The 2nd ACM/IEEE Symposium on Edge Computing (**ACM/IEEE SEC**)  
 San Jose, CA, USA, 2017.  
+  
 - **[Poster: Securing Device Inputs for Smartphones Using Hypervisor Based Approach](/static/2017-07/p169-zhang.pdf)**  
 Xin Zhang, Yongshu Bai, **Pengzhan Hao**, and Yifan Zhang  
 The 15th ACM International Conference on Mobile Systems, Applications, and Services (ACM MobiSys)  
 Niagara Falls, NY, USA, 2017.  
+  
 - **[Poster: EPS - Edge-hosted Personal Services for Mobile Users](/static/2017-07/p163-hao.pdf) [[poster](/static/2017-07/eps_poster.pdf)]**  
 **Pengzhan Hao**, Yongshu Bai, Xin Zhang, and Yifan Zhang  
 The 15th ACM International Conference on Mobile Systems, Applications, and Services (ACM MobiSys)  
