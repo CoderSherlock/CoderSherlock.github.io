@@ -83,9 +83,7 @@
 <p>This interface-like function will then pass the function name, in this case function, to <em>usys.S</em>. When using user mode function in programs, <em>usys.S</em> will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from <em>syscall.c</em> and determining whether this system call is available. We must define same name system function and add it into <em>syscall.h</em> and <em>syscall.c</em>.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define SYS_function ##		// ## is the system call number
-</span>
-<span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span>	<span class="c1">// real system function name</span>
-
+</span><span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span>	<span class="c1">// real system function name</span>
 <span class="k">extern</span> <span class="kt">int</span> <span class="n">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>	<span class="c1">// real system function declaration</span>
 </code></pre></div></div>
 

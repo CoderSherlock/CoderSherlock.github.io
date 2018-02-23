@@ -6,8 +6,8 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 23 Feb 2018 15:23:54 -0500</pubDate>
-    <lastBuildDate>Fri, 23 Feb 2018 15:23:54 -0500</lastBuildDate>
+    <pubDate>Fri, 23 Feb 2018 15:42:08 -0500</pubDate>
+    <lastBuildDate>Fri, 23 Feb 2018 15:42:08 -0500</lastBuildDate>
     <generator>Jekyll v3.7.2</generator>
     
       <item>
@@ -25,9 +25,7 @@
 &lt;p&gt;This interface-like function will then pass the function name, in this case function, to &lt;em&gt;usys.S&lt;/em&gt;. When using user mode function in programs, &lt;em&gt;usys.S&lt;/em&gt; will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from &lt;em&gt;syscall.c&lt;/em&gt; and determining whether this system call is available. We must define same name system function and add it into &lt;em&gt;syscall.h&lt;/em&gt; and &lt;em&gt;syscall.c&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##		// ## is the system call number
-&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
-
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
 &lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
