@@ -4,11 +4,11 @@
     <title>Stop Talking, Start Doing - 停止空想，开始行动</title>
     <description>My personal blog, with some boring research staff and some tricks I was fancy to. I'll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
 </description>
-    <link>https://codersherlock.github.com//</link>
-    <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Jul 2017 15:25:24 -0400</pubDate>
-    <lastBuildDate>Fri, 28 Jul 2017 15:25:24 -0400</lastBuildDate>
-    <generator>Jekyll v3.5.1</generator>
+    <link>http://localhost:4000/</link>
+    <atom:link href="http://localhost:4000/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Fri, 23 Feb 2018 15:10:22 -0500</pubDate>
+    <lastBuildDate>Fri, 23 Feb 2018 15:10:22 -0500</lastBuildDate>
+    <generator>Jekyll v3.7.2</generator>
     
       <item>
         <title>Xv6 introduction</title>
@@ -19,27 +19,25 @@
 &lt;h2 id=&quot;xv6-systemcall&quot;&gt;Xv6 Systemcall&lt;/h2&gt;
 &lt;p&gt;To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file &lt;em&gt;user.h&lt;/em&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;This interface-like function will then pass the function name, in this case function, to &lt;em&gt;usys.S&lt;/em&gt;. When using user mode function in programs, &lt;em&gt;usys.S&lt;/em&gt; will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from &lt;em&gt;syscall.c&lt;/em&gt; and determining whether this system call is available. We must define same name system function and add it into &lt;em&gt;syscall.h&lt;/em&gt; and &lt;em&gt;syscall.c&lt;/em&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##		// ## is the system call number
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##		// ## is the system call number
 &lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name
-&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration
-&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
+
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.&lt;/p&gt;
 
 &lt;p&gt;Sometimes, we need to pass variables among system calls. In this case, variables’ values are not necessary and even can’t be pass directly into system_function. When invoke a system call function, all variables of this system call will be pushed into current process’ stack. In file &lt;em&gt;syscall.c&lt;/em&gt;, multiple functions are provided to get these variables from the process. I won’t waste time on explaining how to use these functions especially when elegant and detailed comments were written in source codes. However, I will explain concepts and how process organized and works in xv6 in future articles.&lt;/p&gt;
 </description>
         <pubDate>Fri, 28 Jul 2017 14:56:55 -0400</pubDate>
-        <link>https://codersherlock.github.com//archivers/intro-xv6</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/intro-xv6</guid>
+        <link>http://localhost:4000/archivers/intro-xv6</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/intro-xv6</guid>
         
         
         <category>xv6</category>
@@ -68,8 +66,8 @@
 
 </description>
         <pubDate>Wed, 26 Jul 2017 12:42:33 -0400</pubDate>
-        <link>https://codersherlock.github.com//archivers/intro-unikernel</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/intro-unikernel</guid>
+        <link>http://localhost:4000/archivers/intro-unikernel</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/intro-unikernel</guid>
         
         
         <category>unikernel</category>
@@ -111,12 +109,11 @@ But we also need some bash script to collect data through different size of rand
   &lt;li&gt;We need to use this simple awk code and vim operation to extract data.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CDC: content defined chucks&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# CDC: content defined chucks&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# HUT: Http upload traffic&lt;/span&gt;
 &lt;span class=&quot;c&quot;&gt;# ALL: overall time of one commit &amp;amp; upload&lt;/span&gt;
-awk &lt;span class=&quot;s1&quot;&gt;'/CDC|HUT|ALL/ {print $4,$5}'&lt;/span&gt; ~/.ccnet/log/seafile.log &amp;gt; results.stat
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;awk&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'/CDC|HUT|ALL/ {print $4,$5}'&lt;/span&gt; ~/.ccnet/log/seafile.log &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; results.stat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;install-seafile-on-odroid-xu&quot;&gt;Install Seafile on odroid xu&lt;/h3&gt;
 
@@ -133,13 +130,12 @@ awk &lt;span class=&quot;s1&quot;&gt;'/CDC|HUT|ALL/ {print $4,$5}'&lt;/span&gt; 
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If .img end with xz, use this command to uncompress first&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# If .img end with xz, use this command to uncompress first&lt;/span&gt;
 unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
 &lt;span class=&quot;c&quot;&gt;# Burn image into SD-card&lt;/span&gt;
-sudo dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1M &lt;span class=&quot;nv&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fsync
-sync
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;sudo dd &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/sdb &lt;span class=&quot;nv&quot;&gt;bs&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1M &lt;span class=&quot;nv&quot;&gt;conv&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fsync
+&lt;span class=&quot;nb&quot;&gt;sync&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h1 id=&quot;2016-11&quot;&gt;2016-11&lt;/h1&gt;
 
@@ -168,7 +164,7 @@ sync
 
 &lt;p&gt;If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in &lt;strong&gt;arch/arm64/kernel/configs&lt;/strong&gt;. We need to add few lines under that.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CONFIG_STRICT_MEMORY_RWX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;CONFIG_STRICT_MEMORY_RWX&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_FUNCTION_GRAPH_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_DYNAMIC_FTRACE&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
@@ -177,25 +173,23 @@ sync
 &lt;span class=&quot;nv&quot;&gt;CONFIG_PREEMPT_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_SCHED_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
 &lt;span class=&quot;nv&quot;&gt;CONFIG_STACK_TRACER&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;how-to-extract-android-images-dump-an-image&quot;&gt;How to extract android images: Dump an image&lt;/h3&gt;
 
 &lt;p&gt;If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, &lt;a href=&quot;http://forum.xda-developers.com/showthread.php?t=2450045&quot;&gt;this article&lt;/a&gt; provide three ways to dump an image, I picked one for easy using.&lt;/p&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
-ls -al /dev/block/platform/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE../../by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;adb shell
+&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-al&lt;/span&gt; /dev/block/platform/&lt;span class=&quot;nv&quot;&gt;$SOME&lt;/span&gt;&lt;span class=&quot;se&quot;&gt;\_&lt;/span&gt;DEVICE../../by-name &lt;span class=&quot;c&quot;&gt;# {Partitions} -&amp;gt; {Device Block}&lt;/span&gt;
 
 &lt;span class=&quot;c&quot;&gt;# dump file&lt;/span&gt;
 su
-dd &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/block/mmcblk0p37 &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/sdcard/boot.img
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;span class=&quot;nb&quot;&gt;dd &lt;/span&gt;&lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/dev/block/mmcblk0p37 &lt;span class=&quot;nv&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;/sdcard/boot.img
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 28 Oct 2016 12:27:33 -0400</pubDate>
-        <link>https://codersherlock.github.com//archivers/some-of-my-previews-exper-work</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/some-of-my-previews-exper-work</guid>
+        <link>http://localhost:4000/archivers/some-of-my-previews-exper-work</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/some-of-my-previews-exper-work</guid>
         
         
         <category>Research</category>
@@ -220,10 +214,9 @@ My current solution is using AP to forward all SSL traffic to a proxy, &lt;a hre
   &lt;li&gt;You have to install charles first. After downloading the charles proxy, you have to unzip it and configure some basic settings.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# open charles first&lt;/span&gt;
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c&quot;&gt;# open charles first&lt;/span&gt;
 ./bin/charles  
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 &lt;ul&gt;
   &lt;li&gt;Save charles’ private key and public key&lt;/li&gt;
 &lt;/ul&gt;
@@ -236,8 +229,8 @@ You also need to save charles Root Certificate, it also contains in the same men
 &lt;/ul&gt;
 </description>
         <pubDate>Thu, 27 Oct 2016 22:50:33 -0400</pubDate>
-        <link>https://codersherlock.github.com//archivers/charles-is-not-a-good-tool</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/charles-is-not-a-good-tool</guid>
+        <link>http://localhost:4000/archivers/charles-is-not-a-good-tool</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/charles-is-not-a-good-tool</guid>
         
         
         <category>Network</category>
@@ -249,8 +242,8 @@ You also need to save charles Root Certificate, it also contains in the same men
         <description>
 </description>
         <pubDate>Wed, 26 Oct 2016 22:50:33 -0400</pubDate>
-        <link>https://codersherlock.github.com//archivers/hello</link>
-        <guid isPermaLink="true">https://codersherlock.github.com//archivers/hello</guid>
+        <link>http://localhost:4000/archivers/hello</link>
+        <guid isPermaLink="true">http://localhost:4000/archivers/hello</guid>
         
         
         <category>Nonsense</category>

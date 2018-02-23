@@ -10,8 +10,8 @@
   <meta name="description" content="This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.">
 
   <link rel="stylesheet" href="/css/main.css">
-  <link rel="canonical" href="https://codersherlock.github.com//archivers/some-of-my-previews-exper-work">
-  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="https://codersherlock.github.com//feed.xml" />
+  <link rel="canonical" href="http://localhost:4000/archivers/some-of-my-previews-exper-work">
+  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="http://localhost:4000/feed.xml" />
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -24,10 +24,10 @@
   </script>
   <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
   <script>
-  (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-6651321038908478",
-              enable_page_level_ads: true
-                    });
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6651321038908478",
+      enable_page_level_ads: true
+    });
   </script>
 </head>
 
@@ -103,12 +103,11 @@ But we also need some bash script to collect data through different size of rand
   <li>We need to use this simple awk code and vim operation to extract data.</li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># CDC: content defined chucks</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># CDC: content defined chucks</span>
 <span class="c"># HUT: Http upload traffic</span>
 <span class="c"># ALL: overall time of one commit &amp; upload</span>
-awk <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.log &gt; results.stat
-</code></pre>
-</div>
+<span class="nb">awk</span> <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.log <span class="o">&gt;</span> results.stat
+</code></pre></div></div>
 
 <h3 id="install-seafile-on-odroid-xu">Install Seafile on odroid xu</h3>
 
@@ -125,13 +124,12 @@ awk <span class="s1">'/CDC|HUT|ALL/ {print $4,$5}'</span> ~/.ccnet/log/seafile.l
   </li>
 </ul>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="c"># If .img end with xz, use this command to uncompress first</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># If .img end with xz, use this command to uncompress first</span>
 unxz ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img.xz    
 <span class="c"># Burn image into SD-card</span>
-sudo dd <span class="k">if</span><span class="o">=</span>ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">conv</span><span class="o">=</span>fsync
-sync
-</code></pre>
-</div>
+<span class="nb">sudo dd </span><span class="k">if</span><span class="o">=</span>ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img <span class="nv">of</span><span class="o">=</span>/dev/sdb <span class="nv">bs</span><span class="o">=</span>1M <span class="nv">conv</span><span class="o">=</span>fsync
+<span class="nb">sync</span>
+</code></pre></div></div>
 
 <h1 id="2016-11">2016-11</h1>
 
@@ -160,7 +158,7 @@ sync
 
 <p>If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in <strong>arch/arm64/kernel/configs</strong>. We need to add few lines under that.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code><span class="nv">CONFIG_STRICT_MEMORY_RWX</span><span class="o">=</span>y
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">CONFIG_STRICT_MEMORY_RWX</span><span class="o">=</span>y
 <span class="nv">CONFIG_FUNCTION_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_FUNCTION_GRAPH_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_DYNAMIC_FTRACE</span><span class="o">=</span>y
@@ -169,21 +167,19 @@ sync
 <span class="nv">CONFIG_PREEMPT_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_SCHED_TRACER</span><span class="o">=</span>y
 <span class="nv">CONFIG_STACK_TRACER</span><span class="o">=</span>y
-</code></pre>
-</div>
+</code></pre></div></div>
 
 <h3 id="how-to-extract-android-images-dump-an-image">How to extract android images: Dump an image</h3>
 
 <p>If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, <a href="http://forum.xda-developers.com/showthread.php?t=2450045">this article</a> provide three ways to dump an image, I picked one for easy using.</p>
 
-<div class="language-bash highlighter-rouge"><pre class="highlight"><code>adb shell
-ls -al /dev/block/platform/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE../../by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>adb shell
+<span class="nb">ls</span> <span class="nt">-al</span> /dev/block/platform/<span class="nv">$SOME</span><span class="se">\_</span>DEVICE../../by-name <span class="c"># {Partitions} -&gt; {Device Block}</span>
 
 <span class="c"># dump file</span>
 su
-dd <span class="k">if</span><span class="o">=</span>/dev/block/mmcblk0p37 <span class="nv">of</span><span class="o">=</span>/sdcard/boot.img
-</code></pre>
-</div>
+<span class="nb">dd </span><span class="k">if</span><span class="o">=</span>/dev/block/mmcblk0p37 <span class="nv">of</span><span class="o">=</span>/sdcard/boot.img
+</code></pre></div></div>
 
   </article>
   
