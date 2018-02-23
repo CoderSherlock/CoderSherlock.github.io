@@ -29,7 +29,7 @@ Binghamton, NY 13902
 	- Supervised by [Juhua Pu](http://scse.buaa.edu.cn/buaa-css-web/toCardDetailAction.action?firstSelId=CARD_TMPL_OF_FIRST_NAVI_CN&secondSelId=CARD_TMPL_OF_ALL_TEACHER_CN&thirdSelId=&cardId=105c1bfe787-4d33-48eb-a05f-e2a6f3934216&language=0&curSelectNavId=CARD_TMPL_OF_ALL_TEACHER_CN), [Zhang Xiong](http://scse.buaa.edu.cn/buaa-css-web/toCardDetailAction.action?firstSelId=CARD_TMPL_OF_FIRST_NAVI_CN&secondSelId=CARD_TMPL_OF_ALL_TEACHER_CN&thirdSelId=&cardId=3063cc45-7b8b-441a-86b2-3a4f59c26bd40&language=0&curSelectNavId=CARD_TMPL_OF_ALL_TEACHER_CN), Related project: [Urban Computing](https://www.microsoft.com/en-us/research/project/urban-computing/)
 - 2013.10 - 2014.01 &nbsp;&nbsp;***Research Intern*** @ Institute of Software, Chinese Academy of Sciences, China  
 	- Analyzed mobile OS kernel and Localized portion with C language
-	- Supervised by [Cangzhou Yuan](http://soft.buaa.edu.cn/BuaaPublic/html/TeacherShow_64.html)
+	- Supervised by [Cangzhou Yuan](http://soft.buaa.edu.cn/info/1060/1307.htm)
 
 ## Research
 - Graduate
