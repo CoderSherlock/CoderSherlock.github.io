@@ -18,6 +18,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://codersherlock.github.com/" # the base hostname & protocol for your site
 twitter_username: haopengzhan
 github_username:  codersherlock
+disqus_shortname: codersherlockblog
 
 permalink: /archivers/:title
 gems:
