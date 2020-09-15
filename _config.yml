@@ -7,7 +7,7 @@
 
 # Site settings
 title: Stop Talking, Start Doing - 停止空想，开始行动  
-author: Pengzhan Hao - 碾子
+author: Pengzhan Hao
 avatar: "/static/avatar.jpg"
 email: haopengzhan@gmail.com 
 description: > # this means to ignore newlines until "baseurl:"
@@ -16,7 +16,7 @@ description: > # this means to ignore newlines until "baseurl:"
     all happens in my Lab.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://codersherlock.github.com/" # the base hostname & protocol for your site
-twitter_username: haopengzhan
+# twitter_username: haopengzhan
 github_username:  codersherlock
 disqus_shortname: codersherlockblog
 

@@ -6,27 +6,25 @@
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Sun, 09 Sep 2018 17:56:38 -0400</pubDate>
-    <lastBuildDate>Sun, 09 Sep 2018 17:56:38 -0400</lastBuildDate>
-    <generator>Jekyll v3.8.3</generator>
+    <pubDate>Tue, 15 Sep 2020 19:43:12 -0400</pubDate>
+    <lastBuildDate>Tue, 15 Sep 2020 19:43:12 -0400</lastBuildDate>
+    <generator>Jekyll v4.1.1</generator>
     
       <item>
         <title>Xv6 introduction</title>
         <description>&lt;p&gt;I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.&lt;/p&gt;
 
-&lt;hr /&gt;
-
 &lt;h2 id=&quot;xv6-systemcall&quot;&gt;Xv6 Systemcall&lt;/h2&gt;
 &lt;p&gt;To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file &lt;em&gt;user.h&lt;/em&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;This interface-like function will then pass the function name, in this case function, to &lt;em&gt;usys.S&lt;/em&gt;. When using user mode function in programs, &lt;em&gt;usys.S&lt;/em&gt; will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from &lt;em&gt;syscall.c&lt;/em&gt; and determining whether this system call is available. We must define same name system function and add it into &lt;em&gt;syscall.h&lt;/em&gt; and &lt;em&gt;syscall.c&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##		// ## is the system call number
 &lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.&lt;/p&gt;

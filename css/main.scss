@@ -3,12 +3,12 @@
 ---
 @charset "utf-8";
 
-$base-font-family: "Open Sans", "Helvetica Neue", "DejaVu Sans", Arial, "PingFang SC", "Noto Sans CJK SC", "Hiragino Sans GB", "微软雅黑",  Helvetica, sans-serif;
+$base-font-family: "Times New Roman";//"DejaVu Sans Mono", "PingFang SC", "DejaVu Sans", "Open Sans", "Helvetica Neue", Arial, "Noto Sans CJK SC", "Hiragino Sans GB", "微软雅黑",  Helvetica, sans-serif;
 $base-font-size:   15px;
-$small-font-size:  $base-font-size * 0.875;
-$base-line-height: 1.5;
+$small-font-size:  $base-font-size;
+$base-line-height: 1.35;
 
-$code-font-family:   Menlo, Monaco, Consolas, "DejaVu Sans Mono", "Liberation Mono", "文泉驿等宽微米黑", "Courier New", Courier, SimSun, monospace;
+$code-font-family:   "Courier New"; //Menlo, Monaco, Consolas, "DejaVu Sans Mono", "Liberation Mono", "文泉驿等宽微米黑", "Courier New", Courier, SimSun, monospace;
 $code-font-size:     12px;
 
 // Width of the content area
@@ -17,13 +17,13 @@ $content-width:    800px;
 $on-palm:          600px;
 $on-laptop:        800px;
 
-$color-link: #036;
-$color-link-hover: #069;
+$color-link: rgb(0, 0, 0);
+$color-link-hover: rgb(0, 35, 53);
 
-$header-bg: rgba(53, 0, 138, 0.89);
-$header-bg-hover: rgb(43, 0, 112);
+$header-bg: rgba(0, 0, 0, 1);
+$header-bg-hover: rgb(0, 0, 0);
 $header-link: rgb(255, 255, 255);
-$header-fg: #FFF;
+$header-fg: rgb(255, 255, 255);
 
 @mixin media-query($device) {
     @media screen and (max-width: $device) {

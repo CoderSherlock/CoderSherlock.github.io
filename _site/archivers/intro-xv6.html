@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/timeline.css">
   <link rel="canonical" href="https://codersherlock.github.com//archivers/intro-xv6">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
   <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="https://codersherlock.github.com//feed.xml" />
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -43,9 +44,7 @@
         
       
         
-      
-        
-        <a class="page-link" href="/about/">About</a>
+        <a class="page-link" href="/about/">About Me</a>
         
       
         
@@ -77,19 +76,17 @@
   <article class="post-content">
     <p>I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.</p>
 
-<hr />
-
 <h2 id="xv6-systemcall">Xv6 Systemcall</h2>
 <p>To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file <em>user.h</em>.</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="n">function</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">function</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>This interface-like function will then pass the function name, in this case function, to <em>usys.S</em>. When using user mode function in programs, <em>usys.S</em> will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from <em>syscall.c</em> and determining whether this system call is available. We must define same name system function and add it into <em>syscall.h</em> and <em>syscall.c</em>.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define SYS_function ##		// ## is the system call number
 </span><span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span>	<span class="c1">// real system function name</span>
-<span class="k">extern</span> <span class="kt">int</span> <span class="n">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>	<span class="c1">// real system function declaration</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="nf">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>	<span class="c1">// real system function declaration</span>
 </code></pre></div></div>
 
 <p>After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.</p>
@@ -120,15 +117,13 @@
         </div>
         <div class="col-second">
           <div class="col-box col-box-author">
-  <img class="avatar" src="/static/avatar.jpg" alt="Pengzhan Hao - 碾子">
-  <div class="col-box-title name">Pengzhan Hao - 碾子</div>
+  <img class="avatar" src="/static/avatar.jpg" alt="Pengzhan Hao">
+  <div class="col-box-title name">Pengzhan Hao</div>
   <p></p>
   <p class="contact">
     
     <a href="https://github.com/codersherlock">GitHub</a>
     
-    
-    <a href="https://twitter.com/haopengzhan">Twitter</a>
     
     
     <a href="mailto:haopengzhan@gmail.com">Email</a>
@@ -160,7 +155,7 @@
 
     <footer class="footer">
 <div class="wrapper">
-&copy; 2016 Pengzhan Hao - 碾子
+&copy; 2016 Pengzhan Hao
 </div>
 </footer>
 
