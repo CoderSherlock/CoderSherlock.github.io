@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries « Stop Talking, Start Doing - 停止空想，开始行动</title>
+  <meta name="description" content="">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/timeline.css">
+  <link rel="canonical" href="https://codersherlock.github.com//archivers/generate-word-cloud-with-chinese-fenci">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="https://codersherlock.github.com//feed.xml" />
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82637164-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6651321038908478",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="header">
+  <div class="wrapper">
+    <a class="site-title" href="/">Stop Talking, Start Doing - 停止空想，开始行动</a>
+    <nav class="site-nav">
+      
+        
+      
+        
+        <a class="page-link" href="/about/">About Me</a>
+        
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </nav>
+  </div>
+</header>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</h1>
+    <p class="post-meta">Sep 15, 2020</p>
+  </header>
+
+  <article class="post-content">
+    <p><img src="/static/2020-09/2020-06-28.png" height="350" /></p>
+
+<h2 id="background">Background</h2>
+
+<p>Recently, I set up a web-based RSS client for retrieving and organizing everyday news. I used <a href="https://tt-rss.org/">TinyTinyRSS</a>, or as ttrss, a popular RSS client which friendly to docker. Thanks to developer <a href="https://ttrss.henry.wang/#about">HenryQW</a>, a well-written Nginx-based docker configuration is already available in docker hub. With more feeds were added, I found some feeds does not need to be checked everyday. Thus I was thinking to create a script to automatically list all keywords appears in a last period and generate a heat map kind figure of it.</p>
+
+<p>Before you go further, I’ll tell you all my settings to give readers a general overview.</p>
+
+<p>My first step is to read all text-based information from TTRSS’s PostgreSQL database. With information, I used a Chinese-NLP library, <a href="https://github.com/fxsjy/jieba">jieba</a>, to extract all keyword with their occurrences frequency. By using <a href="https://github.com/amueller/word_cloud">WordCloud</a>, a python library, word cloud figure is generated and present. More details will be discussed in later sections.</p>
+
+<h2 id="get-rss-feeds-text">Get RSS feeds’ text</h2>
+
+<p>My first thought is generating a keyword heat map for economy news of a last week. Since this blog post are more skewed to Chinese tokenization and draw the word cloud figure. I’ll leave my code here just in case. The SQL connector I used is <a href="https://pypi.org/project/psycopg2/">psycopg2</a>, an easy-use PostgreSQL library.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+	<span class="bp">self</span><span class="p">.</span><span class="n">dbe</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="p">.</span><span class="n">connect</span><span class="p">(</span>
+    	<span class="n">host</span><span class="o">=</span><span class="n">DB_HOST</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="n">DB_PORT</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="n">DB_NAME</span><span class="p">,</span> <span class="n">user</span><span class="o">=</span><span class="n">DB_USER</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="n">DB_PASS</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_1w_of_feed_byid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+	<span class="n">cur</span> <span class="o">=</span> <span class="bp">self</span><span class="p">.</span><span class="n">dbe</span><span class="p">.</span><span class="n">cursor</span><span class="p">()</span>
+    <span class="n">cur</span><span class="p">.</span><span class="n">execute</span><span class="p">(</span><span class="s">'SELECT content FROM public.ttrss_entries </span><span class="se">\
+</span><span class="s">    	where date_updated &gt; now() - interval </span><span class="se">\'</span><span class="s">1 week</span><span class="se">\'</span><span class="s"> AND id in ( </span><span class="se">\
+</span><span class="s">        select int_id from DB_TABLE_NAME </span><span class="se">\
+</span><span class="s">        where feed_id='</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="nb">id</span><span class="p">)</span> <span class="o">+</span> <span class="s">' </span><span class="se">\
+</span><span class="s">        ) </span><span class="se">\
+</span><span class="s">        ORDER BY id ASC '</span>
+        <span class="p">)</span>
+	<span class="n">rows</span> <span class="o">=</span> <span class="n">cur</span><span class="p">.</span><span class="n">fetchall</span><span class="p">()</span>
+	<span class="k">return</span> <span class="n">rows</span>
+</code></pre></div></div>
+
+<p>Most arguments are intuitive and easy to understand. The only exception is argument of function <em>get_1w_of_feed_byid</em>. This <strong>id</strong> is the feed index of my subscriptions.</p>
+
+<h2 id="tokenize-with-frequency">Tokenize with frequency</h2>
+
+<p>Two popular tokenization library were used, and I chose <a href="https://github.com/fxsjy/jieba">jieba</a> after a few comparison. Before cutting the sentence, we first need to remove all punctuation marks.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">remove_biaodian</span><span class="p">(</span><span class="n">text</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+    <span class="n">punct</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="s">u''':!),.:;?]}¢'"、。〉》」』】〕〗〞︰︱︳﹐､﹒
+                ﹔﹕﹖﹗﹚﹜﹞！），．：；？｜｝︴︶︸︺︼︾﹀﹂﹄﹏､～￠
+                々‖•·ˇˉ―--′’”([{£¥'"‵〈《「『【〔〖（［｛￡￥〝︵︷︹︻
+                ︽︿﹁﹃﹙﹛﹝（｛“‘-—_…'''</span><span class="p">)</span>
+    <span class="n">ret</span> <span class="o">=</span> <span class="s">""</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">punct</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">+=</span> <span class="s">''</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ret</span> <span class="o">+=</span> <span class="n">x</span>
+    <span class="k">return</span> <span class="n">ret</span>
+</code></pre></div></div>
+
+<p>After we have an all characters string, we can call jieba. By using the function <em>jieba.posseg.cut</em> with or without paddle, we can have a word list and their “part of speech”.  As you can see in the following code, I also did two more works.</p>
+
+<p>First, in the if statement, I only kept all nouns with some categories. Category abbreviation such as “nr” and “ns” represent different “part of speech”, I attached with categories I used in the following table. For more details you can find in this <a href="https://github.com/fxsjy/jieba">link</a>.</p>
+
+<p>The second work is only keeping words with length longer than 2 characters. In Chinese, there’s no space between words such as Latin writing systems. Since then, some single-character-words such as conjunction words are easy to be misrecognized as specialty-noun.  And this misrecognition will cause more single-character being regarded as specialty-noun. I am not able to improve NLP method, so I used a easy way to fix this by removing any words less than 2 characters.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">jieba.posseg</span> <span class="k">as</span> <span class="n">pseg</span>
+
+<span class="k">def</span> <span class="nf">get_noun_jieba</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">content</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">list</span><span class="p">:</span>
+	<span class="n">content</span> <span class="o">=</span> <span class="n">remove_biaodian</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>
+	<span class="n">words</span> <span class="o">=</span> <span class="n">pseg</span><span class="p">.</span><span class="n">cut</span><span class="p">(</span><span class="n">content</span><span class="p">)</span>	<span class="c1"># Invoking jieba.posseg.cut function 
+</span>
+	<span class="n">ret</span> <span class="o">=</span> <span class="p">[]</span>
+	<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">flag</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+		<span class="c1"># print(word, flag)
+</span>		<span class="k">if</span> <span class="n">flag</span> <span class="ow">in</span> <span class="p">[</span><span class="s">'nr'</span><span class="p">,</span> <span class="s">'ns'</span><span class="p">,</span> <span class="s">'nt'</span><span class="p">,</span> <span class="s">'nw'</span><span class="p">,</span> <span class="s">'nz'</span><span class="p">,</span> <span class="s">'PER'</span><span class="p">,</span> <span class="s">'ORG'</span><span class="p">,</span> <span class="s">'x'</span><span class="p">]:</span>   <span class="c1"># LOC
+</span>			<span class="n">ret</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+	<span class="k">return</span> <span class="p">[</span><span class="n">remove_biaodian</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">ret</span> <span class="k">if</span> <span class="n">i</span><span class="p">.</span><span class="n">strip</span><span class="p">()</span> <span class="o">!=</span> <span class="s">""</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">remove_biaodian</span><span class="p">(</span><span class="n">i</span><span class="p">.</span><span class="n">strip</span><span class="p">()))</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">]</span>
+</code></pre></div></div>
+
+<ul>
+  <li>Word category names and abbreviations</li>
+</ul>
+
+<table>
+  <thead>
+    <tr>
+      <th>Abbreviation</th>
+      <th>Category name/ Part of speech</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>nr</td>
+      <td>People name noun</td>
+    </tr>
+    <tr>
+      <td>ns</td>
+      <td>Location name noun</td>
+    </tr>
+    <tr>
+      <td>nt</td>
+      <td>Organization name noun</td>
+    </tr>
+    <tr>
+      <td>nw</td>
+      <td>Arts work noun</td>
+    </tr>
+    <tr>
+      <td>nz</td>
+      <td>Other noun</td>
+    </tr>
+    <tr>
+      <td>PER</td>
+      <td>People name noun</td>
+    </tr>
+    <tr>
+      <td>ORG</td>
+      <td>Location name noun</td>
+    </tr>
+    <tr>
+      <td>x</td>
+      <td>Non-morpheme word</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>With all words extracted, we can easily calculate their frequencies.  After this, we can using the following line of code to print a sorted result to verify correctness.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">noun</span> <span class="o">=</span> <span class="n">seg</span><span class="p">.</span><span class="n">get_noun_jieba</span><span class="p">(</span><span class="n">test_content</span><span class="p">)</span>
+<span class="c1"># ... Calculate frequency of above word list ...
+</span><span class="k">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">a_dict</span><span class="p">.</span><span class="n">items</span><span class="p">(),</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</code></pre></div></div>
+
+<h2 id="draw-word-cloud">Draw word cloud</h2>
+
+<p>With a keyword and frequency dictionary(data structure), we can just call built-in functions from wordcloud library to generate the figure.</p>
+
+<p>First we need to initialize an instance of wordcloud class. As you can see in my code, I set it with 6 parameters. Width and Height of the canvas, maximum amount of words used to generate the figure, the font of words, background color and margin between any two words.</p>
+
+<p>After having the instance, we call function <em>generate_from_frequencies</em> and pass keyword dictionary to it. The return value of this function is an bitmap image, which we can use <a href="https://matplotlib.org/">matplotlib</a> to plot it to your screen.</p>
+
+<p>I tested my plot on ubuntu-subsystem on Windows 10, unfortunately matplotlib under subsystem depends on x11 window manager and its not default available on windows. We need to install an  x11 manager to support. <a href="https://sourceforge.net/projects/xming/">Xming</a> is the one I used.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">wordcloud</span> <span class="kn">import</span> <span class="n">WordCloud</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+
+<span class="n">font_path</span> <span class="o">=</span> <span class="s">"./font/haipai.ttf"</span>
+<span class="n">output_path</span> <span class="o">=</span> <span class="s">"./font/out.png"</span>
+
+
+<span class="k">def</span> <span class="nf">show_figure_with_frequency</span><span class="p">(</span><span class="n">keywords</span><span class="p">:</span> <span class="nb">dict</span><span class="p">):</span>
+    <span class="n">wc</span> <span class="o">=</span> <span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">828</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">1792</span><span class="p">,</span> <span class="n">max_words</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">font_path</span><span class="o">=</span><span class="n">font_path</span><span class="p">,</span>
+                   <span class="n">background_color</span><span class="o">=</span><span class="s">"white"</span><span class="p">,</span> <span class="n">margin</span><span class="o">=</span><span class="mi">1</span><span class="p">).</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">keywords</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">wc</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">axis</span><span class="p">(</span><span class="s">'off'</span><span class="p">)</span>
+    <span class="n">plt</span><span class="p">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>If everything work fine, a word cloud figure will show up in a new window. My version looks like this.</p>
+
+<p><img src="/static/2020-09/2020-06-28.png" height="150" /></p>
+
+<p>This generated word cloud figure reflects the most popular economy news’ keyword in the week started 06-28-2020. Two largest words in the figure are “新冠” and “新冠病毒”, both means “Covid-19” (This figure was in the week of the second covid spur in Beijing, China). The size of the image fits my phone screen and I can use an app to automatic sync it to my phone’s wallpaper. However, in this image, too many location nouns are presented. This will be something I can make progress on in the future.</p>
+
+
+  </article>
+  
+  
+
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'codersherlockblog'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="/static/avatar.jpg" alt="Pengzhan Hao">
+  <div class="col-box-title name">Pengzhan Hao</div>
+  <p></p>
+  <p class="contact">
+    
+    <a href="https://github.com/codersherlock">GitHub</a>
+    
+    
+    
+    <a href="mailto:haopengzhan@gmail.com">Email</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/generate-word-cloud-with-chinese-fenci">Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</a></li>
+    
+      <li><a class="post-link" href="/archivers/intro-xv6">Xv6 introduction</a></li>
+    
+      <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
+    
+      <li><a class="post-link" href="/archivers/charles-is-not-a-good-tool">Using charles proxy to monitor mobile SSL traffics</a></li>
+    
+      <li><a class="post-link" href="/archivers/hello">Stop Talking is the worst title of one blog</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">TOC</div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2016 Pengzhan Hao
+</div>
+</footer>
+
+<script src="/js/easybook.js"></script>
+
+  </body>
+
+</html>
