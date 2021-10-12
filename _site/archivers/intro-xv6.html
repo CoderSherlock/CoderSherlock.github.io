@@ -6,14 +6,14 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>Xv6 introduction « Stop Talking, Start Doing - 停止空想，开始行动</title>
-  <meta name="description" content="I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.">
+  <title>Xv6 introduction « Stop Talking, Start Doing</title>
+  <meta name="description" content="In this post, you will learn a few basic concepts of xv6. Learning path will be closed coupled to first project assignment I gave when I assisted in teaching...">
 
   <link rel="stylesheet" href="/css/main.css">
   <link rel="stylesheet" href="/css/timeline.css">
   <link rel="canonical" href="https://codersherlock.github.com//archivers/intro-xv6">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
-  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing - 停止空想，开始行动" href="https://codersherlock.github.com//feed.xml" />
+  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing" href="https://codersherlock.github.com//feed.xml" />
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -38,13 +38,13 @@
 
     <header class="header">
   <div class="wrapper">
-    <a class="site-title" href="/">Stop Talking, Start Doing - 停止空想，开始行动</a>
+    <a class="site-title" href="/">Stop Talking, Start Doing</a>
     <nav class="site-nav">
       
         
       
         
-        <a class="page-link" href="/about/">About Me</a>
+        <a class="page-link" href="/about/">About</a>
         
       
         
@@ -74,9 +74,12 @@
   </header>
 
   <article class="post-content">
-    <p>I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.</p>
+    <p>In this post, you will learn a few basic concepts of xv6. Learning path will be closed coupled to first project assignment I gave when I assisted in teaching OS classes.
+Understand system call and know how to implement a simple one will be coved as the first half.
+In the second half of this post, I will discuss a little bit more on how to debug xv6 using gdb.</p>
 
 <h2 id="xv6-systemcall">Xv6 Systemcall</h2>
+
 <p>To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file <em>user.h</em>.</p>
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kt">void</span> <span class="nf">function</span> <span class="p">(</span><span class="kt">void</span><span class="p">);</span>
@@ -84,14 +87,68 @@
 
 <p>This interface-like function will then pass the function name, in this case function, to <em>usys.S</em>. When using user mode function in programs, <em>usys.S</em> will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from <em>syscall.c</em> and determining whether this system call is available. We must define same name system function and add it into <em>syscall.h</em> and <em>syscall.c</em>.</p>
 
-<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define SYS_function ##		// ## is the system call number
-</span><span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span>	<span class="c1">// real system function name</span>
-<span class="k">extern</span> <span class="kt">int</span> <span class="nf">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span>	<span class="c1">// real system function declaration</span>
+<div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">#define SYS_function ##  // ## is the system call number
+</span><span class="p">[</span><span class="n">SYS_function</span><span class="p">]</span>  <span class="n">sys_function</span> <span class="c1">// real system function name</span>
+<span class="k">extern</span> <span class="kt">int</span> <span class="nf">sys_function</span><span class="p">(</span><span class="kt">void</span><span class="p">);</span> <span class="c1">// real system function declaration</span>
 </code></pre></div></div>
 
 <p>After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.</p>
 
 <p>Sometimes, we need to pass variables among system calls. In this case, variables’ values are not necessary and even can’t be pass directly into system_function. When invoke a system call function, all variables of this system call will be pushed into current process’ stack. In file <em>syscall.c</em>, multiple functions are provided to get these variables from the process. I won’t waste time on explaining how to use these functions especially when elegant and detailed comments were written in source codes. However, I will explain concepts and how process organized and works in xv6 in future articles.</p>
+
+<h2 id="debug-xv6-with-gdb">Debug xv6 with gdb</h2>
+
+<p>Please make sure that you have used gdb before.
+If you never used gdb, you may write a simple 50-100 lines c code and practice how to use gdb first.</p>
+
+<ul>
+  <li><a href="https://sourceware.org/gdb/current/onlinedocs/gdb/">GDB Manual</a></li>
+  <li><a href="https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf">GDB cheatsheet (pdf)</a></li>
+</ul>
+
+<p>To make sure xv6 gdb enabled, please check if <em>.gdbinit.tmpl</em> file exist.
+This file is used for generate <em>.gdbinit</em> file which you can late consider it as a configuration for gdb.</p>
+
+<p>Before running the xv6 instance in QEMU, one more thing you need to know is that using gdb to debug xv6 must be attached remotely.
+This is because xv6 was running within QEMU, and emulator is virtually gapped from the host device.
+Later when you start debugging, QEMU will open a gdb server to let gdb client connect to.</p>
+
+<p>Once you want to start, using following command to compile and run xv6</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>make qemu-nox-gdb
+<span class="k">***</span> Now run <span class="s1">'gdb'</span><span class="nb">.</span>
+qemu-system-i386 <span class="nt">-nographic</span> <span class="nt">-drive</span> <span class="nv">file</span><span class="o">=</span>fs.img,index<span class="o">=</span>1,media<span class="o">=</span>disk,format<span class="o">=</span>raw <span class="nt">-drive</span> <span class="nv">file</span><span class="o">=</span>xv6.img,index<span class="o">=</span>0,media<span class="o">=</span>disk,format<span class="o">=</span>raw <span class="nt">-smp</span> 2 7
+</code></pre></div></div>
+
+<p>At this moment, it feels xv6 was stuck, this is because QEMU is ready to be connected by the gdb client.
+You may use the <em>.gdbinit</em> to automatically finish this remote connection by simple typein following command in another terminal.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>gdb <span class="nt">-x</span> .gdbinit
+GNU gdb <span class="o">(</span>Debian 8.2.1-2+b3<span class="o">)</span> 8.2.1
+
+...
+
+The target architecture is assumed to be i8086
+<span class="o">[</span>f000:fff0]    0xffff0: ljmp   <span class="nv">$0x3630</span>,<span class="nv">$0xf000e05b</span>
+0x0000fff0 <span class="k">in</span> ?? <span class="o">()</span>
++ symbol-file kernel
+warning: A handler <span class="k">for </span>the OS ABI <span class="s2">"GNU/Linux"</span> is not built into this configuration
+of GDB.  Attempting to <span class="k">continue </span>with the default i8086 settings.
+
+<span class="o">(</span>gdb<span class="o">)</span> 
+</code></pre></div></div>
+
+<p>Now within this gdb client shell, type ‘c’ to continue the xv6, and you will see xv6 start execution in the first terminal.</p>
+
+<p>At this moment, you may add breakpoints to your code to see if your code is correctly implemented or not.</p>
+
+<p><strong>One more thing</strong>, if you open <em>.gdbinit</em> file, you’ll find that it by default connect to a localhost target.
+If you are working on some other environment that target and client were not placed in the same device, change the localhost to ip address correspondingly.
+Using ssh may connect to different physical devices under same domain name, this is because load balancer were used. To check ip address, search command <em>ip</em>.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code>target remote localhost:28467
+<span class="c"># target remote [ip-addr]:28467</span>
+</code></pre></div></div>
 
   </article>
   
@@ -149,7 +206,7 @@
 </div>
 
 <div class="col-box post-toc hide">
-  <div class="col-box-title">TOC</div>
+  <div class="col-box-title">Indexes</div>
 </div>
         </div>
       </div>

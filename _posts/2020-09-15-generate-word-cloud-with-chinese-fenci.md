@@ -4,7 +4,12 @@ title:  "Generate Word Cloud Figures with Chinese-Tokenization and WordCloud pyt
 date:   2020-09-15 22:00:14 -0400
 categories: visualization
 ---
-<img src="/static/2020-09/2020-06-28.png" height="350">
+
+Let's generate a word cloud like this. 
+Don't understand the language is not a big deal.
+If your written language is based on latin alphabet(or other language has space between words), skip tokenization.
+  
+<img src="/static/2020-09/2020-06-28.png" height="250">
 
 ## Background
 

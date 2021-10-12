@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Stop Talking, Start Doing - 停止空想，开始行动</title>
+    <title>Stop Talking, Start Doing</title>
     <description>My personal blog, with some boring research staff and some tricks I was fancy to. I'll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
 </description>
     <link>https://codersherlock.github.com//</link>
     <atom:link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Tue, 15 Sep 2020 22:22:06 -0400</pubDate>
-    <lastBuildDate>Tue, 15 Sep 2020 22:22:06 -0400</lastBuildDate>
+    <pubDate>Tue, 12 Oct 2021 18:31:37 -0400</pubDate>
+    <lastBuildDate>Tue, 12 Oct 2021 18:31:37 -0400</lastBuildDate>
     <generator>Jekyll v4.1.1</generator>
     
       <item>
         <title>Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</title>
-        <description>&lt;p&gt;&lt;img src=&quot;/static/2020-09/2020-06-28.png&quot; height=&quot;350&quot; /&gt;&lt;/p&gt;
+        <description>&lt;p&gt;Let’s generate a word cloud like this. 
+Don’t understand the language is not a big deal.
+If your written language is based on latin alphabet(or other language has space between words), skip tokenization.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/2020-09/2020-06-28.png&quot; height=&quot;250&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;background&quot;&gt;Background&lt;/h2&gt;
 
@@ -180,9 +184,12 @@
     
       <item>
         <title>Xv6 introduction</title>
-        <description>&lt;p&gt;I hate xv6, a stupid, useless education-oriented system. In this article, I will generally talk about how to implement system call to this operating system.&lt;/p&gt;
+        <description>&lt;p&gt;In this post, you will learn a few basic concepts of xv6. Learning path will be closed coupled to first project assignment I gave when I assisted in teaching OS classes.
+Understand system call and know how to implement a simple one will be coved as the first half.
+In the second half of this post, I will discuss a little bit more on how to debug xv6 using gdb.&lt;/p&gt;
 
 &lt;h2 id=&quot;xv6-systemcall&quot;&gt;Xv6 Systemcall&lt;/h2&gt;
+
 &lt;p&gt;To invoke a system call, we have to first define a user mode function to be the interface of the kernel instruction  in file &lt;em&gt;user.h&lt;/em&gt;.&lt;/p&gt;
 
 &lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
@@ -190,14 +197,68 @@
 
 &lt;p&gt;This interface-like function will then pass the function name, in this case function, to &lt;em&gt;usys.S&lt;/em&gt;. When using user mode function in programs, &lt;em&gt;usys.S&lt;/em&gt; will generate a reference to SYS_function and push system call number of this function into %eax. After that, system can know from &lt;em&gt;syscall.c&lt;/em&gt; and determining whether this system call is available. We must define same name system function and add it into &lt;em&gt;syscall.h&lt;/em&gt; and &lt;em&gt;syscall.c&lt;/em&gt;.&lt;/p&gt;
 
-&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##		// ## is the system call number
-&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;	&lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
+&lt;div class=&quot;language-c highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;cp&quot;&gt;#define SYS_function ##  // ## is the system call number
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;SYS_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;  &lt;span class=&quot;n&quot;&gt;sys_function&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// real system function name&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;extern&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;int&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;sys_function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// real system function declaration&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;p&gt;After adding these sentences to syscall files, we can implement real function in specific place where you want to make the function works well.&lt;/p&gt;
 
 &lt;p&gt;Sometimes, we need to pass variables among system calls. In this case, variables’ values are not necessary and even can’t be pass directly into system_function. When invoke a system call function, all variables of this system call will be pushed into current process’ stack. In file &lt;em&gt;syscall.c&lt;/em&gt;, multiple functions are provided to get these variables from the process. I won’t waste time on explaining how to use these functions especially when elegant and detailed comments were written in source codes. However, I will explain concepts and how process organized and works in xv6 in future articles.&lt;/p&gt;
+
+&lt;h2 id=&quot;debug-xv6-with-gdb&quot;&gt;Debug xv6 with gdb&lt;/h2&gt;
+
+&lt;p&gt;Please make sure that you have used gdb before.
+If you never used gdb, you may write a simple 50-100 lines c code and practice how to use gdb first.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://sourceware.org/gdb/current/onlinedocs/gdb/&quot;&gt;GDB Manual&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://darkdust.net/files/GDB%20Cheat%20Sheet.pdf&quot;&gt;GDB cheatsheet (pdf)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;To make sure xv6 gdb enabled, please check if &lt;em&gt;.gdbinit.tmpl&lt;/em&gt; file exist.
+This file is used for generate &lt;em&gt;.gdbinit&lt;/em&gt; file which you can late consider it as a configuration for gdb.&lt;/p&gt;
+
+&lt;p&gt;Before running the xv6 instance in QEMU, one more thing you need to know is that using gdb to debug xv6 must be attached remotely.
+This is because xv6 was running within QEMU, and emulator is virtually gapped from the host device.
+Later when you start debugging, QEMU will open a gdb server to let gdb client connect to.&lt;/p&gt;
+
+&lt;p&gt;Once you want to start, using following command to compile and run xv6&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;make qemu-nox-gdb
+&lt;span class=&quot;k&quot;&gt;***&lt;/span&gt; Now run &lt;span class=&quot;s1&quot;&gt;'gdb'&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;.&lt;/span&gt;
+qemu-system-i386 &lt;span class=&quot;nt&quot;&gt;-nographic&lt;/span&gt; &lt;span class=&quot;nt&quot;&gt;-drive&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;fs.img,index&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;1,media&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;disk,format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;raw &lt;span class=&quot;nt&quot;&gt;-drive&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;file&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;xv6.img,index&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;0,media&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;disk,format&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;raw &lt;span class=&quot;nt&quot;&gt;-smp&lt;/span&gt; 2 7
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;At this moment, it feels xv6 was stuck, this is because QEMU is ready to be connected by the gdb client.
+You may use the &lt;em&gt;.gdbinit&lt;/em&gt; to automatically finish this remote connection by simple typein following command in another terminal.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;gdb &lt;span class=&quot;nt&quot;&gt;-x&lt;/span&gt; .gdbinit
+GNU gdb &lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;Debian 8.2.1-2+b3&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 8.2.1
+
+...
+
+The target architecture is assumed to be i8086
+&lt;span class=&quot;o&quot;&gt;[&lt;/span&gt;f000:fff0]    0xffff0: ljmp   &lt;span class=&quot;nv&quot;&gt;$0x3630&lt;/span&gt;,&lt;span class=&quot;nv&quot;&gt;$0xf000e05b&lt;/span&gt;
+0x0000fff0 &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt; ?? &lt;span class=&quot;o&quot;&gt;()&lt;/span&gt;
++ symbol-file kernel
+warning: A handler &lt;span class=&quot;k&quot;&gt;for &lt;/span&gt;the OS ABI &lt;span class=&quot;s2&quot;&gt;&quot;GNU/Linux&quot;&lt;/span&gt; is not built into this configuration
+of GDB.  Attempting to &lt;span class=&quot;k&quot;&gt;continue &lt;/span&gt;with the default i8086 settings.
+
+&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;gdb&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt; 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Now within this gdb client shell, type ‘c’ to continue the xv6, and you will see xv6 start execution in the first terminal.&lt;/p&gt;
+
+&lt;p&gt;At this moment, you may add breakpoints to your code to see if your code is correctly implemented or not.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;One more thing&lt;/strong&gt;, if you open &lt;em&gt;.gdbinit&lt;/em&gt; file, you’ll find that it by default connect to a localhost target.
+If you are working on some other environment that target and client were not placed in the same device, change the localhost to ip address correspondingly.
+Using ssh may connect to different physical devices under same domain name, this is because load balancer were used. To check ip address, search command &lt;em&gt;ip&lt;/em&gt;.&lt;/p&gt;
+
+&lt;div class=&quot;language-bash highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;target remote localhost:28467
+&lt;span class=&quot;c&quot;&gt;# target remote [ip-addr]:28467&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 </description>
         <pubDate>Fri, 28 Jul 2017 14:56:55 -0400</pubDate>
         <link>https://codersherlock.github.com//archivers/intro-xv6</link>
