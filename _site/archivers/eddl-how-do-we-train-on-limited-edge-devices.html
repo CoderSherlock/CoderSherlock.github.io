@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>EDDL: How do we train neural networks on limited edge devices - PART 1 « Stop Talking, Start Doing</title>
+  <meta name="description" content="This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Compu...">
+
+  <link rel="stylesheet" href="/css/main.css">
+  <link rel="stylesheet" href="/css/timeline.css">
+  <link rel="canonical" href="https://codersherlock.github.com//archivers/eddl-how-do-we-train-on-limited-edge-devices">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+  <link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing" href="https://codersherlock.github.com//feed.xml" />
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-82637164-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-6651321038908478",
+      enable_page_level_ads: true
+    });
+  </script>
+</head>
+
+
+  <body>
+
+    <header class="header">
+  <div class="wrapper">
+    <a class="site-title" href="/">Stop Talking, Start Doing</a>
+    <nav class="site-nav">
+      
+        
+      
+        
+        <a class="page-link" href="/about/">About</a>
+        
+      
+        
+        <a class="page-link" href="/category/">Category</a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </nav>
+  </div>
+</header>
+
+    <div class="page-content">
+      <div class="wrapper">
+        <div class="col-main">
+          <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">EDDL: How do we train neural networks on limited edge devices - PART 1</h1>
+    <p class="post-meta">Oct 13, 2021</p>
+  </header>
+
+  <article class="post-content">
+    <p>This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.” was published.
+As the first part of the introductions, I focus only on the motivation and summary of our works.
+More details in design and implementation can be found in late posts.</p>
+
+<p><img src="/static/2021-10/edgelearn-1.png" height="250" /></p>
+
+<h2 id="why-do-we-need-training-on-edge">Why do we need training on edge?</h2>
+
+<p>Cloud is not trustworthy anymore. More and more facts supports that breach on cloud happens frequently than before.
+Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech company know better to someones than user themselves.</p>
+
+<p>Researchers, no matter in industry on academia, are working in a way that still learning from users’ data but also keeping raw sensitive data under users’ control.
+Many publications already showed feasibility of only sharing after-trained model instead of raw data.
+One recent popular study on this is google’s <a href="https://ai.googleblog.com/2017/04/federated-learning-collaborative.html">federated learning</a>.</p>
+
+<p>During investigated this problem, we found that let end user train their own data is safe, but sacrifice efficiency.
+Since one end device has limited resources, training time and power consumption can be disappointing.
+We believe there must have a leverage between privacy and efficiency in some target scenarios.</p>
+
+<p>Fortunately, we observed that users who belongs to the same campus, plant, firm and community always share similar interests.
+Therefore, these co-located users have similar demands in using AI-involved routines.
+Also, co-located users are easily targeted by same type of threats, such as ransomware to financial practitioners.</p>
+
+<p>Think about this, sending features of a new malware app to cloud services in order to train a neural networks used by antivirus program.
+This process may takes long time and small amount of samples may not be recognized by the global neural networks model.
+With a customized local model trained and deployed on the edge can successfully counter the problem.
+With edge training as a supplement of cloud training can achieve better response time and let the whole system more flexible.</p>
+
+<h2 id="why-training-on-edge-is-hard">Why training on edge is hard?</h2>
+
+<p>Since all co-located users’ device can be used for an edge training, issues and challenges occur as deploying this distributed system.</p>
+
+<p>The first challenge is <strong>struggling workers</strong>.
+Training devices are heterogeneity, from limited IoT camera to high-end media center with powerful GPU.
+They are not designed to do machine learnings.
+So, a good edge-based distributed learning framework must can handle variety speeds in training tasks.</p>
+
+<p>The second challenge is how to <strong>scale up</strong> clusters.
+In a campus, thousands and more devices may contribute computing resources to the same training tasks.
+However, these devices may located in far not matter in physical or in network topology. 
+How can we well use them well, without struggled with endless transmission time remains a challenge.</p>
+
+<p>The third issue is frequently <strong>joining and exiting</strong> of devices.
+We can’t rely on each devices to faithfully working on training tasks rather than their original workload.
+Smartly schedule work balance and handle join/exit issues also need under consideration.</p>
+
+<h2 id="our-proposal">Our proposal</h2>
+
+<ul>
+  <li>
+    <p>Dynamic training data distribution and runtime profiler</p>
+
+    <p>We design a dynamic training data distribution mechanism that helps to both the first and the third challenges.
+  Preprocessing data can be transmitted without leakage of raw sensitive information. 
+  This can helps with struggling workers who can train small batches in order to upload parameters with a similar training time.
+  Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can helps with keep global training parameters from polluted and staleness.</p>
+
+    <p>To counter heterogeneity’s, more approaches were applied in our later research.
+  More details were introduced to runtime profiler in the later works.</p>
+  </li>
+  <li>
+    <p>Asynchronous and synchronous aggregation enabled</p>
+
+    <p>In our findings, asynchronous and synchronous parameter update have their pros and cons. 
+  Keeping sync all the time leads struggling worker issue unsolvable.
+  However, async’s harm to accuracy and convergence time also need attentions.
+  To carefully chose between these two update policies at the runtime is what we proposed to make use of their own advantages.</p>
+  </li>
+  <li>
+    <p>Leader role splitting</p>
+
+    <p>The idea is to let worker devices with higher bandwidth taking leader role during training.
+  Parameter updating does not require much computation but only need bandwidth. 
+  Devices with sufficient bandwidth can also work as virtual leader devices.
+  This approach helps with minimize physical devices we used and more leaders can further scale up workers limits.</p>
+  </li>
+</ul>
+
+  </article>
+  
+  
+
+<div class="post-comments">
+  <div id="disqus_thread"></div>
+  <script type="text/javascript">
+      var disqus_shortname = 'codersherlockblog'; // required: replace example with your forum shortname
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+</div>
+
+
+
+
+</div>
+
+        </div>
+        <div class="col-second">
+          <div class="col-box col-box-author">
+  <img class="avatar" src="/static/avatar.jpg" alt="Pengzhan Hao">
+  <div class="col-box-title name">Pengzhan Hao</div>
+  <p></p>
+  <p class="contact">
+    
+    <a href="https://github.com/codersherlock">GitHub</a>
+    
+    
+    
+    <a href="mailto:haopengzhan@gmail.com">Email</a>
+    
+  </p>
+</div>
+
+<div class="col-box">
+  <div class="col-box-title">Newest Posts</div>
+  <ul class="post-list">
+    
+      <li><a class="post-link" href="/archivers/eddl-how-do-we-train-on-limited-edge-devices">EDDL: How do we train neural networks on limited edge devices - PART 1</a></li>
+    
+      <li><a class="post-link" href="/archivers/generate-word-cloud-with-chinese-fenci">Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</a></li>
+    
+      <li><a class="post-link" href="/archivers/intro-xv6">Xv6 introduction</a></li>
+    
+      <li><a class="post-link" href="/archivers/some-of-my-previews-exper-work">Some of my previews experiment works: 2016</a></li>
+    
+      <li><a class="post-link" href="/archivers/charles-is-not-a-good-tool">Using charles proxy to monitor mobile SSL traffics</a></li>
+    
+  </ul>
+</div>
+
+<div class="col-box post-toc hide">
+  <div class="col-box-title">Indexes</div>
+</div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="footer">
+<div class="wrapper">
+&copy; 2016 Pengzhan Hao
+</div>
+</footer>
+
+<script src="/js/easybook.js"></script>
+
+  </body>
+
+</html>
