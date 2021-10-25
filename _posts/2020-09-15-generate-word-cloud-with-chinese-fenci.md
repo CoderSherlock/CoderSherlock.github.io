@@ -1,8 +1,7 @@
 ---
-layout: post
 title:  "Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries"
 date:   2020-09-15 22:00:14 -0400
-categories: visualization
+tags: visualization
 ---
 
 Let's generate a word cloud like this. 

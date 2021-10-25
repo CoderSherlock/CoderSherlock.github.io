@@ -1,9 +1,10 @@
 ---
-layout: page
+layout: article
 title: About
-permalink: /about/
-public: true
-nocomments: true
+permalink: /about.html
+comment: false
+toc: true
+
 ---
 
 # Pengzhan Hao

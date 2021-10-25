@@ -1,0 +1,38 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: Stop Talking, Start Doing
+author: Pengzhan Hao
+avatar: "/static/avatar.jpg"
+email: haopengzhan@gmail.com 
+description: > # this means to ignore newlines until "baseurl:"
+    My personal blog, with some boring research staff and some tricks I was fancy to.
+    I'll try my best to make this blog fun and useful. Not just a place I complain about
+    all happens in my Lab.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "https://codersherlock.github.com/" # the base hostname & protocol for your site
+github_username:  codersherlock
+disqus_shortname: codersherlockblog
+
+permalink: /archivers/:title
+gems:
+    - jekyll-paginate
+    - jekyll-gist
+    - jemoji
+    - jekyll-sitemap
+# Build settings
+paginate: 5
+paginate_path: "page:num"
+
+highlighter: rouge
+markdown: kramdown
+
+kramdown:
+    input: GFM
+    syntax_highlighter: rouge
+

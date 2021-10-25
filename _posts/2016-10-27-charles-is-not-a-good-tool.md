@@ -1,5 +1,4 @@
 ---
-layout: post
 title:  "Using charles proxy to monitor mobile SSL traffics"
 date:   2016-10-27 22:50:33 -0400
 categories: Network
