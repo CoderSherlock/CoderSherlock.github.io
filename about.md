@@ -1,10 +1,9 @@
 ---
 layout: article
-title: About
 permalink: /about.html
 comment: false
-toc: true
-
+aside:
+  toc: true
 ---
 
 # Pengzhan Hao
@@ -56,12 +55,12 @@ toc: true
 
 ## Publications
 
-- **EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.**
+- **EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.**  
 **Pengzhan Hao**, and Yifan Zhang
 The Sixth ACM/IEEE Symposium on Edge Computing (**ACM/IEEE SEC**)  
 San Jose, CA, USA, 2021.  
   
-- **[A Case for Web Service Bandwidth Reduction on Mobile Devices with Edge-hosted Personal Services](/static/2021-10/eta-infocom18.pdf)**
+- **[A Case for Web Service Bandwidth Reduction on Mobile Devices with Edge-hosted Personal Services](/static/2021-10/eta-infocom18.pdf)**  
 Yongshu Bai, **Pengzhan Hao**, and Yifan Zhang
 The 37th IEEE International Conference on Computer Communications (**IEEE INFOCOM**)  
 Honolulu, HI, USA, 2018.  
@@ -87,4 +86,4 @@ Niagara Falls, NY, USA, 2017.
 - Operating system (Undergraduate level)
 - Introduction to distributed system (Graduate level)
   
-## Fun
+## Misc

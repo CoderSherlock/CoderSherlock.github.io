@@ -2,8 +2,10 @@
 title:  "Some of my previews experiment works: 2016"
 date:   2016-10-28 12:27:33 -0400
 tags: Research
+author: Pengzhan Hao
 ---
 This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.
+<!--more-->
 
 # 2016-10
 

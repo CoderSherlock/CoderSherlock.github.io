@@ -44,7 +44,7 @@
         {%- if _article.cover and include.show_cover-%}
           {%- include snippets/get-nav-url.html path=_article.cover -%}
           {%- assign _article_cover = __return -%}
-          <div class="item__image">
+          <div class="item__image" style="vertical-align: middle">
           {%- if include.cover_size == 'lg' -%}
             <img class="image image--lg" src="{{ _article_cover }}" />
           {%- elsif include.cover_size == 'sm' -%}
