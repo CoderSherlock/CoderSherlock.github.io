@@ -10,10 +10,10 @@
 		
 	</script><meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>EDDL: How do we train neural networks on limited edge devices - PART 1 - Stop Talking, Start Doing</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"><title>EDDL: How do we train neural networks on limited edge devices - PART 2 - Stop Talking, Start Doing</title>
 
-<meta name="description" content="This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Compu...">
-<link rel="canonical" href="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices"><link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing" href="/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+<meta name="description" content="In the last post, part1, our idea of distributed learning on edge environment was generally addressed.I introduced the reason why edge distributed learning i...">
+<link rel="canonical" href="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices-part2"><link rel="alternate" type="application/rss+xml" title="Stop Talking, Start Doing" href="/feed.xml"><link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
 <link rel="manifest" href="/assets/site.webmanifest">
@@ -424,98 +424,125 @@ c13 9 26 20 30 26 7 11 -9 26 -27 26 -5 0 -3 -5 5 -10 9 -6 10 -10 3 -10 -24
               <div class="col-main cell cell--auto"><!-- start custom main top snippet -->
 
 <!-- end custom main top snippet -->
-<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>EDDL: How do we train neural networks on limited edge devices - PART 1</h1></header></div><meta itemprop="headline" content="EDDL: How do we train neural networks on limited edge devices - PART 1"><div class="article__info clearfix"><ul class="left-col menu"><li>
+<article itemscope itemtype="http://schema.org/Article"><div class="article__header"><header><h1>EDDL: How do we train neural networks on limited edge devices - PART 2</h1></header></div><meta itemprop="headline" content="EDDL: How do we train neural networks on limited edge devices - PART 2"><div class="article__info clearfix"><ul class="left-col menu"><li>
               <a class="button button--secondary button--pill button--sm"
                 href="/archive.html?tag=Research">Research</a>
-            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>Pengzhan Hao</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 13, 2021</span>
-            </li></ul></div><meta itemprop="author" content="Pengzhan Hao"/><meta itemprop="datePublished" content="2021-10-13T16:53:20-04:00">
+            </li></ul><ul class="right-col menu"><li><i class="fas fa-user"></i> <span>Pengzhan Hao</span></li><li><i class="far fa-calendar-alt"></i> <span>Oct 31, 2021</span>
+            </li></ul></div><meta itemprop="author" content="Pengzhan Hao"/><meta itemprop="datePublished" content="2021-10-31T13:01:14-04:00">
     <meta itemprop="keywords" content="Research"><div class="js-article-content"><div class="layout--article"><!-- start custom article top snippet -->
 
 <!-- end custom article top snippet -->
-<div class="article__content" itemprop="articleBody"><p>This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.” was published.
-As the first part of the introductions, I focus only on the motivation and summary of our works.
-More details in design and implementation can be found in late posts.</p>
+<div class="article__content" itemprop="articleBody"><p>In the last post, part1, our idea of distributed learning on edge environment was generally addressed.
+I introduced the reason why edge distributed learning is needed and what improvements it can achieve.
+In this post, I will talk about our motivation study and how our framework works.</p>
 
-<p><img src="/static/2021-10/edgelearn-1.png" height="250" />
-<!--more--></p>
+<h2 id="how-does-data-support-us-training-on-edge">How does data support us training on edge?</h2>
 
-<h2 id="why-do-we-need-training-on-edge">Why do we need training on edge?</h2>
+<p>Before designing and implementing our framework, we first need confirmation that training on edge resource-limited devices is worthwhile.
+We were using a malware detection neural network to show why a small, customized neural network is better.</p>
 
-<p>Cloud is not trustworthy anymore. More and more facts support that breach on the cloud happens frequently than before.
-Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech companies know better to someones than the user.</p>
+<p>We collected 32000+ mobile apps feature as global data.
+With these data records, we trained a multilayer perceptron called “PerNet” to determine whether a given feature belongs to a benign or malware app.
+We called this <strong>detection</strong>.
+As well, PerNet can also classify malware apps into different types of attacks.
+We called this <strong>classification</strong>.
+The global model can achieve 93% above recall rate and 96.93% above accuracy.</p>
 
-<p>Researchers, no matter in the industry on academia, are working in a way that still learning from users’ data but also keeping raw sensitive data under users’ control.
-Many publications have already shown the feasibility of only sharing the after-trained model instead of raw data.
-One recent popular study on this is google’s <a href="https://ai.googleblog.com/2017/04/federated-learning-collaborative.html">federated learning</a>.</p>
-
-<p>During investigating this problem, we found that letting end-user train their data is safe, but sacrifice efficiency.
-Since one end device has limited resources, training time and power consumption can be disappointing.
-We believe there must have leverage between privacy and efficiency in some target scenarios.</p>
-
-<p>Fortunately, we observed that users who belong to the same campus, plant, firm, and community always share similar interests.
-Therefore, these co-located users have similar demands in using AI-involved routines.
-Also, co-located users are easily targeted by the same type of threats, such as ransomware to financial practitioners.</p>
-
-<p>Think about this, sending features of a new malware app to cloud services to train neural networks used by antivirus programs.
-This process may take a long time and a small number of samples may not be recognized by the global neural networks model.
-A customized local model trained and deployed on the edge can successfully counter the problem.
-With edge training as a supplement to the cloud training can achieve better response time and let the whole system more flexible.</p>
-
-<h2 id="why-training-on-edge-is-hard">Why training on edge is hard?</h2>
-
-<p>Since all co-located users’ devices can be used for edge training, issues and challenges occur as deploying this distributed system.</p>
-
-<p>The first challenge is <strong>struggling workers</strong>.
-Training devices are heterogeneous, from limited IoT cameras to high-end media centers with powerful GPUs.
-They are not designed to do machine learning.
-So, a good edge-based distributed learning framework must be able to handle a variety of speeds in training tasks.</p>
-
-<p>The second challenge is how to <strong>scale up</strong> clusters.
-On a campus, thousands and more devices may contribute computing resources to the same training tasks.
-However, these devices may be located far no matter in physical or in network topology.
-The question of how can we well use them well, without struggling with endless transmission time remains a challenge.</p>
-
-<p>The third issue is frequently <strong>joining and exiting</strong> of devices.
-We can’t rely on each device to faithfully work on training tasks rather than their original workload.
-Smartly schedule work balance and handle join/exit issues also need under consideration.</p>
-
-<h2 id="our-proposal">Our proposal</h2>
+<p>With all these data, we selected two community app usage sub-dataset for local model generations.</p>
 
 <ul>
   <li>
-    <p>Dynamic training data distribution and runtime profiler</p>
-
-    <p>We design a dynamic training data distribution mechanism that helps both the first and the third challenges.
-  Preprocessing data can be transmitted without leakage of raw and sensitive information.
-  This can help struggling workers who can train small batches in order to upload parameters with a similar training time.
-  Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can help with keeping global training parameters from pollution and staleness.</p>
-
-    <p>To counter heterogeneity, more approaches were applied in our later research.
-  More details were introduced to the runtime profiler in the later works.</p>
+    <p>Large categories (Scenario 1)
+  We chose the 5 largest categories of apps, including entertainment, tools, brain&amp;Puzzle, Lifestyle, and Education, as well as the 5 largest malware categories.
+  All together, 12000+ apps were included in this sub-dataset, almost 50 to 50 between benign and malware.</p>
   </li>
   <li>
-    <p>Asynchronous and synchronous aggregation enabled</p>
-
-    <p>In our findings, asynchronous and synchronous parameter update have their pros and cons.
-  Keeping sync all the time leads to struggling worker issues unsolvable.
-  However, async’s harm to accuracy and convergence time also needs attention.
-  To carefully choose between these two update policies at the runtime is what we proposed to make use of their own advantages.</p>
-  </li>
-  <li>
-    <p>Leader role splitting</p>
-
-    <p>The idea is to let worker devices with higher bandwidth take leader-role during training.
-  Parameter updating does not require much computation but only needs a great of bandwidth.
-  Devices with sufficient bandwidth can also work as virtual leader devices.
-  This approach helps minimize physical devices we used and more leaders can further scale up workers’ limits.</p>
+    <p>Campus-community categories (Scenario 2)
+  We chose the 5 most downloaded categories from college students as benign groups, as well as a similar amount of 5 malware categories.
+  To ensure that malware apps are included in 5 benign categories, we also considered synthesizing some other malware apps within categories of 5 most downloaded(benign) categories.</p>
   </li>
 </ul>
-</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-10-13T16:53:20-04:00"><!-- start custom article footer snippet -->
+
+<p>With these two types of sub-dataset, we used the same PerNet to generate multiple local models.
+Under each scenarios experiment, we compared global and local models on the preserved test dataset.
+In all classification performances, local beat global in every scenario.
+In detection performances, local also share the same accuracy as global does.</p>
+
+<p><img src="/static/2021-10/t.3_inference_result.png" alt="Inference results" /></p>
+
+<p>In summary, local models were trained on special occasions.
+Under the same circumstance, a global model can achieve no better accuracy than local models.
+The reason why local is better might be because of overfitting.
+I believe this issue also be considered in the machine learning communities that they brought <a href="https://en.wikipedia.org/wiki/Transfer_learning">transfer learning</a>,
+a technique to optimize global models to special scenarios but performing more training to a global model once it’s shipped to local.</p>
+
+<h2 id="design-and-implementation">Design and Implementation</h2>
+
+<h3 id="overall-design">Overall design</h3>
+
+<p>The basic EDDL distributed training setup consists of 3 parts.
+<strong>EDDL training cluster</strong>, a device cluster that consists of edge or mobile devices that are participating in training.
+<strong>EDDL manager</strong>, the initial driver program that works as collect training data, relay data to training devices and initial training clusters.
+<strong>Training data entry (TDE)</strong>, a data storage for all training data.</p>
+
+<h3 id="dynamic-training-data-distribution">Dynamic training data distribution</h3>
+
+<p>Existing distributed DNN training solutions usually statically partition training data among workers.
+It can be a problem when the training node joins and exits.
+We designed our framework that can dynamically distribute training data during learning.
+Before every training batch started, a batch of TDE will be sent to devices.</p>
+
+<p>In our experiments, we found that by applying this design, overall training time was shortened by doing.
+Especially in large amount devices cases, this optimization can be 50% less than statically divided.</p>
+
+<h3 id="scaling-up-cluster-size">Scaling up cluster size</h3>
+
+<p>Our framework was designed to have both sync and async parameter aggregation.
+Asynchronous aggregation can allow a high outcome of training batch but with a sacrifice or converge time.
+Synchronous aggregation allows a quick converge time in epochs, however can’t ensure performance when there’s a struggler worker.</p>
+
+<p>As showed in experiments, we chose sync as default because the converging time is dominant in overall training time.
+But, we also considered the possibilities of that async with more workers can achieve similar overall training time.</p>
+
+<p>We introduced a formula to determine whether adding more training nodes can help or not.
+Here we used bandwidth usage coefficient (BUC) as</p>
+
+\[BUC = \dfrac{n}{T_{sync}}\]
+
+<p>In this formula, \(n\) is the number of devices, and \(T_{sync}\) is the transmission time of parameters.
+With an increasing number of workers, n increase linearly but transmission time does not.
+When \(BUC\) increases, the cluster can speed up training time by adding workers.
+Otherwise, adding more workers won’t help with overall training time.</p>
+
+<h3 id="adaptive-leader-role-splitting">Adaptive leader role splitting</h3>
+
+<p>The idea of role splitting is simple that a device can work as a worker as well leader.
+The advantage of doing this is straightforward that we can transfer 1 less parameter and training time will be shortened.</p>
+
+<p>However, in our current settings, it can’t perform much better help since only 1 leader role is in a cluster.
+We can benefit from this in our future works.</p>
+
+<h3 id="overall-architecture">Overall architecture</h3>
+
+<p><img src="/static/2021-10/f.5_Impl_leader_worker.png" alt="Implementation" /></p>
+
+<p>Details were given in the image.</p>
+
+<h3 id="prototype-hardware-and-software">Prototype hardware and software</h3>
+
+<p>EDDL was designed to be run on two single-board computer embedded platforms.
+One such platform is <a href="https://www.hardkernel.com/shop/odroid-xu4-special-price/">ODROID-XU4</a>, which is equipped with a 2.1/1.4 GHz 32-bit ARM processor and 2GB memory.
+The other platform is the <a href="https://www.raspberrypi.com/products/raspberry-pi-3-model-b/">Raspberry Pi 3 Model B board</a>, which comes with an ARM 1.2 GHz 64-bit quad-core processor and 1GB memory.</p>
+
+<p>The operating system running on the above platforms is Ubuntu 18.04 with Linux kernel 4.14.
+We used <a href="http://dlib.net/">Dlib</a>, a C++ library that provides implementations for a wide range of machine learning algorithms.
+We chose the Dlib library because it is written in C/C++, and can be easily and natively used in embedded devices.</p>
+</div><section class="article__sharing d-print-none"></section><div class="d-print-none"><footer class="article__footer"><meta itemprop="dateModified" content="2021-10-31T13:01:14-04:00"><!-- start custom article footer snippet -->
 
 <!-- end custom article footer snippet -->
 <div class="article__subscribe"><div class="subscribe"><i class="fas fa-rss"></i> <a type="application/rss+xml" href="/feed.xml">Subscribe</a></div>
 </div><div class="article__license"></div></footer>
-<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/posts/generate-word-cloud-with-chinese-fenci">Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</a></div><div class="next"><span>NEXT</span><a href="/posts/eddl-how-do-we-train-on-limited-edge-devices-part2">EDDL: How do we train neural networks on limited edge devices - PART 2</a></div></div></div>
+<div class="article__section-navigator clearfix"><div class="previous"><span>PREVIOUS</span><a href="/posts/eddl-how-do-we-train-on-limited-edge-devices">EDDL: How do we train neural networks on limited edge devices - PART 1</a></div></div></div>
 
 </div>
 
@@ -550,8 +577,8 @@ Smartly schedule work balance and handle join/exit issues also need under consid
   *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
   *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
   var disqus_config = function () {
-    this.page.url = 'https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices';
-    this.page.identifier = '/posts/eddl-how-do-we-train-on-limited-edge-devices';
+    this.page.url = 'https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices-part2';
+    this.page.identifier = '/posts/eddl-how-do-we-train-on-limited-edge-devices-part2';
   };
   (function() { // DON'T EDIT BELOW THIS LINE
     var d = document, s = d.createElement('script');
@@ -1176,7 +1203,13 @@ window.Lazyload.js([SOURCES.jquery, PAHTS.search_js], function() {
     window.pageAsideAffix = affix;
   });
 })();
+</script><script type="text/x-mathjax-config">
+	var _config = { tex2jax: {
+		inlineMath: [['$','$'], ['\\(','\\)']]
+	}};MathJax.Hub.Config(_config);
 </script>
+<script type="text/javascript" src="https://cdn.bootcss.com/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML" async></script>
+
     </div>
     <script>(function () {
   var $root = document.getElementsByClassName('root')[0];

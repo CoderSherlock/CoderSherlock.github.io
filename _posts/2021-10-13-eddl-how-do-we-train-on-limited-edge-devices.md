@@ -14,66 +14,66 @@ More details in design and implementation can be found in late posts.
 
 ## Why do we need training on edge?
 
-Cloud is not trustworthy anymore. More and more facts supports that breach on cloud happens frequently than before.
-Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech company know better to someones than user themselves.
+Cloud is not trustworthy anymore. More and more facts support that breach on the cloud happens frequently than before.
+Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech companies know better to someones than the user.
   
-Researchers, no matter in industry on academia, are working in a way that still learning from users' data but also keeping raw sensitive data under users' control.
-Many publications already showed feasibility of only sharing after-trained model instead of raw data.
+Researchers, no matter in the industry on academia, are working in a way that still learning from users' data but also keeping raw sensitive data under users' control.
+Many publications have already shown the feasibility of only sharing the after-trained model instead of raw data.
 One recent popular study on this is google's [federated learning](https://ai.googleblog.com/2017/04/federated-learning-collaborative.html).
   
-During investigated this problem, we found that let end user train their own data is safe, but sacrifice efficiency.
+During investigating this problem, we found that letting end-user train their data is safe, but sacrifice efficiency.
 Since one end device has limited resources, training time and power consumption can be disappointing.
-We believe there must have a leverage between privacy and efficiency in some target scenarios.
+We believe there must have leverage between privacy and efficiency in some target scenarios.
 
-Fortunately, we observed that users who belongs to the same campus, plant, firm and community always share similar interests.
+Fortunately, we observed that users who belong to the same campus, plant, firm, and community always share similar interests.
 Therefore, these co-located users have similar demands in using AI-involved routines.
-Also, co-located users are easily targeted by same type of threats, such as ransomware to financial practitioners.
+Also, co-located users are easily targeted by the same type of threats, such as ransomware to financial practitioners.
 
-Think about this, sending features of a new malware app to cloud services in order to train a neural networks used by antivirus program.
-This process may takes long time and small amount of samples may not be recognized by the global neural networks model.
-With a customized local model trained and deployed on the edge can successfully counter the problem.
-With edge training as a supplement of cloud training can achieve better response time and let the whole system more flexible.
+Think about this, sending features of a new malware app to cloud services to train neural networks used by antivirus programs.
+This process may take a long time and a small number of samples may not be recognized by the global neural networks model.
+A customized local model trained and deployed on the edge can successfully counter the problem.
+With edge training as a supplement to the cloud training can achieve better response time and let the whole system more flexible.
 
 ## Why training on edge is hard?
 
-Since all co-located users' device can be used for an edge training, issues and challenges occur as deploying this distributed system.
+Since all co-located users' devices can be used for edge training, issues and challenges occur as deploying this distributed system.
 
 The first challenge is **struggling workers**.
-Training devices are heterogeneity, from limited IoT camera to high-end media center with powerful GPU.
-They are not designed to do machine learnings.
-So, a good edge-based distributed learning framework must can handle variety speeds in training tasks.
+Training devices are heterogeneous, from limited IoT cameras to high-end media centers with powerful GPUs.
+They are not designed to do machine learning.
+So, a good edge-based distributed learning framework must be able to handle a variety of speeds in training tasks.
 
 The second challenge is how to **scale up** clusters.
-In a campus, thousands and more devices may contribute computing resources to the same training tasks.
-However, these devices may located in far not matter in physical or in network topology. 
-How can we well use them well, without struggled with endless transmission time remains a challenge.
+On a campus, thousands and more devices may contribute computing resources to the same training tasks.
+However, these devices may be located far no matter in physical or in network topology.
+The question of how can we well use them well, without struggling with endless transmission time remains a challenge.
 
 The third issue is frequently **joining and exiting** of devices.
-We can't rely on each devices to faithfully working on training tasks rather than their original workload.
+We can't rely on each device to faithfully work on training tasks rather than their original workload.
 Smartly schedule work balance and handle join/exit issues also need under consideration.
 
 ## Our proposal
 
 - Dynamic training data distribution and runtime profiler
 
-    We design a dynamic training data distribution mechanism that helps to both the first and the third challenges.
-    Preprocessing data can be transmitted without leakage of raw sensitive information. 
-    This can helps with struggling workers who can train small batches in order to upload parameters with a similar training time.
-    Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can helps with keep global training parameters from polluted and staleness.
+    We design a dynamic training data distribution mechanism that helps both the first and the third challenges.
+    Preprocessing data can be transmitted without leakage of raw and sensitive information.
+    This can help struggling workers who can train small batches in order to upload parameters with a similar training time.
+    Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can help with keeping global training parameters from pollution and staleness.
 
-    To counter heterogeneity's, more approaches were applied in our later research.
-    More details were introduced to runtime profiler in the later works. 
+    To counter heterogeneity, more approaches were applied in our later research.
+    More details were introduced to the runtime profiler in the later works.
 
 - Asynchronous and synchronous aggregation enabled
 
-    In our findings, asynchronous and synchronous parameter update have their pros and cons. 
-    Keeping sync all the time leads struggling worker issue unsolvable.
-    However, async's harm to accuracy and convergence time also need attentions.
-    To carefully chose between these two update policies at the runtime is what we proposed to make use of their own advantages.
+    In our findings, asynchronous and synchronous parameter update have their pros and cons.
+    Keeping sync all the time leads to struggling worker issues unsolvable.
+    However, async's harm to accuracy and convergence time also needs attention.
+    To carefully choose between these two update policies at the runtime is what we proposed to make use of their own advantages.
 
 - Leader role splitting
 
-    The idea is to let worker devices with higher bandwidth taking leader role during training.
-    Parameter updating does not require much computation but only need bandwidth. 
+    The idea is to let worker devices with higher bandwidth take leader-role during training.
+    Parameter updating does not require much computation but only needs a great of bandwidth.
     Devices with sufficient bandwidth can also work as virtual leader devices.
-    This approach helps with minimize physical devices we used and more leaders can further scale up workers limits.
+    This approach helps minimize physical devices we used and more leaders can further scale up workers' limits.

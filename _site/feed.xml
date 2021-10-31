@@ -1,5 +1,109 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://codersherlock.github.com//" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-25T14:52:38-04:00</updated><id>https://codersherlock.github.com//feed.xml</id><title type="html">Stop Talking, Start Doing</title><subtitle>My personal blog, with some boring research staff and some tricks I was fancy to. I'll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
-</subtitle><author><name>Pengzhan Hao</name><email>haopengzhan@gmail.com</email></author><entry><title type="html">EDDL: How do we train neural networks on limited edge devices - PART 1</title><link href="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices" rel="alternate" type="text/html" title="EDDL: How do we train neural networks on limited edge devices - PART 1" /><published>2021-10-13T16:53:20-04:00</published><updated>2021-10-13T16:53:20-04:00</updated><id>https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices</id><content type="html" xml:base="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices">&lt;p&gt;This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.” was published.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.2.1">Jekyll</generator><link href="https://codersherlock.github.com//feed.xml" rel="self" type="application/atom+xml" /><link href="https://codersherlock.github.com//" rel="alternate" type="text/html" hreflang="en" /><updated>2021-10-31T18:18:25-04:00</updated><id>https://codersherlock.github.com//feed.xml</id><title type="html">Stop Talking, Start Doing</title><subtitle>My personal blog, with some boring research staff and some tricks I was fancy to. I'll try my best to make this blog fun and useful. Not just a place I complain about all happens in my Lab.
+</subtitle><author><name>Pengzhan Hao</name><email>haopengzhan@gmail.com</email></author><entry><title type="html">EDDL: How do we train neural networks on limited edge devices - PART 2</title><link href="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices-part2" rel="alternate" type="text/html" title="EDDL: How do we train neural networks on limited edge devices - PART 2" /><published>2021-10-31T13:01:14-04:00</published><updated>2021-10-31T13:01:14-04:00</updated><id>https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices-part2</id><content type="html" xml:base="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices-part2">&lt;p&gt;In the last post, part1, our idea of distributed learning on edge environment was generally addressed.
+I introduced the reason why edge distributed learning is needed and what improvements it can achieve.
+In this post, I will talk about our motivation study and how our framework works.&lt;/p&gt;
+
+&lt;h2 id=&quot;how-does-data-support-us-training-on-edge&quot;&gt;How does data support us training on edge?&lt;/h2&gt;
+
+&lt;p&gt;Before designing and implementing our framework, we first need confirmation that training on edge resource-limited devices is worthwhile.
+We were using a malware detection neural network to show why a small, customized neural network is better.&lt;/p&gt;
+
+&lt;p&gt;We collected 32000+ mobile apps feature as global data.
+With these data records, we trained a multilayer perceptron called “PerNet” to determine whether a given feature belongs to a benign or malware app.
+We called this &lt;strong&gt;detection&lt;/strong&gt;.
+As well, PerNet can also classify malware apps into different types of attacks.
+We called this &lt;strong&gt;classification&lt;/strong&gt;.
+The global model can achieve 93% above recall rate and 96.93% above accuracy.&lt;/p&gt;
+
+&lt;p&gt;With all these data, we selected two community app usage sub-dataset for local model generations.&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;Large categories (Scenario 1)
+  We chose the 5 largest categories of apps, including entertainment, tools, brain&amp;amp;Puzzle, Lifestyle, and Education, as well as the 5 largest malware categories.
+  All together, 12000+ apps were included in this sub-dataset, almost 50 to 50 between benign and malware.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Campus-community categories (Scenario 2)
+  We chose the 5 most downloaded categories from college students as benign groups, as well as a similar amount of 5 malware categories.
+  To ensure that malware apps are included in 5 benign categories, we also considered synthesizing some other malware apps within categories of 5 most downloaded(benign) categories.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;With these two types of sub-dataset, we used the same PerNet to generate multiple local models.
+Under each scenarios experiment, we compared global and local models on the preserved test dataset.
+In all classification performances, local beat global in every scenario.
+In detection performances, local also share the same accuracy as global does.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/2021-10/t.3_inference_result.png&quot; alt=&quot;Inference results&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;In summary, local models were trained on special occasions.
+Under the same circumstance, a global model can achieve no better accuracy than local models.
+The reason why local is better might be because of overfitting.
+I believe this issue also be considered in the machine learning communities that they brought &lt;a href=&quot;https://en.wikipedia.org/wiki/Transfer_learning&quot;&gt;transfer learning&lt;/a&gt;,
+a technique to optimize global models to special scenarios but performing more training to a global model once it’s shipped to local.&lt;/p&gt;
+
+&lt;h2 id=&quot;design-and-implementation&quot;&gt;Design and Implementation&lt;/h2&gt;
+
+&lt;h3 id=&quot;overall-design&quot;&gt;Overall design&lt;/h3&gt;
+
+&lt;p&gt;The basic EDDL distributed training setup consists of 3 parts.
+&lt;strong&gt;EDDL training cluster&lt;/strong&gt;, a device cluster that consists of edge or mobile devices that are participating in training.
+&lt;strong&gt;EDDL manager&lt;/strong&gt;, the initial driver program that works as collect training data, relay data to training devices and initial training clusters.
+&lt;strong&gt;Training data entry (TDE)&lt;/strong&gt;, a data storage for all training data.&lt;/p&gt;
+
+&lt;h3 id=&quot;dynamic-training-data-distribution&quot;&gt;Dynamic training data distribution&lt;/h3&gt;
+
+&lt;p&gt;Existing distributed DNN training solutions usually statically partition training data among workers.
+It can be a problem when the training node joins and exits.
+We designed our framework that can dynamically distribute training data during learning.
+Before every training batch started, a batch of TDE will be sent to devices.&lt;/p&gt;
+
+&lt;p&gt;In our experiments, we found that by applying this design, overall training time was shortened by doing.
+Especially in large amount devices cases, this optimization can be 50% less than statically divided.&lt;/p&gt;
+
+&lt;h3 id=&quot;scaling-up-cluster-size&quot;&gt;Scaling up cluster size&lt;/h3&gt;
+
+&lt;p&gt;Our framework was designed to have both sync and async parameter aggregation.
+Asynchronous aggregation can allow a high outcome of training batch but with a sacrifice or converge time.
+Synchronous aggregation allows a quick converge time in epochs, however can’t ensure performance when there’s a struggler worker.&lt;/p&gt;
+
+&lt;p&gt;As showed in experiments, we chose sync as default because the converging time is dominant in overall training time.
+But, we also considered the possibilities of that async with more workers can achieve similar overall training time.&lt;/p&gt;
+
+&lt;p&gt;We introduced a formula to determine whether adding more training nodes can help or not.
+Here we used bandwidth usage coefficient (BUC) as&lt;/p&gt;
+
+\[BUC = \dfrac{n}{T_{sync}}\]
+
+&lt;p&gt;In this formula, \(n\) is the number of devices, and \(T_{sync}\) is the transmission time of parameters.
+With an increasing number of workers, n increase linearly but transmission time does not.
+When \(BUC\) increases, the cluster can speed up training time by adding workers.
+Otherwise, adding more workers won’t help with overall training time.&lt;/p&gt;
+
+&lt;h3 id=&quot;adaptive-leader-role-splitting&quot;&gt;Adaptive leader role splitting&lt;/h3&gt;
+
+&lt;p&gt;The idea of role splitting is simple that a device can work as a worker as well leader.
+The advantage of doing this is straightforward that we can transfer 1 less parameter and training time will be shortened.&lt;/p&gt;
+
+&lt;p&gt;However, in our current settings, it can’t perform much better help since only 1 leader role is in a cluster.
+We can benefit from this in our future works.&lt;/p&gt;
+
+&lt;h3 id=&quot;overall-architecture&quot;&gt;Overall architecture&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&quot;/static/2021-10/f.5_Impl_leader_worker.png&quot; alt=&quot;Implementation&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Details were given in the image.&lt;/p&gt;
+
+&lt;h3 id=&quot;prototype-hardware-and-software&quot;&gt;Prototype hardware and software&lt;/h3&gt;
+
+&lt;p&gt;EDDL was designed to be run on two single-board computer embedded platforms.
+One such platform is &lt;a href=&quot;https://www.hardkernel.com/shop/odroid-xu4-special-price/&quot;&gt;ODROID-XU4&lt;/a&gt;, which is equipped with a 2.1/1.4 GHz 32-bit ARM processor and 2GB memory.
+The other platform is the &lt;a href=&quot;https://www.raspberrypi.com/products/raspberry-pi-3-model-b/&quot;&gt;Raspberry Pi 3 Model B board&lt;/a&gt;, which comes with an ARM 1.2 GHz 64-bit quad-core processor and 1GB memory.&lt;/p&gt;
+
+&lt;p&gt;The operating system running on the above platforms is Ubuntu 18.04 with Linux kernel 4.14.
+We used &lt;a href=&quot;http://dlib.net/&quot;&gt;Dlib&lt;/a&gt;, a C++ library that provides implementations for a wide range of machine learning algorithms.
+We chose the Dlib library because it is written in C/C++, and can be easily and natively used in embedded devices.&lt;/p&gt;</content><author><name>Pengzhan Hao</name></author><category term="Research" /><summary type="html">In the last post, part1, our idea of distributed learning on edge environment was generally addressed. I introduced the reason why edge distributed learning is needed and what improvements it can achieve. In this post, I will talk about our motivation study and how our framework works. How does data support us training on edge? Before designing and implementing our framework, we first need confirmation that training on edge resource-limited devices is worthwhile. We were using a malware detection neural network to show why a small, customized neural network is better. We collected 32000+ mobile apps feature as global data. With these data records, we trained a multilayer perceptron called “PerNet” to determine whether a given feature belongs to a benign or malware app. We called this detection. As well, PerNet can also classify malware apps into different types of attacks. We called this classification. The global model can achieve 93% above recall rate and 96.93% above accuracy. With all these data, we selected two community app usage sub-dataset for local model generations. Large categories (Scenario 1) We chose the 5 largest categories of apps, including entertainment, tools, brain&amp;amp;Puzzle, Lifestyle, and Education, as well as the 5 largest malware categories. All together, 12000+ apps were included in this sub-dataset, almost 50 to 50 between benign and malware. Campus-community categories (Scenario 2) We chose the 5 most downloaded categories from college students as benign groups, as well as a similar amount of 5 malware categories. To ensure that malware apps are included in 5 benign categories, we also considered synthesizing some other malware apps within categories of 5 most downloaded(benign) categories. With these two types of sub-dataset, we used the same PerNet to generate multiple local models. Under each scenarios experiment, we compared global and local models on the preserved test dataset. In all classification performances, local beat global in every scenario. In detection performances, local also share the same accuracy as global does. In summary, local models were trained on special occasions. Under the same circumstance, a global model can achieve no better accuracy than local models. The reason why local is better might be because of overfitting. I believe this issue also be considered in the machine learning communities that they brought transfer learning, a technique to optimize global models to special scenarios but performing more training to a global model once it’s shipped to local. Design and Implementation Overall design The basic EDDL distributed training setup consists of 3 parts. EDDL training cluster, a device cluster that consists of edge or mobile devices that are participating in training. EDDL manager, the initial driver program that works as collect training data, relay data to training devices and initial training clusters. Training data entry (TDE), a data storage for all training data. Dynamic training data distribution Existing distributed DNN training solutions usually statically partition training data among workers. It can be a problem when the training node joins and exits. We designed our framework that can dynamically distribute training data during learning. Before every training batch started, a batch of TDE will be sent to devices. In our experiments, we found that by applying this design, overall training time was shortened by doing. Especially in large amount devices cases, this optimization can be 50% less than statically divided. Scaling up cluster size Our framework was designed to have both sync and async parameter aggregation. Asynchronous aggregation can allow a high outcome of training batch but with a sacrifice or converge time. Synchronous aggregation allows a quick converge time in epochs, however can’t ensure performance when there’s a struggler worker. As showed in experiments, we chose sync as default because the converging time is dominant in overall training time. But, we also considered the possibilities of that async with more workers can achieve similar overall training time. We introduced a formula to determine whether adding more training nodes can help or not. Here we used bandwidth usage coefficient (BUC) as \[BUC = \dfrac{n}{T_{sync}}\] In this formula, \(n\) is the number of devices, and \(T_{sync}\) is the transmission time of parameters. With an increasing number of workers, n increase linearly but transmission time does not. When \(BUC\) increases, the cluster can speed up training time by adding workers. Otherwise, adding more workers won’t help with overall training time. Adaptive leader role splitting The idea of role splitting is simple that a device can work as a worker as well leader. The advantage of doing this is straightforward that we can transfer 1 less parameter and training time will be shortened. However, in our current settings, it can’t perform much better help since only 1 leader role is in a cluster. We can benefit from this in our future works. Overall architecture Details were given in the image. Prototype hardware and software EDDL was designed to be run on two single-board computer embedded platforms. One such platform is ODROID-XU4, which is equipped with a 2.1/1.4 GHz 32-bit ARM processor and 2GB memory. The other platform is the Raspberry Pi 3 Model B board, which comes with an ARM 1.2 GHz 64-bit quad-core processor and 1GB memory. The operating system running on the above platforms is Ubuntu 18.04 with Linux kernel 4.14. We used Dlib, a C++ library that provides implementations for a wide range of machine learning algorithms. We chose the Dlib library because it is written in C/C++, and can be easily and natively used in embedded devices.</summary></entry><entry><title type="html">EDDL: How do we train neural networks on limited edge devices - PART 1</title><link href="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices" rel="alternate" type="text/html" title="EDDL: How do we train neural networks on limited edge devices - PART 1" /><published>2021-10-13T16:53:20-04:00</published><updated>2021-10-13T16:53:20-04:00</updated><id>https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices</id><content type="html" xml:base="https://codersherlock.github.com//posts/eddl-how-do-we-train-on-limited-edge-devices">&lt;p&gt;This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.” was published.
 As the first part of the introductions, I focus only on the motivation and summary of our works.
 More details in design and implementation can be found in late posts.&lt;/p&gt;
 
@@ -8,42 +112,42 @@ More details in design and implementation can be found in late posts.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-do-we-need-training-on-edge&quot;&gt;Why do we need training on edge?&lt;/h2&gt;
 
-&lt;p&gt;Cloud is not trustworthy anymore. More and more facts supports that breach on cloud happens frequently than before.
-Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech company know better to someones than user themselves.&lt;/p&gt;
+&lt;p&gt;Cloud is not trustworthy anymore. More and more facts support that breach on the cloud happens frequently than before.
+Nowadays, with more generated personal sensitive data has been uploaded to the cloud center, tech companies know better to someones than the user.&lt;/p&gt;
 
-&lt;p&gt;Researchers, no matter in industry on academia, are working in a way that still learning from users’ data but also keeping raw sensitive data under users’ control.
-Many publications already showed feasibility of only sharing after-trained model instead of raw data.
+&lt;p&gt;Researchers, no matter in the industry on academia, are working in a way that still learning from users’ data but also keeping raw sensitive data under users’ control.
+Many publications have already shown the feasibility of only sharing the after-trained model instead of raw data.
 One recent popular study on this is google’s &lt;a href=&quot;https://ai.googleblog.com/2017/04/federated-learning-collaborative.html&quot;&gt;federated learning&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;During investigated this problem, we found that let end user train their own data is safe, but sacrifice efficiency.
+&lt;p&gt;During investigating this problem, we found that letting end-user train their data is safe, but sacrifice efficiency.
 Since one end device has limited resources, training time and power consumption can be disappointing.
-We believe there must have a leverage between privacy and efficiency in some target scenarios.&lt;/p&gt;
+We believe there must have leverage between privacy and efficiency in some target scenarios.&lt;/p&gt;
 
-&lt;p&gt;Fortunately, we observed that users who belongs to the same campus, plant, firm and community always share similar interests.
+&lt;p&gt;Fortunately, we observed that users who belong to the same campus, plant, firm, and community always share similar interests.
 Therefore, these co-located users have similar demands in using AI-involved routines.
-Also, co-located users are easily targeted by same type of threats, such as ransomware to financial practitioners.&lt;/p&gt;
+Also, co-located users are easily targeted by the same type of threats, such as ransomware to financial practitioners.&lt;/p&gt;
 
-&lt;p&gt;Think about this, sending features of a new malware app to cloud services in order to train a neural networks used by antivirus program.
-This process may takes long time and small amount of samples may not be recognized by the global neural networks model.
-With a customized local model trained and deployed on the edge can successfully counter the problem.
-With edge training as a supplement of cloud training can achieve better response time and let the whole system more flexible.&lt;/p&gt;
+&lt;p&gt;Think about this, sending features of a new malware app to cloud services to train neural networks used by antivirus programs.
+This process may take a long time and a small number of samples may not be recognized by the global neural networks model.
+A customized local model trained and deployed on the edge can successfully counter the problem.
+With edge training as a supplement to the cloud training can achieve better response time and let the whole system more flexible.&lt;/p&gt;
 
 &lt;h2 id=&quot;why-training-on-edge-is-hard&quot;&gt;Why training on edge is hard?&lt;/h2&gt;
 
-&lt;p&gt;Since all co-located users’ device can be used for an edge training, issues and challenges occur as deploying this distributed system.&lt;/p&gt;
+&lt;p&gt;Since all co-located users’ devices can be used for edge training, issues and challenges occur as deploying this distributed system.&lt;/p&gt;
 
 &lt;p&gt;The first challenge is &lt;strong&gt;struggling workers&lt;/strong&gt;.
-Training devices are heterogeneity, from limited IoT camera to high-end media center with powerful GPU.
-They are not designed to do machine learnings.
-So, a good edge-based distributed learning framework must can handle variety speeds in training tasks.&lt;/p&gt;
+Training devices are heterogeneous, from limited IoT cameras to high-end media centers with powerful GPUs.
+They are not designed to do machine learning.
+So, a good edge-based distributed learning framework must be able to handle a variety of speeds in training tasks.&lt;/p&gt;
 
 &lt;p&gt;The second challenge is how to &lt;strong&gt;scale up&lt;/strong&gt; clusters.
-In a campus, thousands and more devices may contribute computing resources to the same training tasks.
-However, these devices may located in far not matter in physical or in network topology. 
-How can we well use them well, without struggled with endless transmission time remains a challenge.&lt;/p&gt;
+On a campus, thousands and more devices may contribute computing resources to the same training tasks.
+However, these devices may be located far no matter in physical or in network topology.
+The question of how can we well use them well, without struggling with endless transmission time remains a challenge.&lt;/p&gt;
 
 &lt;p&gt;The third issue is frequently &lt;strong&gt;joining and exiting&lt;/strong&gt; of devices.
-We can’t rely on each devices to faithfully working on training tasks rather than their original workload.
+We can’t rely on each device to faithfully work on training tasks rather than their original workload.
 Smartly schedule work balance and handle join/exit issues also need under consideration.&lt;/p&gt;
 
 &lt;h2 id=&quot;our-proposal&quot;&gt;Our proposal&lt;/h2&gt;
@@ -52,29 +156,29 @@ Smartly schedule work balance and handle join/exit issues also need under consid
   &lt;li&gt;
     &lt;p&gt;Dynamic training data distribution and runtime profiler&lt;/p&gt;
 
-    &lt;p&gt;We design a dynamic training data distribution mechanism that helps to both the first and the third challenges.
-  Preprocessing data can be transmitted without leakage of raw sensitive information. 
-  This can helps with struggling workers who can train small batches in order to upload parameters with a similar training time.
-  Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can helps with keep global training parameters from polluted and staleness.&lt;/p&gt;
+    &lt;p&gt;We design a dynamic training data distribution mechanism that helps both the first and the third challenges.
+  Preprocessing data can be transmitted without leakage of raw and sensitive information.
+  This can help struggling workers who can train small batches in order to upload parameters with a similar training time.
+  Also, for extremely slow devices, join and exit of devices cases, dynamic data distribution and profiler can help with keeping global training parameters from pollution and staleness.&lt;/p&gt;
 
-    &lt;p&gt;To counter heterogeneity’s, more approaches were applied in our later research.
-  More details were introduced to runtime profiler in the later works.&lt;/p&gt;
+    &lt;p&gt;To counter heterogeneity, more approaches were applied in our later research.
+  More details were introduced to the runtime profiler in the later works.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Asynchronous and synchronous aggregation enabled&lt;/p&gt;
 
-    &lt;p&gt;In our findings, asynchronous and synchronous parameter update have their pros and cons. 
-  Keeping sync all the time leads struggling worker issue unsolvable.
-  However, async’s harm to accuracy and convergence time also need attentions.
-  To carefully chose between these two update policies at the runtime is what we proposed to make use of their own advantages.&lt;/p&gt;
+    &lt;p&gt;In our findings, asynchronous and synchronous parameter update have their pros and cons.
+  Keeping sync all the time leads to struggling worker issues unsolvable.
+  However, async’s harm to accuracy and convergence time also needs attention.
+  To carefully choose between these two update policies at the runtime is what we proposed to make use of their own advantages.&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Leader role splitting&lt;/p&gt;
 
-    &lt;p&gt;The idea is to let worker devices with higher bandwidth taking leader role during training.
-  Parameter updating does not require much computation but only need bandwidth. 
+    &lt;p&gt;The idea is to let worker devices with higher bandwidth take leader-role during training.
+  Parameter updating does not require much computation but only needs a great of bandwidth.
   Devices with sufficient bandwidth can also work as virtual leader devices.
-  This approach helps with minimize physical devices we used and more leaders can further scale up workers limits.&lt;/p&gt;
+  This approach helps minimize physical devices we used and more leaders can further scale up workers’ limits.&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</content><author><name>Pengzhan Hao</name></author><category term="Research" /><summary type="html">This post introduces our previous milestone in project “Edge trainer”, as the paper “EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.” was published. As the first part of the introductions, I focus only on the motivation and summary of our works. More details in design and implementation can be found in late posts.</summary></entry><entry><title type="html">Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries</title><link href="https://codersherlock.github.com//posts/generate-word-cloud-with-chinese-fenci" rel="alternate" type="text/html" title="Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries" /><published>2020-09-15T22:00:14-04:00</published><updated>2020-09-15T22:00:14-04:00</updated><id>https://codersherlock.github.com//posts/generate-word-cloud-with-chinese-fenci</id><content type="html" xml:base="https://codersherlock.github.com//posts/generate-word-cloud-with-chinese-fenci">&lt;p&gt;Let’s generate a word cloud like this. 
 Don’t understand the language is not a big deal.
