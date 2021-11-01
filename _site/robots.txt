@@ -1,1 +1,1 @@
-Sitemap: https://codersherlock.github.com//sitemap.xml
+Sitemap: https://codersherlock.github.io/sitemap.xml
