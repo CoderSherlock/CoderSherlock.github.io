@@ -10,17 +10,12 @@ aside:
 
 **Position:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Research Assistant in MOSLab  
 **Education:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Doctoral Student of SUNY at Binghamton  
-**Email:**  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;phao3 at binghamton dot edu  
-**Address:**  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;MOSLab, H-6 Engineering Building  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Binghamton University  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4400 Vestal Parkway East  
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Binghamton, NY 13902  
+**Email:** &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;phao3 at binghamton dot edu   
 
 ## Education
 
 - 2017.08 - &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Ph.D. in Computer Science, Binghamton University, NY, USA  
-- 2015.08 - 2017.05 &nbsp;&nbsp;M.E in Computer Science, Binghamton University, NY, USA  
+- 2015.08 - 2017.05 &nbsp;&nbsp;M.S in Computer Science, Binghamton University, NY, USA  
 - 2011.08 - 2015.06 &nbsp;&nbsp;B.E in Software Engineering, Beihang University, Beijing, China  
 
 ## Experience
@@ -65,7 +60,7 @@ Yongshu Bai, **Pengzhan Hao**, and Yifan Zhang
 The 37th IEEE International Conference on Computer Communications (**IEEE INFOCOM**)  
 Honolulu, HI, USA, 2018.  
   
-- **[EdgeCourier: An Edge-hosted Personal Service for Low-bandwidth Document Synchronization in Mobile Cloud Storage Services](/static/2018-02/a7-hao.pdf)** **[[slide](/)]**  
+- **[EdgeCourier: An Edge-hosted Personal Service for Low-bandwidth Document Synchronization in Mobile Cloud Storage Services](/static/2018-02/a7-hao.pdf)** **[[slide]()]**  
 **Pengzhan Hao**, Yongshu Bai, Xin Zhang, and Yifan Zhang  
 The 2nd ACM/IEEE Symposium on Edge Computing (**ACM/IEEE SEC**)  
 San Jose, CA, USA, 2017.  
