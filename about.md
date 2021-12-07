@@ -2,6 +2,7 @@
 layout: article
 permalink: /about.html
 comment: false
+show_title: false
 aside:
   toc: true
 ---
