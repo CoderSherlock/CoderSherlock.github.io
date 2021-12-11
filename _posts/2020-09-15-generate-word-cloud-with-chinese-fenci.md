@@ -1,7 +1,7 @@
 ---
 title:  "Generate Word Cloud Figures with Chinese-Tokenization and WordCloud python libraries"
 date:   2020-09-15 22:00:14 -0400
-tags: visualization
+tags: Visualization
 author: Pengzhan Hao
 cover: '/static/2020-09/2020-06-28.png'
 ---
