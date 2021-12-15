@@ -51,7 +51,7 @@ aside:
 
 ## Publications
 
-- **EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment.**  
+- **[EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment](/static/2021-12/eddl-sec21.pdf)** **[[slide]()]**
 **Pengzhan Hao**, and Yifan Zhang
 The Sixth ACM/IEEE Symposium on Edge Computing (**ACM/IEEE SEC**)  
 San Jose, CA, USA, 2021.  
