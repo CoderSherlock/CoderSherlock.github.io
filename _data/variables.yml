@@ -13,7 +13,7 @@ default:
   chart: false
   toc:
     selectors: 'h1,h2,h3'
-  sources: bootcdn
+  sources: local
 
   page:
     mode: normal
@@ -40,6 +40,17 @@ default:
     search: default
 
 sources:
+  local:
+    font_awesome: '/static/2022-09/all.css'
+    jquery: '/static/2022-09/jquery.min.js'
+    leancloud_js_sdk: '/static/2022-09/av-min.js'
+    chart: '/static/2022-09/Chart.bundle.min.js'
+    gitalk:
+      js: '/static/2022-09/gitalk.min.js'
+      css: '/static/2022-09/gitalk.min.css'
+    valine: '/static/2022-09/Valine.min.js' # bootcdn not available
+    mathjax: '/static/2022-09/MathJax.js?config=TeX-MML-AM_CHTML'
+    mermaid: '/static/2022-09/mermaid.min.js'
   bootcdn:
     font_awesome: 'https://cdn.bootcdn.net/ajax/libs/font-awesome/5.15.1/css/all.css'
     jquery: 'https://cdn.bootcss.com/jquery/3.1.1/jquery.min.js'
