@@ -1,5 +1,5 @@
 ---
-title:  "Stop Talking is the worst title of one blog"
+title:  "STSD: Stop Talking Start Doing"
 date:   2016-10-26 22:50:33 -0400
 tags: Diary
 ---

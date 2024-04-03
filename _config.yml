@@ -20,7 +20,8 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : "https://blog.pengzhan.dev"  
 baseurl : ""
-title   : Stop Talking, Start Doing
+fakebaseurl: "" # /proxy/4000
+title   : STSD
 description: > # this means to ignore newlines until "Language & timezone"
     My personal blog, with some boring research staff and some tricks I was fancy to.
     I'll try my best to make this blog fun and useful. Not just a place I complain about

@@ -77,6 +77,9 @@ h5,
 h6,
 strong {
   font-weight: map-get($base, font-weight-bold);
+  font-family: map-get($base, font-header-family);
+  letter-spacing: -.05rem;
+  line-height: 1;
 }
 
 h1 {
