@@ -18,14 +18,12 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : "https://blog.pengzhan.dev"  # https://dev.pengzhan.dev
+url     : "https://blog.pengzhan.dev"  # "https://dev.pengzhan.dev"
 baseurl : ""
-fakebaseurl: "" # /proxy/4000
-title   : STSD
+fakebaseurl: "" # "/proxy/4000"
+title   : "STSD: A Pretended Tech Blog"
 description: > # this means to ignore newlines until "Language & timezone"
-    My personal blog, with some boring research staff and some tricks I was fancy to.
-    I'll try my best to make this blog fun and useful. Not just a place I complain about
-    all happens in my Lab.
+    My personal blog, some contents are useful, the others are not. Just like my mediocre life.
 
 
 ## => Language and Timezone
