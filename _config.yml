@@ -225,3 +225,20 @@ plugins:
   - jekyll-paginate
   - jekyll-sitemap
   - jemoji
+  - jekyll-last-modified-at
+  - jekyll-seo-tag
+
+
+## => Jekyll-compose
+##############################
+jekyll_compose:
+  default_front_matter:
+    posts:
+      description:
+      cover:
+      category:
+      tags:
+      published: false
+      sitemap: true
+      permalink: 
+
