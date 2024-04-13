@@ -21,7 +21,7 @@ highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "t
 url     : "https://blog.pengzhan.dev"  # "https://dev.pengzhan.dev"
 baseurl : ""
 fakebaseurl: "" # "/proxy/4000"
-title   : "STSD: A Pretended Tech Blog"
+title   : "STSD"
 description: > # this means to ignore newlines until "Language & timezone"
     My personal blog, some contents are useful, the others are not. Just like my mediocre life.
 
