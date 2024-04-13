@@ -9,7 +9,7 @@
       <div class="header__title">
         <div class="header__brand">
           <!--{%- include svg/logo.svg -%}-->
-          <img src="/assets/favicon-32x32.png">
+          <img src="{{ site.fakebaseurl }}/assets/favicon-32x32.png" style="margin-right: 5px;">
           {%- assign _paths_root = site.paths.root | default: site.data.variables.default.paths.root  -%}
           {%- include snippets/get-nav-url.html path=_paths_root -%}
           {%- if site.title -%}
