@@ -1051,7 +1051,7 @@ input:focus { outline: none; }
 
 .button--xl.button--circle, .button--xl.swiper__button { width: 2.8rem; height: 2.8rem; }
 
-.image { max-width: 100%; }
+.image { max-width: 100%; border-radius: 13px; }
 
 .image--md, .image { width: 12rem; }
 

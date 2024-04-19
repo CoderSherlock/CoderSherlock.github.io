@@ -3,7 +3,7 @@ title:  "EDDL: How do we train neural networks on limited edge devices - PART 1"
 date:   2021-10-13 16:53:20 -0400
 tags: ["Research", "Edge computing"]
 author: Pengzhan Hao
-cover: '/static/2021-10/edgelearn-1.png'
+cover: '/static/2024-04/eddl1.png'
 ---
 This post introduces our previous milestone in project "Edge trainer", as the paper "EDDL: A Distributed Deep Learning System for Resource-limited Edge Computing Environment." was published.
 As the first part of the introductions, I focus only on the motivation and summary of our works.

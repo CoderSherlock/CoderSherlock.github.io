@@ -3,17 +3,18 @@ title:  "Some of my previews experiment works: 2016"
 date:   2016-10-28 12:27:33 -0400
 tags: ["Research", "Log", "Miscellanies"]
 author: Pengzhan Hao
+cover: '/static/2024-04/research2016.png'
 ---
 This blog contains only some basic record of my works. For some details, I will write a unique blog just for some specific topics.
 <!--more-->
 
-# 2016-10
+## 2016-10
 
-## Time Experiment of rsync
+### Time Experiment of rsync
 
 Patch is based on rsync with version 3.1.2. \[[Rsync](https://download.samba.org/pub/rsync/rsync-3.1.2.tar.gz)\|[Patch](/static/2016-10/rsync/rsync-3.1.2-time.patch)\]
 
-### How to collect data
+#### How to collect data
 
 Basically, everything of transmission time and computation time will be output with overall time will be printed on the console.
 But we also need some bash script to collect data through different size of random size and with different modification through them.
@@ -22,11 +23,11 @@ But we also need some bash script to collect data through different size of rand
 - Start from 8K to 64M, modify at last, \[[Bash script](/static/2016-10/rsync/small2Big_change_at_last.sh)\]
 - Start from 8K to 64M, modify at random place with a (slow) python script, \[[Bash script](/static/2016-10/rsync/small2Big_change_at_anyplace.sh)\|[Python program](/static/2016-10/rsync/addbyte.py)\]
 
-## Time Experiment of seafile
+### Time Experiment of seafile
 
 Patch is based on seafile 5.1.4. You can find the release from [seafile official repo](https://github.com/haiwen/seafile/releases). You may follow official compile instructions from [here](https://manual.seafile.com/build_seafile/linux.html). \[[Patch **no longer avaiable, new version at following sections**]()\]  
 
-### How to collect data
+#### How to collect data
 
 We also need everything be done using scripting. But this time I only design added some distance between two increasing files' sizes. 
 
@@ -42,7 +43,7 @@ awk '/CDC|HUT|ALL/ {print $4,$5}' ~/.ccnet/log/seafile.log > results.stat
 ~~~~
 
 
-### Install Seafile on odroid xu
+#### Install Seafile on odroid xu
 
 Due to failure of my cross-compile to seafile on android. I used develop board as a replacement experiment platform for ARM-seafile testing. I used a [odroid xu](http://www.hardkernel.com/main/products/prdt_info.php?g_code=G137510300620) as hardware standard. Because all I need is an ARM platform, only an ARM-Ubuntu is enough for me. But develop prototype on a board is much fun than coding, I won't address much this time. But I'll start a blog telling some really cool stuff I made for a strange aim.   
   
@@ -60,11 +61,11 @@ sudo dd if=ubuntu-14.04lts-xubuntu-odroid-xu-20140714.img of=/dev/sdb bs=1M conv
 sync
 ~~~~
 
-# 2016-11
+## 2016-11
 
-## Android Kernel 
+### Android Kernel 
 
-### How to build an Android Kernel?
+#### How to build an Android Kernel?
 
 Generally, I won't tell anything in this parts, just mark some related links, and point out some mistakes or error solutions.
 
@@ -74,11 +75,11 @@ Generally, I won't tell anything in this parts, just mark some related links, an
 
 - [Packing and Flashing a Boot.img](https://softwarebakery.com/building-the-android-kernel-on-linux) **[highly recommend]**
 
-# 2016-12
+## 2016-12
 
-## Android Kernel
+### Android Kernel
 
-### How to compile with ftrace?
+#### How to compile with ftrace?
 
 If we want to debug under android, ftrace is a great tool for working. But, ftrace is not available in android if we used default configure file. Android kernel configuration is in **arch/arm64/kernel/configs**. We need to add few lines under that.
 
@@ -94,7 +95,7 @@ CONFIG_SCHED_TRACER=y
 CONFIG_STACK_TRACER=y
 ~~~~
 
-### How to extract android images: Dump an image
+#### How to extract android images: Dump an image
 
 If we want to hold a rooted status after flashing boot, we need to extract an image from android devices. We can first use following command to find which blocks belongs to. According to some references, [this article](http://forum.xda-developers.com/showthread.php?t=2450045) provide three ways to dump an image, I picked one for easy using.
 

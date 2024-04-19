@@ -3,7 +3,7 @@ title:  "Using charles proxy to monitor mobile SSL traffics"
 date:   2016-10-27 22:50:33 -0400
 tags: ["Network", "Charles proxy"]
 author: Pengzhan Hao
-cover: '/static/2021-12/charles-proxy-logo.png'
+cover: '/static/2024-04/charles.png'
 ---
 
 In this blog, I will generally talk about how to use proper tools to monitor SSL traffics of a mobile devices. Currently, I only can dealing with those SSL traffics which use an obviously certification. Some applications may not using system root cert or they doesn't provide us a method to modify their own certs. For these situation, I still didn't find a good solutions for it. But I'll keep updating this if I get one.  

@@ -3,7 +3,7 @@ title:  "EDDL: How do we train neural networks on limited edge devices - PART 2"
 date:   2021-10-31 13:01:14 -0400
 tags: ["Research", "Edge computing"]
 author: Pengzhan Hao
-cover: '/static/2021-10/f.5_Impl_leader_worker.png'
+cover: '/static/2024-04/eddl2.png'
 mathjax: true
 ---
 

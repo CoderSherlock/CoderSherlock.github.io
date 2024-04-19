@@ -3,7 +3,7 @@ title:  "Debug Kubelet"
 date:   2024-04-10 03:34:00 -0400
 tags: ["Kubernetes", "Kubelet", "Debug"]
 author: Pengzhan Hao
-cover: '/static/2024-04/Kubelet.webp'
+cover: '/static/2024-04/kubelet.png'
 ---
 
 ## Debug logs

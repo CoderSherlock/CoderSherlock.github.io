@@ -3,7 +3,7 @@ title:  "Generate Word Cloud Figures with Chinese-Tokenization and WordCloud pyt
 date:   2020-09-15 22:00:14 -0400
 tags: Visualization
 author: Pengzhan Hao
-cover: '/static/2020-09/2020-06-28.png'
+cover: '/static/2024-04/wordcloud.png'
 ---
 
 Let's generate a word cloud like this. 
