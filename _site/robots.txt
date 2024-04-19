@@ -1,1 +1,1 @@
-Sitemap: https://blog.pengzhan.dev/sitemap.xml
+Sitemap: https://dev.pengzhan.dev/sitemap.xml

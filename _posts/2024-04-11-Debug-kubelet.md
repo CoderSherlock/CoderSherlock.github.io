@@ -27,4 +27,4 @@ TL;DR: Bumping up to level 5 would satisfy most debugging needs.
 By the time, this note was written. In `kubelet` related code, level 8 was only used in `pkg/kubelet/prober/prober_manager.go` and level 7 was only used in `pkg/kubelet/logs/container_log_manager.go`.  And there are  11 occurrences that level 6 was used, and all of them are not part of workload lifecycle related.
 
 ## Further readings
-[Inotify watcher leaks in Kubelet]
+[Inotify watcher leaks in Kubelet](/posts/inotify-watcher-leaks-in-kubelet.html)
