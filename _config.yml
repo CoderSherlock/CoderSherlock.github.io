@@ -18,9 +18,9 @@
 ##############################
 text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate", "orange"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
-url     : "https://dev.pengzhan.dev"
+url     : "https://blog.pengzhan.dev"  # "https://dev.pengzhan.dev"
 baseurl : ""
-fakebaseurl: "/proxy/4000"
+fakebaseurl: "" # "/proxy/4000"
 title   : "STSD"
 description: > # this means to ignore newlines until "Language & timezone"
     My personal blog, some contents are useful, the others are not. Just like my mediocre life.
