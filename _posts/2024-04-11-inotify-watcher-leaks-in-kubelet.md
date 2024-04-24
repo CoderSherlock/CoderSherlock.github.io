@@ -77,7 +77,7 @@ Inode	Pathname
 258855	/etc/srv/kubernetes/pki/ca-certificates.crt
 ```
 
-Put all processes above into one single script, I can retrieve all target files, that would help to understand if there's a real leakage. Also, I count the unique inode amount, this could also help to know which inode are monitored multiple times.
+Put all processes above into one single script(please see the [updated version in the appendix](#updated-script-to-get-inotify-watchers-initiated-by-kubelet)), I can retrieve all target files, that would help to understand if there's a real leakage. Also, I count the unique inode amount, this could also help to know which inode are monitored multiple times.
 
 ```bash
 cat << EOF | sudo tee -a test.sh
@@ -148,6 +148,62 @@ This turns things easy, because I can just use pod ID to compare between running
 
 - [How Kubelet leaked inotify watchers?]()
 - [debugfs]()
+
+## Appendix
+
+### Updated script to get inotify watchers initiated by kubelet
+
+Thanks for [yujuhong@](https://github.com/yujuhong)'s momentum and helps in finishing updated script.
+
+```bash
+PID=$(echo $(ps -aux | grep "/home/kubernetes/bin/kubelet" | head -1) |  cut -d " " -f 2)
+echo "Kubelet Pid:" ${PID}
+
+inums_raw=$(find /proc/${PID}/fdinfo -type f 2>/dev/null | xargs grep ^inotify)
+# echo ${inums_raw}
+echo "Count: $(find /proc/${PID}/fdinfo -type f 2>/dev/null | xargs grep ^inotify | wc -l)"
+
+while read -r line;
+do
+        reg="ino:([0-9a-f]*) sdev:([0-9a-f]*)"
+        if [[ ${line} =~ $reg ]]; then
+                ino="${BASH_REMATCH[1]}"
+                sdev="${BASH_REMATCH[2]}"
+                # echo $ino $sdev
+        else
+                echo "wrong line"
+        fi
+
+        sdev_in_dec=$((16#$sdev))
+        minor=$((sdev_in_dec % 256))
+        major=$((sdev_in_dec / 256))
+        # echo "${major}:${minor}"
+
+        in_fds_sdev+=("${ino}-${major}:${minor}")
+done <<< "${inums_raw}"
+
+uniq_pairs=($(echo "${in_fds_sdev[@]}" | sort | uniq))
+echo "Unique target" ${#uniq_pairs[@]}
+
+printf "%-10s %-10s %-6s %s\n" "INUM" "DEV" "COUNT" "TARGET"
+for pair in "${uniq_pairs[@]}"
+do
+        count=$(echo "${in_fds_sdev[@]}" | grep -o "${pair}" | wc -l)
+        fd_hex=$(echo ${pair} | cut -d "-" -f 1)
+        dev=$(echo ${pair} | cut -d "-" -f 2)
+        fd_dec="$((16#${fd_hex}))"
+
+        mount_info=$(grep ${dev} /proc/$PID/mountinfo)
+        if [[ -z $mount_info ]]; then
+                echo "Can't find mount info for" $dev
+        else
+                tmpfs_path=$(echo $mount_info | cut -d " " -f 5)
+                # echo $tmpfs_path
+                loc=$(find ${tmpfs_path} -inum ${fd_dec})
+                printf "%-10s %-10s %-6s %s\n" "${fd_dec}" "${dev}" "${count}" "${loc}"
+        fi
+done
+```
 
 ## References
 
