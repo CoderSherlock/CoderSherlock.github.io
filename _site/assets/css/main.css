@@ -1053,15 +1053,15 @@ input:focus { outline: none; }
 
 .image { max-width: 100%; border-radius: 13px; }
 
-.image--md, .image { width: 12rem; }
+.image--md, .image { width: 9rem; }
 
-.image--xl { width: 20em; }
+.image--xl { width: 15em; }
 
-.image--lg { width: 16rem; }
+.image--lg { width: 12rem; }
 
-.image--sm { width: 8rem; }
+.image--sm { width: 6rem; }
 
-.image--xs { width: 4rem; }
+.image--xs { width: 3rem; }
 
 .card { max-width: 18rem; border-radius: 0.4rem; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.23), 0 1px 3px rgba(0, 0, 0, 0.08), 0 6px 12px rgba(0, 0, 0, 0.02); -webkit-transition: box-shadow 0.4s ease-in-out; transition: box-shadow 0.4s ease-in-out; }
 

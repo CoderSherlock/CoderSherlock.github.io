@@ -2,7 +2,7 @@
 title: Inotify watcher leaks in Kubelet
 date: 2024-04-18 16:35 -0400
 description: 
-cover: '/static/2024-04/kubelet_inotify_leak_logo.png'
+cover: '/static/2024-04/kubelet_inotify_leak_logo.webp'
 category: 
 tags: ["Kubernetes", "Kubelet", "Debug", "Inotify"]
 published: true
